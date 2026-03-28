@@ -27,17 +27,28 @@ if ! command -v git &>/dev/null; then
     exit 1
 fi
 
-# Clone
-if [ -d "$INSTALL_DIR" ]; then
-    echo -e "${GREEN}${BOLD}Directory exists. Pulling latest...${NC}"
-    git -C "$INSTALL_DIR" pull --rebase
+# Clone or update
+if [ -d "$INSTALL_DIR/.git" ]; then
+    echo -e "${GREEN}${BOLD}Directory exists. Updating...${NC}"
+    cd "$INSTALL_DIR"
+    git fetch origin main
+    git reset --hard origin/main
 else
     echo -e "${GREEN}${BOLD}Cloning repository...${NC}"
+    rm -rf "$INSTALL_DIR"
     git clone "$REPO_URL" "$INSTALL_DIR"
+    cd "$INSTALL_DIR"
+fi
+
+# Verify setup.sh exists
+if [ ! -f "setup.sh" ]; then
+    echo -e "${RED}${BOLD}setup.sh not found after clone/pull.${NC}"
+    echo "Repo contents:"
+    ls -la
+    exit 1
 fi
 
 # Run setup
 echo ""
-cd "$INSTALL_DIR"
 chmod +x setup.sh
-exec bash setup.sh
+bash setup.sh
