@@ -19,7 +19,7 @@ cursor {
 
 gestures {
     hot-corners {
-        off
+        on
     }
 }
 input {
@@ -40,7 +40,7 @@ input {
     }
 }
 layout {
-    gaps 4
+    gaps 14
     background-color "transparent"
     center-focused-column "never"
     preset-column-widths {
@@ -48,16 +48,19 @@ layout {
         proportion 0.5
         proportion 0.66667
     }
+ geometry {
+        corner-radius 12 
+    }
     default-column-width { proportion 0.5; }
     border {
-        off
+        on
         width 0
         active-color   "#707070"
         inactive-color "#d0d0d0"
         urgent-color   "#cc4444"
     }
     focus-ring {
-        width 0
+        width 3
         active-color   "#808080"
         inactive-color "#505050"
     }
@@ -128,10 +131,8 @@ animations {
 window-rule {
     match app-id="dialect"
     open-floating true
-    default-floating-position x=200 y=200
-    default-floating-size width=600 height=450
-    geometry-corner-radius 5
-    clip-to-geometry false
+    geometry-corner-radius 20
+    clip-to-geometry true
 }
 debug {
   honor-xdg-activation-with-invalid-serial
