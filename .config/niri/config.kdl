@@ -2,15 +2,17 @@ spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "flameshot"
 spawn-at-startup "qs" "-c" "niri-caelestia-shell"
 spawn-at-startup "io.github.alainm23.planify"
+
 config-notification {
     disable-failed
 }
+
 cursor { 
-   xcursor-theme "Bibata-Modern-Ice"
-   xcursor-size 30
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 30
 }
 
-/-output "eDP-1" {
+output "eDP-1" {
     mode "1920x1080@120.030"
     scale 1
     transform "normal"
@@ -22,6 +24,7 @@ gestures {
         on
     }
 }
+
 input {
     keyboard {
         xkb {
@@ -30,15 +33,10 @@ input {
     touchpad {
         tap
         dwt                 
-        //natural-scroll      
         accel-speed 0.4
     }
-    mouse {
-        //accel-speed 0.1
-    }
-    trackpoint {
-    }
 }
+
 layout {
     gaps 14
     background-color "transparent"
@@ -48,7 +46,7 @@ layout {
         proportion 0.5
         proportion 0.66667
     }
- geometry {
+    geometry {
         corner-radius 12 
     }
     default-column-width { proportion 0.5; }
@@ -70,73 +68,98 @@ layout {
         offset x=0 y=5
         color "#0007"
     }
-    struts {
-    }
 }
+
 layer-rule {
     match namespace="quickshell:Backdrop"
     place-within-backdrop true
     opacity 1.0
 }
+
 overview {
     workspace-shadow {
         off
     }
 }
+
 environment {
-  XDG_CURRENT_DESKTOP "niri"
-  QT_QPA_PLATFORM "wayland"
-  ELECTRON_OZONE_PLATFORM_HINT "auto"
-  QT_QPA_PLATFORMTHEME "gtk3"
-  QT_QPA_PLATFORMTHEME_QT6 "gtk3"
-  TERMINAL "kitty" 
-  }
+    XDG_CURRENT_DESKTOP "niri"
+    QT_QPA_PLATFORM "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+    TERMINAL "kitty" 
+}
+
 hotkey-overlay {
     skip-at-startup
 }
+
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// ========== ANIMATIONS (REFINED & SMOOTH) ==========
 animations {
+    // حركة تبديل مساحات العمل (أصبحت أكثر سلاسة واستجابة)
     workspace-switch {
-        spring damping-ratio=0.900 stiffness=800 epsilon=0.0001
+        spring damping-ratio=0.8 stiffness=600 epsilon=0.0001
     }
+
+    // فتح النوافذ (تأثير Ease-Out لطيف)
     window-open {
-        duration-ms 400
+        duration-ms 350
+        curve "ease-out-back" 
+    }
+
+    // إغلاق النوافذ (سريع ومنتظم)
+    window-close {
+        duration-ms 250
+        curve "ease-in-out-quad"
+    }
+
+    // حركة النوافذ الأفقية (تأثير مرن جداً)
+    horizontal-view-movement {
+        spring damping-ratio=0.7 stiffness=500 epsilon=0.0001
+    }
+
+    // تحريك النوافذ (تأثير مطاطي خفيف)
+    window-movement {
+        spring damping-ratio=0.7 stiffness=600 epsilon=0.0001
+    }
+
+    // تغيير حجم النوافذ
+    window-resize {
+        spring damping-ratio=0.8 stiffness=500 epsilon=0.0001
+    }
+
+    // إشعارات النظام
+    config-notification-open-close {
+        spring damping-ratio=0.7 stiffness=800 epsilon=0.001
+    }
+
+    // واجهة لقطة الشاشة
+    screenshot-ui-open {
+        duration-ms 250
         curve "ease-out-expo"
     }
-    window-close {
-        duration-ms 400
-        curve "ease-out-quad"
-    }
-    horizontal-view-movement {
-        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
-    }
-    window-movement {
-        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
-    }
-    window-resize {
-        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
-    }
-    config-notification-open-close {
-        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
-    }
-    screenshot-ui-open {
-        duration-ms 200
-        curve "ease-out-quad"
-    }
+
+    // واجهة النظرة العامة (Overview)
     overview-open-close {
-        spring damping-ratio=0.85 stiffness=400 epsilon=0.0001
+        spring damping-ratio=0.85 stiffness=500 epsilon=0.0001
     }
 }
+
 window-rule {
     match app-id="dialect"
     open-floating true
     geometry-corner-radius 20
     clip-to-geometry true
 }
+
 debug {
-  honor-xdg-activation-with-invalid-serial
+    honor-xdg-activation-with-invalid-serial
 }
+
 binds {
     // ========== WINDOW MANAGEMENT ==========
     Mod+Q repeat=false { close-window; }
@@ -202,18 +225,18 @@ binds {
     
     Mod+Page_Down { focus-workspace-down; }
     Mod+Page_Up   { focus-workspace-up; }
-    Mod+U         { focus-workspace-down; }
-    Mod+I         { focus-workspace-up; }
+    Mod+U          { focus-workspace-down; }
+    Mod+I          { focus-workspace-up; }
     
     Mod+Ctrl+Down { move-column-to-workspace-down; }
     Mod+Ctrl+Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U    { move-column-to-workspace-down; }
-    Mod+Ctrl+I    { move-column-to-workspace-up; }
+    Mod+Ctrl+U     { move-column-to-workspace-down; }
+    Mod+Ctrl+I     { move-column-to-workspace-up; }
     
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
+    Mod+Shift+U          { move-workspace-down; }
+    Mod+Shift+I          { move-workspace-up; }
 
     // ========== MULTI-MONITOR ==========
     Mod+Ctrl+Left  { focus-monitor-left; }
@@ -225,50 +248,27 @@ binds {
     
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H      { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J      { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K      { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L      { move-column-to-monitor-right; }
 
-    // ========== CAELESTIA SHELL (NIRI VERSION) ==========
-    // Launcher 
+    // ========== CAELESTIA SHELL ==========
     Mod+D { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher"; }
-    
-    // Control Center
     Mod+X { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "controlCenter" "open"; }
-    
-    // Quick Toggles
-    Mod+Shift+Z{ spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "quicktoggles" "toggle"; }
-    
-    // Dashboard
+    Mod+Shift+Z { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "quicktoggles" "toggle"; }
     Mod+Shift+D { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "dashboard"; }
-
-    // Clipboard
     Mod+V { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "clipboard" "toggle"; }
-    
-    // Lock Screen
     Mod+Alt+L { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "lock" "lock"; }
-    
-    // Notifications
     Mod+Alt+N { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "notifs" "clear"; }
     Mod+Shift+N { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "notifs" "toggleDnd"; }
-    
-    // Media Controls
     Mod+Alt+Space { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "mpris" "playPause"; }
     Mod+Alt+Right { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "mpris" "next"; }
     Mod+Alt+Left  { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "mpris" "previous"; }
-    
-    // Screenshot & Tools
     Mod+Alt+S { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "picker" "open"; }
     Mod+Comma { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "picker" "openFreeze"; }
     Mod+Shift+A { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "picker" "regionSearch"; }
     Mod+Shift+X { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "picker" "regionOcr"; }
-    
-    // Brightness Control
-    //Mod+Alt+BrightnessUp   { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "brightness" "set" "+5%"; }
-    //Mod+Alt+BrightnessDown { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "brightness" "set" "5%-"; }
-    
-    // Session Menu
     Ctrl+Alt+Delete { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "session"; }
 
     // ========== APPLICATIONS ==========
@@ -287,13 +287,10 @@ binds {
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    // ========== SCREENSHOTS (NATIVE) ==========
+    // ========== SCREENSHOTS ==========
     Print { spawn "flameshot" "gui"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
-    XF86Launch1 { screenshot; }
-    Ctrl+XF86Launch1 { screenshot-screen; }
-    Alt+XF86Launch1 { screenshot-window; }
 
     // ========== SYSTEM ==========
     Mod+Shift+E { quit; }
@@ -305,18 +302,4 @@ binds {
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-    Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
-    Mod+Shift+WheelScrollDown      { focus-column-right; }
-    Mod+Shift+WheelScrollUp        { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
-
-    // ========== MEDIA KEYS ==========
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
 }
-
