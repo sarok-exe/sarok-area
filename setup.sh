@@ -135,14 +135,23 @@ run "pacman -Syu" sudo pacman -Syu --noconfirm
 step "Pacman packages"
 
 PKGS=(
-    niri kitty starship
-    iwd pipewire wireplumber
-    btop fastfetch
-    yazi mpd mpv
-    brightnessctl
-    flameshot obsidian scrcpy
-    duf cmake ninja aubio
-    ttf-jetbrains-mono ttf-material-symbols-variable
+    # Core System & Window Manager
+    niri xorg-xwayland wayland-protocols qt6-wayland
+    # Terminal & Shell tools
+    kitty starship zoxide thefuck neovim micro
+    yazi eza bat fd ripgrep jq fastfetch
+    # System Monitoring & Utils
+    btop cava dunst libqalculate brightnessctl pamixer
+    networkmanager openssh rsync zip unzip
+    # Media & Graphics
+    mpv imv feh drawing inkscape flameshot
+    # Fonts
+    ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd
+    ttf-nerd-fonts-symbols-mono noto-fonts-cjk
+    # Themes & Icons
+    adw-gtk-theme papirus-icon-theme
+    # Build tools
+    cmake ninja
 )
 
 run "Pacman install" sudo pacman -S --needed --noconfirm "${PKGS[@]}"
@@ -153,7 +162,14 @@ run "Pacman install" sudo pacman -S --needed --noconfirm "${PKGS[@]}"
 step "AUR packages"
 
 if command -v yay &>/dev/null; then
-    AUR_PKGS=(quickshell-git impala rmpc vesktop)
+    AUR_PKGS=(
+        # UI Shell & Styling
+        quickshell-git matugen-bin swaylock-effects-git wallust-git
+        # Additional Tools
+        obsidian-bin
+        # Keep existing
+        impala rmpc vesktop
+    )
     run "AUR install" yay -S --needed --noconfirm "${AUR_PKGS[@]}"
 else
     fail "yay not available, skipping AUR packages"
@@ -263,6 +279,22 @@ if ! grep -q 'starship init bash' "$HOME/.bashrc" 2>/dev/null; then
     ok "Starship prompt added to .bashrc"
 else
     ok "Starship already in .bashrc"
+fi
+
+# Configure thefuck in .bashrc
+if ! grep -q 'thefuck --alias' "$HOME/.bashrc" 2>/dev/null; then
+    echo 'eval "$(thefuck --alias)"' >> "$HOME/.bashrc"
+    ok "thefuck added to .bashrc"
+else
+    ok "thefuck already in .bashrc"
+fi
+
+# Configure zoxide in .bashrc
+if ! grep -q 'zoxide init bash' "$HOME/.bashrc" 2>/dev/null; then
+    echo 'eval "$(zoxide init bash)"' >> "$HOME/.bashrc"
+    ok "zoxide added to .bashrc"
+else
+    ok "zoxide already in .bashrc"
 fi
 
 # Enable services
