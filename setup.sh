@@ -189,6 +189,7 @@ step "System configs (etc/)"
 
 if [ -d "$REPO_DIR/etc" ]; then
     run "Copy system configs" sudo cp -rf "$REPO_DIR/etc/"* /etc/
+    run "Lock hosts file" sudo chattr +i /etc/hosts
 else
     warn "No etc/ directory found, skipping."
 fi

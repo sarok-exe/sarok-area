@@ -59,9 +59,28 @@ sarok-area/
 ├── etc/              # System-level configs (copied to /etc/)
 ├── install.sh        # Bootstrap script (curl | bash)
 ├── setup.sh          # Main installer
+├── update_shell.sh   # Update Caelestia shell plugin
 ├── LICENSE
 └── README.md
 ```
+
+## Updating the Shell
+
+To update the Caelestia shell plugin (niri-caelestia-shell):
+
+```bash
+cd ~/.sarok-area
+chmod +x update_shell.sh
+./update_shell.sh
+```
+
+This will:
+1. Pull the latest changes from the upstream repo
+2. Apply patches (removes cava dependency)
+3. Rebuild and install the C++ plugin
+4. Optionally restart the shell
+
+Logs are saved to `~/caelestia_update.log`.
 
 ## Customization
 
