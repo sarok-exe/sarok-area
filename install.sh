@@ -6,7 +6,7 @@
 # ============================================================
 
 REPO_URL="https://github.com/sarok-exe/sarok-area.git"
-INSTALL_DIR="$HOME/sarok-area"
+INSTALL_DIR="$HOME/.sarok-area"
 
 # Colors
 GREEN='\033[0;32m'
@@ -27,17 +27,23 @@ if ! command -v git &>/dev/null; then
 fi
 
 # Handle existing directory
-if [ -d "$INSTALL_DIR" ]; then
-    if [ -d "$INSTALL_DIR/.git" ]; then
+if [ -d "$INSTALL_DIR/.git" ]; then
+    CURRENT_REMOTE="$(git -C "$INSTALL_DIR" remote get-url origin 2>/dev/null || echo "")"
+    if echo "$CURRENT_REMOTE" | grep -q "sarok-area"; then
         echo -e "${GREEN}${BOLD}Updating existing repo...${NC}"
         cd "$INSTALL_DIR"
         git fetch origin main && git reset --hard origin/main
     else
-        echo -e "${YELLOW}${BOLD}Directory exists but is not a git repo. Re-cloning...${NC}"
+        echo -e "${YELLOW}${BOLD}Directory exists but is a different repo. Re-cloning...${NC}"
         rm -rf "$INSTALL_DIR"
         git clone "$REPO_URL" "$INSTALL_DIR"
         cd "$INSTALL_DIR"
     fi
+elif [ -d "$INSTALL_DIR" ]; then
+    echo -e "${YELLOW}${BOLD}Directory exists but is not a git repo. Re-cloning...${NC}"
+    rm -rf "$INSTALL_DIR"
+    git clone "$REPO_URL" "$INSTALL_DIR"
+    cd "$INSTALL_DIR"
 else
     echo -e "${GREEN}${BOLD}Cloning repository...${NC}"
     git clone "$REPO_URL" "$INSTALL_DIR"

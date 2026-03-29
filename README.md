@@ -22,7 +22,7 @@ curl -fsSL https://raw.githubusercontent.com/sarok-exe/sarok-area/main/install.s
 ```
 
 This will:
-1. Clone this repo to `~/sarok-area`
+1. Clone this repo to `~/.sarok-area`
 2. Install all pacman packages
 3. Install yay + AUR packages
 4. Install Flatpak apps
@@ -33,8 +33,8 @@ This will:
 ## Manual Install
 
 ```bash
-git clone git@github.com:sarok-exe/sarok-area.git ~/sarok-area
-cd ~/sarok-area
+git clone git@github.com:sarok-exe/sarok-area.git ~/.sarok-area
+cd ~/.sarok-area
 chmod +x setup.sh
 ./setup.sh
 ```
@@ -66,7 +66,7 @@ sarok-area/
 ## Customization
 
 To add or update configs:
-1. Edit the file directly in `~/sarok-area/.config/`
+1. Edit the file directly in `~/.sarok-area/.config/`
 2. Since it's symlinked, changes take effect immediately
 3. Commit and push to sync across machines
 
