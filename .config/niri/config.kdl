@@ -1,3 +1,4 @@
+// ========== تطبيقات بدء التشغيل (STARTUP) ==========
 spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "flameshot"
 spawn-at-startup "qs" "-c" "niri-caelestia-shell"
@@ -9,9 +10,10 @@ config-notification {
 
 cursor { 
     xcursor-theme "Bibata-Modern-Ice"
-    xcursor-size 30
+    xcursor-size 10
 }
 
+// إعدادات الشاشة
 output "eDP-1" {
     mode "1920x1080@120.030"
     scale 1
@@ -21,13 +23,14 @@ output "eDP-1" {
 
 gestures {
     hot-corners {
-        on
+        off
     }
 }
 
 input {
     keyboard {
         xkb {
+            // يمكنك إضافة layout "us,ar" هنا إذا أردت تبديل اللغة
         }
     }
     touchpad {
@@ -35,10 +38,15 @@ input {
         dwt                 
         accel-speed 0.4
     }
+    mouse {
+        // accel-speed 0.1
+    }
+    trackpoint {
+    }
 }
 
 layout {
-    gaps 14
+    gaps 4
     background-color "transparent"
     center-focused-column "never"
     preset-column-widths {
@@ -46,27 +54,31 @@ layout {
         proportion 0.5
         proportion 0.66667
     }
-    geometry {
-        corner-radius 12 
-    }
     default-column-width { proportion 0.5; }
+    
     border {
-        on
+        off
         width 0
         active-color   "#707070"
         inactive-color "#d0d0d0"
         urgent-color   "#cc4444"
     }
+    
     focus-ring {
-        width 3
+        width 0
         active-color   "#808080"
         inactive-color "#505050"
     }
+    
     shadow {
+        on
         softness 30
         spread 5
         offset x=0 y=5
         color "#0007"
+    }
+    
+    struts {
     }
 }
 
@@ -98,62 +110,43 @@ hotkey-overlay {
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-// ========== ANIMATIONS (REFINED & SMOOTH) ==========
+// ========== الحركات (ANIMATIONS) ==========
 animations {
-    // حركة تبديل مساحات العمل (أصبحت أكثر سلاسة واستجابة)
     workspace-switch {
-        spring damping-ratio=0.8 stiffness=600 epsilon=0.0001
+        spring damping-ratio=0.900 stiffness=800 epsilon=0.0001
     }
-
-    // فتح النوافذ (تأثير Ease-Out لطيف)
     window-open {
-        duration-ms 350
-        curve "ease-out-back" 
-    }
-
-    // إغلاق النوافذ (سريع ومنتظم)
-    window-close {
-        duration-ms 250
-        curve "ease-in-out-quad"
-    }
-
-    // حركة النوافذ الأفقية (تأثير مرن جداً)
-    horizontal-view-movement {
-        spring damping-ratio=0.7 stiffness=500 epsilon=0.0001
-    }
-
-    // تحريك النوافذ (تأثير مطاطي خفيف)
-    window-movement {
-        spring damping-ratio=0.7 stiffness=600 epsilon=0.0001
-    }
-
-    // تغيير حجم النوافذ
-    window-resize {
-        spring damping-ratio=0.8 stiffness=500 epsilon=0.0001
-    }
-
-    // إشعارات النظام
-    config-notification-open-close {
-        spring damping-ratio=0.7 stiffness=800 epsilon=0.001
-    }
-
-    // واجهة لقطة الشاشة
-    screenshot-ui-open {
-        duration-ms 250
+        duration-ms 400
         curve "ease-out-expo"
     }
-
-    // واجهة النظرة العامة (Overview)
+    window-close {
+        duration-ms 400
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
     overview-open-close {
-        spring damping-ratio=0.85 stiffness=500 epsilon=0.0001
+        spring damping-ratio=0.85 stiffness=400 epsilon=0.0001
     }
 }
 
 window-rule {
-    match app-id="dialect"
-    open-floating true
-    geometry-corner-radius 20
-    clip-to-geometry true
+    geometry-corner-radius 5
+    clip-to-geometry false
 }
 
 debug {
@@ -161,7 +154,7 @@ debug {
 }
 
 binds {
-    // ========== WINDOW MANAGEMENT ==========
+    // ========== إدارة النوافذ (WINDOW MANAGEMENT) ==========
     Mod+Q repeat=false { close-window; }
     Mod+C { toggle-window-floating; }
     Mod+F { maximize-column; }
@@ -182,7 +175,7 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
     Mod+Period { expel-window-from-column; }
 
-    // ========== FOCUS MOVEMENT ==========
+    // ========== التنقل (FOCUS MOVEMENT) ==========
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
@@ -192,7 +185,7 @@ binds {
     Mod+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
 
-    // ========== MOVE WINDOWS ==========
+    // ========== تحريك النوافذ (MOVE WINDOWS) ==========
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Down  { move-window-down; }
     Mod+Shift+Up    { move-window-up; }
@@ -202,7 +195,7 @@ binds {
     Mod+Shift+K     { move-window-up; }
     Mod+Shift+L     { move-column-right; }
 
-    // ========== WORKSPACES ==========
+    // ========== مساحات العمل (WORKSPACES) ==========
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -225,20 +218,20 @@ binds {
     
     Mod+Page_Down { focus-workspace-down; }
     Mod+Page_Up   { focus-workspace-up; }
-    Mod+U          { focus-workspace-down; }
-    Mod+I          { focus-workspace-up; }
+    Mod+U         { focus-workspace-down; }
+    Mod+I         { focus-workspace-up; }
     
     Mod+Ctrl+Down { move-column-to-workspace-down; }
     Mod+Ctrl+Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U     { move-column-to-workspace-down; }
-    Mod+Ctrl+I     { move-column-to-workspace-up; }
+    Mod+Ctrl+U    { move-column-to-workspace-down; }
+    Mod+Ctrl+I    { move-column-to-workspace-up; }
     
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U          { move-workspace-down; }
-    Mod+Shift+I          { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
 
-    // ========== MULTI-MONITOR ==========
+    // ========== شاشات متعددة (MULTI-MONITOR) ==========
     Mod+Ctrl+Left  { focus-monitor-left; }
     Mod+Ctrl+Right { focus-monitor-right; }
     Mod+Ctrl+H     { focus-monitor-left; }
@@ -248,10 +241,10 @@ binds {
     
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H      { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J      { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K      { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L      { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // ========== CAELESTIA SHELL ==========
     Mod+D { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher"; }
@@ -271,7 +264,7 @@ binds {
     Mod+Shift+X { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "picker" "regionOcr"; }
     Ctrl+Alt+Delete { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "session"; }
 
-    // ========== APPLICATIONS ==========
+    // ========== تطبيقات (APPLICATIONS) ==========
     Mod+Return { spawn "kitty"; }
     Mod+T { spawn "Telegram" "toggle-overview"; }
     Mod+Ctrl+T { spawn "sh" "-c" "GDK_BACKEND=x11 XDG_CURRENT_DESKTOP=GNOME GTK_USE_PORTAL=1 dialect"; }
@@ -287,19 +280,28 @@ binds {
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    // ========== SCREENSHOTS ==========
+    // ========== لقطات الشاشة (SCREENSHOTS) ==========
     Print { spawn "flameshot" "gui"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    // ========== SYSTEM ==========
+    // ========== النظام (SYSTEM) ==========
     Mod+Shift+E { quit; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+P { power-off-monitors; }
 
-    // ========== MOUSE GESTURES ==========
+    // ========== إيماءات الماوس (MOUSE GESTURES) ==========
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // ========== مفاتيح الميديا (MEDIA KEYS) ==========
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
 }

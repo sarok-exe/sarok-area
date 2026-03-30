@@ -142,7 +142,7 @@ PKGS=(
     yazi eza bat fd ripgrep jq fastfetch
     # System Monitoring & Utils
     btop cava dunst libqalculate brightnessctl pamixer
-    networkmanager openssh rsync zip unzip
+    networkmanager openssh rsync zip unzip nload
     # Media & Graphics
     mpv imv feh drawing inkscape flameshot
     # Fonts
@@ -169,6 +169,7 @@ if command -v yay &>/dev/null; then
         obsidian-bin
         # Keep existing
         impala rmpc vesktop
+	keypunch
     )
     run "AUR install" yay -S --needed --noconfirm "${AUR_PKGS[@]}"
 else
