@@ -1,0 +1,115 @@
+/* ---- Tokyo Night Elegant Style ---- */
+@import "../colors.css";
+
+* {
+	font-family: "JetBrainsMono Nerd Font Propo";
+	font-weight: bold;
+	min-height: 0;
+	font-size: 98%;
+}
+
+window#waybar,
+window#waybar.empty {
+    background-color: #0d0d0d;
+    padding: 0px;
+    border: 0px;
+}
+
+tooltip {
+    background: #1a1b26;
+    color: @foreground;
+    border-radius: 8px;
+}
+
+tooltip label{
+	color: @foreground;
+}
+
+/*----- Module Groups -----*/
+.modules-right {
+	background-color: #0d0d0d;
+	color: @foreground;
+}
+.modules-center {
+	background-color: #0d0d0d;
+	color: @foreground;
+}
+.modules-left {
+	background-color: #0d0d0d;
+	color: @foreground;
+}
+
+/*----- Workspace Buttons -----*/
+#workspaces button {
+	color: @muted;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+#workspaces button.active {
+	color: @cyan;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+/*----- All Modules -----*/
+#clock,
+#battery,
+#tray,
+#pulseaudio,
+#wireplumber,
+#custom-power,
+#network,
+#temperature,
+#workspaces,
+#taskbar,
+#window,
+#mpris {
+	padding: 4px 10px;
+	color: @foreground;
+	background-color: #0d0d0d;
+}
+
+/*----- Specific Module Colors -----*/
+#clock { color: @blue; }
+#battery { color: @green; }
+#pulseaudio { color: @purple; }
+#pulseaudio.muted { color: @muted; }
+#custom-power { color: @red; }
+#network { color: @blue; }
+#tray { color: @foreground; }
+#backlight-slider { color: @cyan; }
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#backlight-slider trough {
+    min-height: 2px;
+    min-width: 100px;
+    border-radius: 1px;
+    background-color: @muted;
+}
+
+#backlight-slider highlight {
+    min-height: 2px;
+    border-radius: 1px;
+    background-color: @cyan;
+}
+
+/*----- Tray -----*/
+#tray > .passive {
+	-gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
+	background-color: @red;
+	border-radius: 4px;
+}
