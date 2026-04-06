@@ -250,7 +250,7 @@ binds {
     Mod+Ctrl+T { spawn "sh" "-c" "GDK_BACKEND=x11 XDG_CURRENT_DESKTOP=GNOME GTK_USE_PORTAL=1 dialect"; }
     Mod+E { spawn "kitty" "-e" "yazi" "toggle-overview"; }
     Mod+O { spawn "obsidian" "toggle-overview"; }
-    Mod+B { spawn "flatpak" "run" "com.brave.Browser" "--password-store=basic"; }
+    Mod+B { spawn "brave" "--password-store=basic"; }
     Mod+Y { spawn "kitty" "-e" "impala"; }
     Mod+N { spawn "kitty" "-e" "wiremix"; }
     Mod+Z { spawn "com.todoist.Todoist"; }

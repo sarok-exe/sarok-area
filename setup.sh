@@ -138,8 +138,8 @@ PKGS=(
     # Core System & Window Manager
     niri xorg-xwayland wayland-protocols qt6-wayland
     # Terminal & Shell tools
-    kitty starship zoxide thefuck neovim micro
-    yazi eza bat fd ripgrep jq fastfetch
+    kitty starship zoxide thefuck neovim 
+    yazi fastfetch
     # System Monitoring & Utils
     btop cava dunst libqalculate brightnessctl pamixer
     networkmanager openssh rsync zip unzip nload
@@ -164,9 +164,9 @@ step "AUR packages"
 if command -v yay &>/dev/null; then
     AUR_PKGS=(
         # UI Shell & Styling
-        quickshell-git matugen-bin swaylock-effects-git wallust-git
+        #quickshell-git matugen-bin swaylock-effects-git wallust-git
         # Additional Tools
-        obsidian-bin
+        obsidian-bin aseprite brave-bin nload blanket localsend dialect
         # Keep existing
         impala rmpc vesktop
 	keypunch
@@ -186,15 +186,10 @@ run "Add Flathub remote" sudo flatpak remote-add --if-not-exists flathub \
     https://flathub.org/repo/flathub.flatpakrepo
 
 FLAT_PKGS=(
-    app.drey.Dialect
-    com.brave.Browser
-    com.dec05eba.gpu_screen_recorder
-    com.fogpanther.FogPanther
+    org.altaqwaa.Altaqwaa
     com.github.PintaProject.Pinta
-    de.schmidhuberj.tubefeeder
     io.github.alainm23.planify
     io.github.mimbrero.WhatsAppDesktop
-    org.telegram.desktop
 )
 
 run "Flatpak install" flatpak install -y flathub "${FLAT_PKGS[@]}"
