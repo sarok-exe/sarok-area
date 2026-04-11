@@ -2,17 +2,17 @@ spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "flameshot"
 //spawn-at-startup "ags" "run" "/home/sarok/.config/ags/app.js"
 spawn-at-startup "com.todoist.Todoist"
-spawn-at-startup "waybar" "-c" "/home/sarok/.config/waybar/configs/bintang default" "-s" "/home/sarok/.config/waybar/style/bintang default.css"
+spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
 //spawn-at-startup "swww" "img" "~/Pictures/Wallpapers/god_red.jpg"
-spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/1_rails.png"
+spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/1_cat.png"
 
 config-notification {
     disable-failed
 }
 
 cursor { 
-    xcursor-size 10
+    xcursor-size 1
 }
 
 output "eDP-1" {
@@ -45,7 +45,7 @@ input {
 }
 
 layout {
-    gaps 14
+    gaps 2
     background-color "transparent"
     center-focused-column "never"
     preset-column-widths {
@@ -56,20 +56,20 @@ layout {
     default-column-width { proportion 0.5; }
     
     border {
-        width 0
+        width 1
         active-color   "#707070"
         inactive-color "#d0d0d0"
         urgent-color   "#cc4444"
     }
     
     focus-ring {
-	width 1
+	width 0
         active-color   "#808080"
         inactive-color "#505050"
     }
     
     shadow {
-        on
+        off
         softness 30
         spread 5
         offset x=0 y=5
@@ -155,9 +155,9 @@ binds {
     Mod+C { toggle-window-floating; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-    Mod+Shift+T { toggle-window-floating; }
+    //Mod+Shift+T { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    Mod+W { toggle-column-tabbed-display; }
+    //Mod+W { toggle-column-tabbed-display; }
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
@@ -254,6 +254,7 @@ binds {
     Mod+Y { spawn "kitty" "-e" "impala"; }
     Mod+N { spawn "kitty" "-e" "wiremix"; }
     Mod+Z { spawn "com.todoist.Todoist"; }
+    Mod+W { spawn "kitty" "-e" "nmtui"; }
 
     Mod+S { spawn "niri" "msg" "action" "toggle-overview"; }
     Mod+Tab repeat=false { toggle-overview; }
@@ -261,6 +262,14 @@ binds {
     Print { spawn "flameshot" "gui"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
+
+    Mod+T { spawn "sh" "-c" "~/Documents/Scripts/ocr_selection.sh"; }
+    Mod+Shift+T { spawn "sh" "-c" "grim - | tesseract stdin stdout -l eng | wl-copy && notify-send OCR 'Fullscreen text copied' -t 2000"; }
+    Mod+P { spawn "sh" "-c" "~/Documents/Scripts/wayclick/dusky_wayclick.sh"; }
+
+    Mod+Ctrl+bracketright { spawn "sh" "-c" "~/Documents/Scripts/fractional_scale.sh in"; }
+    Mod+Ctrl+bracketleft { spawn "sh" "-c" "~/Documents/Scripts/fractional_scale.sh out"; }
+    Mod+Ctrl+0 { spawn "sh" "-c" "~/Documents/Scripts/fractional_scale.sh reset"; }
 
     Mod+Shift+E { quit; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }

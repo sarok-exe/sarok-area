@@ -139,7 +139,7 @@ PKGS=(
     niri xorg-xwayland wayland-protocols qt6-wayland
     # Terminal & Shell tools
     kitty starship zoxide thefuck neovim 
-    yazi fastfetch
+    yazi fastfetch wiremix 
     # System Monitoring & Utils
     btop cava dunst libqalculate brightnessctl pamixer
     networkmanager openssh rsync zip unzip nload
@@ -151,7 +151,7 @@ PKGS=(
     # Themes & Icons
     adw-gtk-theme papirus-icon-theme
     # Build tools
-    cmake ninja
+    cmake ninja slurp grim tesseract tesseract-data-eng wl-clipboard 
 )
 
 run "Pacman install" sudo pacman -S --needed --noconfirm "${PKGS[@]}"

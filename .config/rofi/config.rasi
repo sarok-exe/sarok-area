@@ -1,30 +1,25 @@
+@import "colors.rasi"
+
 * {
-    font: "Figtree 13";
-    g-spacing: 10px;
+    font: "JetBrainsMono Nerd Font 13";
+    g-spacing: 12px;
     g-margin: 0;
-    b-color: #000000FF;
-    fg-color: #FFFFFFFF;
-    fgp-color: #888888FF;
-    b-radius: 8px;
-    g-padding: 8px;
-    hl-color: #FFFFFFFF;
-    hlt-color: #000000FF;
-    alt-color: #111111FF;
-    wbg-color: #000000CC;
-    w-border: 2px solid;
-    w-border-color: #FFFFFFFF;
-    w-padding: 12px;
+    b-radius: 12px;
+    g-padding: 12px;
+    w-padding: 16px;
 }
 
 configuration {
     modi: "drun";
     show-icons: true;
-    display-drun: "";
+    display-drun: "  ";
+    icon-theme: "Adwaita";
+    disable-history: false;
 }
 
 listview {
     columns: 1;
-    lines: 7;
+    lines: 8;
     fixed-height: true;
     fixed-columns: true;
     cycle: false;
@@ -34,16 +29,16 @@ listview {
 
 window {
     transparency: "real";
-    width: 450px;
+    width: 480px;
     border-radius: @b-radius;
-    background-color: @wbg-color;
-    border: @w-border;
-    border-color: @w-border-color;
+    background-color: @base;
+    border: 2px solid;
+    border-color: @surface0;
     padding: @w-padding;
 }
 
 prompt {
-    text-color: @fg-color;
+    text-color: @lavender;
 }
 
 inputbar {
@@ -53,8 +48,8 @@ inputbar {
 
 entry {
     placeholder: "Search Apps";
-    text-color: @fg-color;
-    placeholder-color: @fgp-color;
+    text-color: @text;
+    placeholder-color: @overlay0;
 }
 
 mainbox {
@@ -67,35 +62,56 @@ mainbox {
 element {
     spacing: @g-spacing;
     margin: @g-margin;
-    padding: @g-padding;
+    padding: 8px 12px;
     border: 0px solid;
     border-radius: @b-radius;
-    border-color: @b-color;
     background-color: transparent;
-    text-color: @fg-color;
+    text-color: @text;
+    border-color: transparent;
+}
+
+element-icon {
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    border-radius: 0px;
+}
+
+element-icon selected {
+    background-color: transparent;
 }
 
 element normal.normal {
-	background-color: transparent;
-	text-color: @fg-color;
+    background-color: transparent;
+    text-color: @text;
 }
 
 element alternate.normal {
-	background-color: @alt-color;
-	text-color: @fg-color;
+    background-color: @surface0;
+    text-color: @text;
 }
 
 element selected.active {
-	background-color: @hl-color;
-	text-color: @hlt-color;
+    background-color: transparent;
+    text-color: @lavender;
 }
 
 element selected.normal {
-	background-color: @hl-color;
-	text-color: @hlt-color;
+    background-color: transparent;
+    text-color: @lavender;
+}
+
+element hover {
+    background-color: @surface0;
+    text-color: @text;
 }
 
 message {
-    background-color: red;
+    background-color: transparent;
     border: 0px solid;
+}
+
+textbox {
+    text-color: @overlay0;
 }
