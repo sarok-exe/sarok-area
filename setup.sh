@@ -2,18 +2,15 @@
 
 # ============================================================
 #  Sarok Area — Full Arch Linux Setup
-#  One command. Everything installed. Everything linked.
 # ============================================================
 
 set -uo pipefail
 
-# --- Constants ---
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 DOT_SRC="$REPO_DIR/.config"
 LOG_FILE="/tmp/sarok-setup-$(date +%Y%m%d-%H%M%S).log"
 FAILURES=()
 
-# --- Colors ---
 MAGENTA='\033[1;35m'
 CYAN='\033[1;36m'
 GREEN='\033[1;32m'
@@ -23,77 +20,64 @@ DIM='\033[0;90m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-# --- Progress Bar ---
-TOTAL_STEPS=9
+TOTAL_STEPS=10
 CURRENT_STEP=0
-
-draw_progress() {
-    local width=40
-    local step="$1"
-    local label="$2"
-    local pct=$(( step * 100 / TOTAL_STEPS ))
-    local filled=$(( step * width / TOTAL_STEPS ))
-    local empty=$(( width - filled ))
-
-    printf "\r  ${DIM}[${NC}"
-    printf "%0.s█" $(seq 1 "$filled" 2>/dev/null) || true
-    printf "%0.s░" $(seq 1 "$empty" 2>/dev/null) || true
-    printf "${DIM}]${NC} ${CYAN}%3d%%${NC} ${DIM}(%d/%d)${NC}  ${BOLD}%s${NC}" "$pct" "$step" "$TOTAL_STEPS" "$label"
-    echo ""
-}
-
-# --- Helpers ---
-log() { echo "$1" >> "$LOG_FILE"; }
 
 step() {
     CURRENT_STEP=$((CURRENT_STEP + 1))
-    draw_progress "$CURRENT_STEP" "$1"
+    echo ""
+    echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo -e "  ${BOLD}${MAGENTA}▶${NC} ${BOLD}$CURRENT_STEP/$TOTAL_STEPS:${NC} $1"
+    echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 }
 
-ok()   { echo -e "      ${GREEN}[✓]${NC} $1"; }
-warn() { echo -e "      ${YELLOW}[!]${NC} $1"; }
-fail() { echo -e "      ${RED}[✗]${NC} $1"; FAILURES+=("$1"); }
+ok()   { echo -e "    ${GREEN}✓${NC} $1"; log "[OK] $1"; }
+warn() { echo -e "    ${YELLOW}!${NC} $1"; log "[WARN] $1"; }
+fail() { echo -e "    ${RED}✗${NC} $1"; FAILURES+=("$1"); log "[FAIL] $1"; }
 
 run() {
     local label="$1"
     shift
-    log "[$label] Running: $*"
-    if output=$("$@" 2>&1); then
-        log "[$label] OK"
+    echo -e "  ${DIM}  → $*${NC}"
+    if "$@" 2>&1 | tee -a "$LOG_FILE"; then
         ok "$label"
     else
-        log "[$label] FAILED: $output"
         fail "$label"
     fi
 }
 
-# --- Clear Screen ---
+run_bg() {
+    local label="$1"
+    shift
+    echo -e "  ${DIM}  → $*${NC}"
+    if "$@" >> "$LOG_FILE" 2>&1; then
+        ok "$label"
+    else
+        fail "$label"
+    fi
+}
+
+log() { echo "[$(date '+%H:%M:%S')] $1" >> "$LOG_FILE"; }
+
 clear
-
-# --- Logo ---
 echo ""
-echo -e "  ${MAGENTA}  .dBBBBP dBBBBBb${NC}"
-echo -e "  ${MAGENTA}    BP           BB  dP dP${NC}"
-echo -e "  ${MAGENTA}    \`BBBBb   dBP BB dP dP${NC}"
-echo -e "  ${MAGENTA}       dBP  dBP  BB${NC}"
-echo -e "  ${MAGENTA}  dBBBBP'  dBBBBBBB${NC}"
+echo -e "  ${MAGENTA}  ╔═══╗╔═══╗╔═══╗${NC}"
+echo -e "  ${MAGENTA}  ║   ║║   ║║   ║${NC}"
+echo -e "  ${MAGENTA}  ║   ║║   ║║   ║${NC}"
+echo -e "  ${MAGENTA}  ╚═══╝╚═══╝╚═══╝${NC}"
 echo ""
-echo -e "  ${CYAN}${BOLD}╔══════════════════════════════════════════╗${NC}"
-echo -e "  ${CYAN}${BOLD}║     SAROK AREA — Full Arch Setup         ║${NC}"
-echo -e "  ${CYAN}${BOLD}╚══════════════════════════════════════════╝${NC}"
+echo -e "  ${BOLD}  SAROK AREA${NC} — Arch Setup"
 echo ""
-echo -e "  ${DIM}Log: ${LOG_FILE}${NC}"
+echo -e "  ${DIM}  Log: $LOG_FILE${NC}"
 echo ""
 
-# --- Preflight ---
 if ! command -v pacman &>/dev/null; then
-    echo -e "  ${RED}${BOLD}This script requires Arch Linux (pacman not found).${NC}"
+    echo -e "  ${RED}Requires Arch Linux (pacman not found)${NC}"
     exit 1
 fi
 
 if [ "$EUID" -eq 0 ]; then
-    echo -e "  ${RED}${BOLD}Do not run this script as root.${NC}"
-    echo -e "  ${DIM}The script will use sudo when needed.${NC}"
+    echo -e "  ${RED}Do not run as root${NC}"
     exit 1
 fi
 
@@ -142,9 +126,13 @@ PKGS=(
     yazi fastfetch wiremix 
     # System Monitoring & Utils
     btop cava dunst libqalculate brightnessctl pamixer
-    networkmanager openssh rsync zip unzip nload
+    networkmanager openssh rsync zip unzip nload htop
+    # Bar & Notifications
+    waybar swaync wlogout mako
     # Media & Graphics
     mpv imv feh drawing inkscape flameshot
+    # Screen Recording
+    obsidian wl-screenrec wayland-record
     # Fonts
     ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd
     ttf-nerd-fonts-symbols-mono noto-fonts-cjk
@@ -152,6 +140,22 @@ PKGS=(
     adw-gtk-theme papirus-icon-theme
     # Build tools
     cmake ninja slurp grim tesseract tesseract-data-eng wl-clipboard 
+    # Development
+    python python-pip base-devel
+    # Fun
+    cmatrix
+    # Wine & Windows
+    wine giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls
+    mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse
+    libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib
+    libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite
+    libxinerama lib32-libxinerama opencl-icd lib32-opencl-icd
+    # Network tools
+    wireshark-qt
+    # Text editor
+    mousepad
+    # GPU tools
+    vulkan-tools
 )
 
 run "Pacman install" sudo pacman -S --needed --noconfirm "${PKGS[@]}"
@@ -163,8 +167,6 @@ step "AUR packages"
 
 if command -v yay &>/dev/null; then
     AUR_PKGS=(
-        # UI Shell & Styling
-        #quickshell-git matugen-bin swaylock-effects-git wallust-git
         # Additional Tools
         obsidian-bin aseprite brave-bin nload blanket localsend dialect
         # Keep existing
@@ -195,7 +197,35 @@ FLAT_PKGS=(
 run "Flatpak install" flatpak install -y flathub "${FLAT_PKGS[@]}"
 
 # ============================================================
-#  7. System Configs
+#  7. Ollama (AI)
+# ============================================================
+step "Ollama AI"
+
+if command -v ollama &>/dev/null; then
+    ok "Ollama already installed"
+else
+    if curl -fsSL https://ollama.com/install.sh | sh >> "$LOG_FILE" 2>&1; then
+        ok "Ollama installed"
+    else
+        fail "Ollama install failed"
+    fi
+fi
+
+# ============================================================
+#  8. Python tools (pipx)
+# ============================================================
+step "Python tools"
+
+run "Install pipx" sudo pacman -S --needed --noconfirm python-pipx
+if command -v pipx &>/dev/null; then
+    pipx ensurepath >> "$LOG_FILE" 2>&1 || true
+    ok "pipx configured"
+else
+    warn "pipx not available"
+fi
+
+# ============================================================
+#  10. System Configs
 # ============================================================
 step "System configs (etc/)"
 
@@ -207,7 +237,7 @@ else
 fi
 
 # ============================================================
-#  8. Deploy Dotfiles
+#  9. Deploy Dotfiles
 # ============================================================
 step "Deploy dotfiles"
 
@@ -232,26 +262,9 @@ else
 fi
 
 # ============================================================
-#  9. Build Plugin + Shell + Services
+#  10. Shell & Services
 # ============================================================
-step "Plugin, shell & services"
-
-# Caelestia plugin
-PLUGIN_DIR="$HOME/.config/quickshell/plugin"
-if [ -d "$PLUGIN_DIR" ] && [ -f "$PLUGIN_DIR/CMakeLists.txt" ]; then
-    rm -rf "$PLUGIN_DIR/build/"
-    if cmake -B "$PLUGIN_DIR/build" -G Ninja -DCMAKE_BUILD_TYPE=Release "$PLUGIN_DIR" >>"$LOG_FILE" 2>&1; then
-        if cmake --build "$PLUGIN_DIR/build" >>"$LOG_FILE" 2>&1; then
-            run "Install Caelestia plugin" sudo cmake --install "$PLUGIN_DIR/build"
-        else
-            fail "Plugin build failed"
-        fi
-    else
-        fail "Plugin cmake configure failed"
-    fi
-else
-    warn "Plugin not found, skipping."
-fi
+step "Shell & services"
 
 # Set Bash as default with Starship
 BASH_PATH="$(command -v bash 2>/dev/null || true)"
@@ -302,27 +315,25 @@ done
 #  Summary
 # ============================================================
 echo ""
-
-draw_progress "$TOTAL_STEPS" "Done"
-
-echo ""
-echo -e "  ${CYAN}${BOLD}╔══════════════════════════════════════════╗${NC}"
-echo -e "  ${CYAN}${BOLD}║              SETUP COMPLETE               ║${NC}"
-echo -e "  ${CYAN}${BOLD}╚══════════════════════════════════════════╝${NC}"
-echo ""
+echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
 if [ ${#FAILURES[@]} -eq 0 ]; then
-    echo -e "  ${GREEN}${BOLD}  All steps completed successfully.${NC}"
+    echo -e "  ${GREEN}✓ SETUP COMPLETE${NC}"
+    echo ""
+    echo -e "  ${GREEN}All $TOTAL_STEPS steps done!${NC}"
 else
-    echo -e "  ${YELLOW}${BOLD}  Completed with ${#FAILURES[@]} issue(s):${NC}"
+    echo -e "  ${YELLOW}⚠ SETUP FINISHED (${#FAILURES[@]} issues)${NC}"
     echo ""
     for f in "${FAILURES[@]}"; do
-        echo -e "    ${RED}  • $f${NC}"
+        echo -e "    ${RED}✗ $f${NC}"
     done
-    echo ""
-    echo -e "  ${DIM}Check log: ${LOG_FILE}${NC}"
 fi
 
 echo ""
-echo -e "  ${DIM}Restart your session or run:${NC} ${BOLD}exec bash${NC}"
+echo -e "  ${DIM}Log: $LOG_FILE${NC}"
+echo ""
+echo -e "  ${BOLD}Next:${NC}"
+echo -e "    exec bash"
+echo -e "    ollama pull llama3.2"
+echo -e "    sudo reboot"
 echo ""
