@@ -1,1 +1,1 @@
-alias wprand ~/.local/bin/wallpaper-random
+alias wprand ~/Documents/Scripts/wallpaper-random

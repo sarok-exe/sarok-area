@@ -44,7 +44,4 @@ post_hook   = 'sudo ~/.config/niri-caelestia-sddm/sddm-theme-apply.sh &'
 input_path = '/home/sarok/.config/matugen/templates/obsidian-template.css'
 output_path = '/home/sarok/Documents/Story/.obsidian/snippets/matugen-colors.css'
 
-[templates.waybar]
-input_path = '/home/sarok/.config/matugen/templates/waybar.css'
-output_path = '/home/sarok/.config/waybar/style.css'
-post_hook = 'pkill waybar; waybar &'
+# Removed waybar template - not working with matugen
