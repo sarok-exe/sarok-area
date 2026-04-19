@@ -1,22 +1,22 @@
 /* Waybar - Material You */
 * { font-family: "JetBrainsMono Nerd Font"; font-size: 13px; font-weight: bold; min-height: 0; }
-window#waybar { background: transparent; color: #e3e1e9; }
-window > box { background: #1f1f25; border: 2px solid #45464f; border-radius: 12px; margin: 8px 1px 8px 18px; }
-tooltip { background: #292a2f; border: 1px solid #45464f; border-radius: 8px; color: #e3e1e9; }
-#window { padding: 6px 12px; margin: 4px 0; color: #b8c4ff; font-weight: bold; }
+window#waybar { background: transparent; color: #e1e4da; }
+window > box { background: #1d211b; border: 2px solid #43483f; border-radius: 12px; margin: 8px 1px 8px 18px; }
+tooltip { background: #272b25; border: 1px solid #43483f; border-radius: 8px; color: #e1e4da; }
+#window { padding: 6px 12px; margin: 4px 0; color: #a6d394; font-weight: bold; }
 #workspaces { padding: 4px; }
-#workspaces button { padding: 6px 8px; margin: 2px; background: #1f1f25; color: #c6c5d0; border: 1px solid #45464f; border-radius: 6px; min-width: 28px; }
-#workspaces button:hover { background: #292a2f; color: #e3e1e9; }
-#workspaces button.active { background: #b8c4ff; color: #1f2d61; border-color: #dde1ff; }
-#workspaces button.focused { background: #b8c4ff; color: #1f2d61; border: 1px solid #dde1ff; }
-#pulseaudio, #wireplumber, #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #tray, #idle_inhibitor, #custom-media, #mpd { padding: 6px 10px; margin: 4px 2px; background: #1f1f25; border: 1px solid #45464f; border-radius: 6px; color: #e3e1e9; }
-#clock { color: #b8c4ff; font-weight: bold; }
-#pulseaudio { color: #c2c5dd; }
-#pulseaudio.muted { color: #90909a; }
+#workspaces button { padding: 6px 8px; margin: 2px; background: #1d211b; color: #c3c8bc; border: 1px solid #43483f; border-radius: 6px; min-width: 28px; }
+#workspaces button:hover { background: #272b25; color: #e1e4da; }
+#workspaces button.active { background: #a6d394; color: #13380a; border-color: #c2efae; }
+#workspaces button.focused { background: #a6d394; color: #13380a; border: 1px solid #c2efae; }
+#pulseaudio, #wireplumber, #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #tray, #idle_inhibitor, #custom-media, #mpd { padding: 6px 10px; margin: 4px 2px; background: #1d211b; border: 1px solid #43483f; border-radius: 6px; color: #e1e4da; }
+#clock { color: #a6d394; font-weight: bold; }
+#pulseaudio { color: #bbcbb1; }
+#pulseaudio.muted { color: #8d9387; }
 #network.disconnected { color: #ffb4ab; }
-#battery.warning { color: #e4bad9; }
+#battery.warning { color: #a0cfd1; }
 #battery.critical { color: #ffb4ab; }
-#cpu { color: #dde1ff; }
-#memory { color: #e4bad9; }
+#cpu { color: #c2efae; }
+#memory { color: #a0cfd1; }
 #tray > .passive { -gtk-icon-effect: dim; }
 #tray > .needs-attention { -gtk-icon-effect: highlight; }
