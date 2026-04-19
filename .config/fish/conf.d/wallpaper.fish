@@ -1,0 +1,1 @@
+alias wprand ~/.local/bin/wallpaper-random

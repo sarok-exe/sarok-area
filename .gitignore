@@ -1,0 +1,8 @@
+# Ignore all by default
+*
+# Only track these
+!*/
+!.config/
+!.local/
+!*.sh
+!.gitignore

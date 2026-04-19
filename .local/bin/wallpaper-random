@@ -1,0 +1,30 @@
+#!/bin/bash
+# Random wallpaper switcher with matugen integration
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+
+# Kill awww daemon
+pkill awww-daemon 2>/dev/null
+sleep 0.5
+
+# Start awww daemon in background
+nohup awww-daemon >/dev/null 2>&1 &
+sleep 1
+
+# Pick random wallpaper
+image=$(ls "$WALLPAPER_DIR" | shuf -n1)
+full_path="$WALLPAPER_DIR/$image"
+
+if [ -z "$image" ]; then
+    echo "No wallpapers found in $WALLPAPER_DIR"
+    exit 1
+fi
+
+# Set wallpaper
+awww img "$full_path"
+
+# Restart waybar
+pkill waybar 2>/dev/null
+waybar &
+
+echo "Wallpaper changed to: $image"
