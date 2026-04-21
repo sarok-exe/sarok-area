@@ -7,13 +7,7 @@
 !.bash_profile
 !.bashrc
 !.profile
-
-# Ignore specific files
+# Ignore specific
 .*.swp
 .bash_history
 .config/.bash*
-.*.swp
-.bash_history
-.config/.bash*
-.*.swp
-.bash_history
