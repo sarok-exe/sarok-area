@@ -1,0 +1,184 @@
+#!/bin/bash
+# Update waybar colors from matugen colors.json
+
+COLORS_FILE="$HOME/.local/state/quickshell/user/generated/colors.json"
+WAYBAR_CSS="$HOME/.config/waybar/style.css"
+
+if [ ! -f "$COLORS_FILE" ]; then
+    echo "Colors file not found: $COLORS_FILE"
+    exit 1
+fi
+
+# Extract colors (simple format - direct hex values)
+BG=$(jq -r '.background' "$COLORS_FILE")
+SURFACE=$(jq -r '.surface' "$COLORS_FILE")
+SURFACE_CONTAINER=$(jq -r '.surface_container' "$COLORS_FILE")
+SURFACE_CONTAINER_HIGH=$(jq -r '.surface_container_high' "$COLORS_FILE")
+ON_SURFACE=$(jq -r '.on_surface' "$COLORS_FILE")
+ON_SURFACE_VARIANT=$(jq -r '.on_surface_variant' "$COLORS_FILE")
+PRIMARY=$(jq -r '.primary' "$COLORS_FILE")
+ON_PRIMARY=$(jq -r '.on_primary' "$COLORS_FILE")
+PRIMARY_FIXED=$(jq -r '.primary_fixed' "$COLORS_FILE")
+PRIMARY_CONTAINER=$(jq -r '.primary_container' "$COLORS_FILE")
+SECONDARY=$(jq -r '.secondary' "$COLORS_FILE")
+TERTIARY=$(jq -r '.tertiary' "$COLORS_FILE")
+OUTLINE=$(jq -r '.outline' "$COLORS_FILE")
+OUTLINE_VARIANT=$(jq -r '.outline_variant' "$COLORS_FILE")
+ERROR=$(jq -r '.error' "$COLORS_FILE")
+
+# Create CSS
+cat > "$WAYBAR_CSS" << EOF
+/* ═══════════════════════════════════════════════════════════════
+   Waybar - Material You Theme (Generated)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: $ON_SURFACE;
+}
+
+window > box {
+    background: $SURFACE_CONTAINER;
+    border: 2px solid $OUTLINE_VARIANT;
+    border-radius: 12px;
+    margin: 8px 1px 8px 18px;
+}
+
+tooltip {
+    background: $SURFACE_CONTAINER_HIGH;
+    border: 1px solid $OUTLINE_VARIANT;
+    border-radius: 8px;
+    color: $ON_SURFACE;
+}
+
+/* ─── WINDOW ─── */
+#window {
+    padding: 6px 12px;
+    margin: 4px 0;
+    color: $PRIMARY;
+    font-weight: bold;
+}
+
+/* ─── WORKSPACES ─── */
+#workspaces {
+    padding: 4px;
+}
+
+#workspaces button {
+    padding: 6px 8px;
+    margin: 2px;
+    background: $SURFACE_CONTAINER;
+    color: $ON_SURFACE_VARIANT;
+    border: 1px solid $OUTLINE_VARIANT;
+    border-radius: 6px;
+    min-width: 28px;
+}
+
+#workspaces button:hover {
+    background: $SURFACE_CONTAINER_HIGH;
+    color: $ON_SURFACE;
+}
+
+#workspaces button.active {
+    background: $PRIMARY;
+    color: $ON_PRIMARY;
+    border-color: $PRIMARY_FIXED;
+}
+
+#workspaces button.focused {
+    background: $PRIMARY;
+    color: $ON_PRIMARY;
+    border: 1px solid $PRIMARY_FIXED;
+}
+
+/* ─── MODULES ─── */
+#pulseaudio,
+#wireplumber,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#tray,
+#idle_inhibitor,
+#custom-media,
+#mpd {
+    padding: 6px 10px;
+    margin: 4px 2px;
+    background: $SURFACE_CONTAINER;
+    border: 1px solid $OUTLINE_VARIANT;
+    border-radius: 6px;
+    color: $ON_SURFACE;
+}
+
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+/* ─── CLOCK ─── */
+#clock {
+    color: $PRIMARY;
+    font-weight: bold;
+}
+
+/* ─── AUDIO ─── */
+#pulseaudio {
+    color: $SECONDARY;
+}
+#pulseaudio.muted {
+    color: $OUTLINE;
+}
+
+/* ─── NETWORK ─── */
+#network {
+    color: $ON_SURFACE;
+}
+#network.disconnected {
+    color: $ERROR;
+}
+
+/* ─── BATTERY ─── */
+#battery {
+    color: $SECONDARY;
+}
+#battery.warning {
+    color: $TERTIARY;
+}
+#battery.critical {
+    color: $ERROR;
+}
+
+/* ─── CPU ─── */
+#cpu {
+    color: $PRIMARY_FIXED;
+}
+
+/* ─── MEMORY ─── */
+#memory {
+    color: $TERTIARY;
+}
+
+/* ─── BACKLIGHT ─── */
+#backlight {
+    color: $SECONDARY;
+}
+
+/* ─── TRAY ─── */
+#tray {
+    padding: 4px 6px;
+}
+EOF
+
+# Restart waybar
+pkill waybar 2>/dev/null
+waybar &
+
+echo "Waybar colors updated!"

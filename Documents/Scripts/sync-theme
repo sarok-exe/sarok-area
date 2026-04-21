@@ -1,0 +1,21 @@
+#!/bin/bash
+# Full theme sync - updates all apps after wallpaper change
+
+echo "Running matugen templates..."
+
+# Matugen will generate all templates to their output paths
+# We just need to make sure symlinks point to the right place
+
+# Yazi - use matugen flavor
+ln -sf ~/.config/matugen/templates/yazi-theme.toml ~/.config/yazi/flavors/matugen.yazi/theme.toml 2>/dev/null
+
+# Rofi - use matugen colors
+ln -sf ~/.config/matugen/templates/rofi-colors.rasi ~/.config/rofi/colors.rasi 2>/dev/null
+
+# Waybar - update colors manually
+~/Documents/Scripts/update-waybar-colors 2>/dev/null
+
+# Restart rofi if running (it's usually a daemon)
+pkill rofi 2>/dev/null
+
+echo "Theme synced!"

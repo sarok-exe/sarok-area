@@ -1,0 +1,18 @@
+#!/bin/bash
+# Quick connect to WiFi network
+# Usage: ~/Documents/Scripts/wifi-connect
+
+NETWORK="Bendihaj.11"
+INTERFACE="wlan0"
+
+echo "Connecting to $NETWORK..."
+
+# Check if already connected
+if iwctl device $INTERFACE show networks | grep -q "$NETWORK"; then
+    echo "Already connected or network known"
+fi
+
+# Connect
+iwctl station $INTERFACE connect "$NETWORK" 2>&1
+
+echo "Done!"

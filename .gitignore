@@ -1,8 +1,9 @@
-# Ignore all by default
+# Ignore everything by default
 *
-# Only track these
-!*/
-!.config/
-!.local/
-!*.sh
+# But track these specific files and directories
 !.gitignore
+!.config/
+!.local/bin/
+!.bashrc
+!.bash_profile
+!.profile
