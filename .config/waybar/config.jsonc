@@ -1,0 +1,89 @@
+{
+  "position": "top",
+  "width": 1600,
+  "height": 20,
+  "modules-left": ["niri/workspaces"],
+  "modules-center": ["niri/window"],
+  "modules-right": ["tray", "cpu", "memory", "backlight", "network", "pulseaudio", "battery", "clock"],
+
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+
+  "niri/window": {
+    "format": "{}",
+    "max-length": 30
+  },
+
+  "cpu": {
+    "format": "  \uF2DB  {usage}%",
+    "interval": 2
+  },
+
+  "memory": {
+    "format": "  \uF4BB  {used}%",
+    "interval": 2
+  },
+
+  "backlight": {
+    "format": "  {icon}  {percent}%",
+    "format-icons": ["\uF5D4"],
+    "scroll-step": 5,
+    "on-click": "brightnessctl set 50%"
+  },
+
+  "network": {
+    "format-wifi": "  \uFAA8  {essid}",
+    "format-ethernet": "  \uE268  Disconnected",
+    "format-disconnected": "  \uF071  Disconnected",
+    "tooltip-format": "Signal: {signalStrength}%"
+  },
+
+  "pulseaudio": {
+    "format": "  {icon}  {volume}%",
+    "format-muted": "  \uF6A9",
+    "format-icons": {
+      "default": ["\uE202", "\uE203", "\uE204"]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "  {icon}  {capacity}%",
+    "format-charging": "  \uF0E7  {capacity}%",
+    "format-plugged": "  \uF0E7  {capacity}%",
+    "format-full": "  \uF164  {capacity}%",
+    "format-icons": ["\uF244", "\uF243", "\uF242", "\uF241", "\uF240"],
+    "tooltip-format": "{time}"
+  },
+
+  "clock": {
+    "format": "  \uF017  {:%H:%M}",
+    "format-alt": "  \uF073  {:%a %d %b}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  }
+}

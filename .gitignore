@@ -11,3 +11,9 @@
 # Ignore specific files
 .*.swp
 .bash_history
+.config/.bash*
+.*.swp
+.bash_history
+.config/.bash*
+.*.swp
+.bash_history
