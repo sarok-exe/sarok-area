@@ -4,6 +4,9 @@
 !.gitignore
 !.config/
 !.local/bin/
-!.bashrc
 !.bash_profile
+!.bashrc
 !.profile
+.config/.bash*
+.*.swp
+.bash_history
