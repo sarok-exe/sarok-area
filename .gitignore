@@ -1,12 +1,13 @@
 # Ignore everything by default
 *
-# But track these specific files and directories
+# Track these
 !.gitignore
 !.config/
-!.local/bin/
+!.local/
 !.bash_profile
 !.bashrc
 !.profile
-.config/.bash*
+
+# Ignore specific files
 .*.swp
 .bash_history
