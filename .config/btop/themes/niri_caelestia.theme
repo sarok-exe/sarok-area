@@ -19,7 +19,7 @@ theme[main_fg]="#e2e2e2"
 theme[title]="#e2e2e2"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#ffb95b"
+theme[hi_fg]="#bbd063"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#2a2a2a"
@@ -55,46 +55,46 @@ theme[proc_box]="#474747"
 theme[div_line]="#474747"
 
 # Temperature graph colors
-theme[temp_start]="#bacd9f"
-theme[temp_mid]="#dec2a2"
+theme[temp_start]="#a1d0c4"
+theme[temp_mid]="#c5c9a8"
 theme[temp_end]="#ffb4ab"
 
 # CPU graph colors
-theme[cpu_start]="#bacd9f"
-theme[cpu_mid]="#dec2a2"
+theme[cpu_start]="#a1d0c4"
+theme[cpu_mid]="#c5c9a8"
 theme[cpu_end]="#ffb4ab"
 
 # Mem/Disk free meter
-theme[free_start]="#bacd9f"
-theme[free_mid]="#bacd9f"
-theme[free_end]="#bacd9f"
+theme[free_start]="#a1d0c4"
+theme[free_mid]="#a1d0c4"
+theme[free_end]="#a1d0c4"
 
 # Mem/Disk cached meter
-theme[cached_start]="#ffb95b"
-theme[cached_mid]="#ffb95b"
-theme[cached_end]="#ffb95b"
+theme[cached_start]="#bbd063"
+theme[cached_mid]="#bbd063"
+theme[cached_end]="#bbd063"
 
 # Mem/Disk available meter
-theme[available_start]="#dec2a2"
-theme[available_mid]="#dec2a2"
-theme[available_end]="#dec2a2"
+theme[available_start]="#c5c9a8"
+theme[available_mid]="#c5c9a8"
+theme[available_end]="#c5c9a8"
 
 # Mem/Disk used meter
-theme[used_start]="#bacd9f"
-theme[used_mid]="#dec2a2"
+theme[used_start]="#a1d0c4"
+theme[used_mid]="#c5c9a8"
 theme[used_end]="#ffb4ab"
 
 # Download graph colors
-theme[download_start]="#bacd9f"
-theme[download_mid]="#bacd9f"
-theme[download_end]="#bacd9f"
+theme[download_start]="#a1d0c4"
+theme[download_mid]="#a1d0c4"
+theme[download_end]="#a1d0c4"
 
 # Upload graph colors
-theme[upload_start]="#dec2a2"
-theme[upload_mid]="#dec2a2"
-theme[upload_end]="#dec2a2"
+theme[upload_start]="#c5c9a8"
+theme[upload_mid]="#c5c9a8"
+theme[upload_end]="#c5c9a8"
 
 # Process graph colors
-theme[process_start]="#ffb95b"
-theme[process_mid]="#ffb95b"
-theme[process_end]="#ffb95b"
+theme[process_start]="#bbd063"
+theme[process_mid]="#bbd063"
+theme[process_end]="#bbd063"

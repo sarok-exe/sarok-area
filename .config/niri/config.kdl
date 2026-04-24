@@ -1,11 +1,11 @@
 //spawn-at-startup "fcitx5" "-d"
 //spawn-at-startup "flameshot"
 //spawn-at-startup "ags" "run" "/home/sarok/.config/ags/app.js"
-spawn-at-startup "com.todoist.Todoist"
+//spawn-at-startup "com.todoist.Todoist"
 spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
 //spawn-at-startup "swww" "img" "~/Pictures/Wallpapers/god_red.jpg"
-spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/earth.png"
+//spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/earth.png"
 
 config-notification {
     disable-failed

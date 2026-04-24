@@ -2,84 +2,100 @@
 
 * {
     font: "JetBrainsMono Nerd Font 13";
-    g-spacing: 12px;
-    g-margin: 0;
-    b-radius: 12px;
-    g-padding: 12px;
-    w-padding: 16px;
+    font-weight: bold;
 }
 
 configuration {
-    modi: "drun";
+    modi: "drun,run";
     show-icons: true;
-    display-drun: "  ";
-    icon-theme: "Adwaita";
+    display-drun: "  Applications";
+    display-run: "  Run";
+    icon-theme: "Papirus";
     disable-history: false;
+    hide-scrollbar: true;
+    case-sensitive: false;
+    sidebar-mode: false;
 }
 
 listview {
     columns: 1;
     lines: 8;
-    fixed-height: true;
+    fixed-height: false;
     fixed-columns: true;
-    cycle: false;
+    cycle: true;
     scrollbar: false;
-    border: 0px solid;
+    border: 0px;
 }
 
 window {
     transparency: "real";
-    width: 480px;
-    border-radius: @b-radius;
+    width: 500px;
+    border-radius: 10px;
     background-color: @base;
-    border: 2px solid;
-    border-color: @surface0;
-    padding: @w-padding;
+    border: 1px solid @border;
+    padding: 8px;
+    location: center;
+    anchor: center;
 }
 
 prompt {
-    text-color: @lavender;
+    text-color: @primary;
+    padding: 0px 8px 0px 0px;
 }
 
 inputbar {
     children: ["prompt", "entry"];
-    spacing: @g-spacing;
+    spacing: 8px;
+    margin: 0px 0px 8px 0px;
+    border: 0px;
+    background: transparent;
 }
 
 entry {
-    placeholder: "Search Apps";
+    placeholder: "Search...";
     text-color: @text;
-    placeholder-color: @overlay0;
+    placeholder-color: @text-dim;
+    background: transparent;
+    border: none;
+    padding: 0px;
+}
+
+entry:focus {
+    border: none;
+    text-color: @text-bright;
 }
 
 mainbox {
-    spacing: @g-spacing;
-    margin: @g-margin;
-    padding: @g-padding;
-    children: ["inputbar", "listview", "message"];
+    spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+    children: ["inputbar", "listview"];
+    border: 0px;
+    background: transparent;
 }
 
 element {
-    spacing: @g-spacing;
-    margin: @g-margin;
-    padding: 8px 12px;
-    border: 0px solid;
-    border-radius: @b-radius;
-    background-color: transparent;
+    spacing: 8px;
+    margin: 2px 0px;
+    padding: 6px 10px;
+    border: 0px;
+    border-radius: 6px;
+    background: transparent;
     text-color: @text;
-    border-color: transparent;
 }
 
 element-icon {
     background-color: transparent;
     padding: 0px;
-    margin: 0px;
+    margin: 0px 8px 0px 0px;
     border: none;
     border-radius: 0px;
+    size: 24px;
 }
 
-element-icon selected {
-    background-color: transparent;
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
 }
 
 element normal.normal {
@@ -87,31 +103,77 @@ element normal.normal {
     text-color: @text;
 }
 
-element alternate.normal {
-    background-color: @surface0;
-    text-color: @text;
+element normal.urgent {
+    background-color: transparent;
+    text-color: @urgent;
 }
 
-element selected.active {
+element normal.selected {
     background-color: transparent;
-    text-color: @lavender;
+    text-color: @primary;
+}
+
+element hover.normal {
+    background-color: @surface-hover;
+    text-color: @text-bright;
+    border-radius: 6px;
 }
 
 element selected.normal {
-    background-color: transparent;
-    text-color: @lavender;
+    background-color: @surface;
+    text-color: @primary-bright;
+    border-radius: 6px;
+    border-left: 3px solid @primary;
 }
 
-element hover {
-    background-color: @surface0;
-    text-color: @text;
+element alternate.normal {
+    background-color: transparent;
+    text-color: @text-dim;
+}
+
+element alternate.urgent {
+    background-color: transparent;
+    text-color: @urgent;
+}
+
+element alternate.selected {
+    background-color: @surface;
+    text-color: @primary;
+}
+
+element-icon selected {
+    background-color: transparent;
 }
 
 message {
     background-color: transparent;
-    border: 0px solid;
+    border: 0px;
+    margin: 8px 0px 0px 0px;
 }
 
 textbox {
-    text-color: @overlay0;
+    text-color: @text-dim;
+    background: transparent;
+    border: none;
+    padding: 0px;
+}
+
+button {
+    text-color: @text;
+    background-color: transparent;
+    border: none;
+    padding: 4px 8px;
+    margin: 0px 4px;
+}
+
+button selected {
+    background-color: @surface;
+    text-color: @primary;
+    border-radius: 4px;
+}
+
+scrollbar {
+    background-color: transparent;
+    handle-color: @text-dim;
+    handle-width: 0px;
 }

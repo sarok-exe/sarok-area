@@ -1,50 +1,46 @@
-/* Rofi - Full Material You Palette */
+/* Rofi - Clean Minimal Style (matching waybar) */
 * {
-    /* Primary - Main accent */
-    rosewater: #b2c5ff;
-    flamingo: #8aa9fc;
-    pink: #b2c5ff;
-    mauve: #1e438f;
+    /* Base - matches waybar container */
+    background: #1e1e1e;
+    base: #1e1e1e;
+    base-dark: #181818;
+    base-light: #2a2a2a;
     
-    /* Secondary - Supporting accent */
-    red: #a5abc1;
-    maroon: #8a90a5;
-    peach: #71768b;
-    yellow: #585e71;
-    green: #404659;
-    teal: #2a3042;
-    sky: #151b2c;
-    sapphire: #dce2f9;
+    /* Text colors */
+    text: #e2e2e2;
+    text-dim: #a0a0a0;
+    text-bright: #ffffff;
     
-    /* Tertiary - Emphasis */
-    blue: #e1bbdd;
-    lavender: #c4a0c1;
-    lavender-alt: #a886a5;
-    sky-alt: #8d6d8b;
+    /* Primary - Orange (like waybar clock/window) */
+    primary: #ffb4a4;
+    primary-bright: #ffd4c4;
+    primary-dim: #cc8a7a;
+    
+    /* Secondary - Yellow/Gold (like waybar audio) */
+    secondary: #f0e68c;
+    secondary-bright: #fff0a0;
+    secondary-dim: #c0b060;
+    
+    /* Accent - Cyan (like waybar network) */
+    accent: #dda0dd;
+    accent-bright: #ecc0e8;
+    accent-dim: #a070a0;
+    
+    /* Status colors */
+    urgent: #ff6b6b;
+    warning: #ffd700;
+    success: #90ee90;
+    info: #87ceeb;
     
     /* Surface colors */
-    text: #e2e2e2;
-    subtext1: #c6c6c6;
-    subtext0: #919191;
-    overlay2: #474747;
-    overlay1: #2a2a2a;
-    overlay0: #1f1f1f;
-    surface2: #353535;
-    surface1: #2a2a2a;
-    surface0: #1f1f1f;
+    surface: #262626;
+    surface-hover: #333333;
+    surface-selected: #ffb4a4;
     
-    /* Base */
-    base: #131313;
-    mantle: #131313;
-    crust: #131313;
+    /* Borders */
+    border: #404040;
+    border-focus: #ffb4a4;
     
-    /* Primary shades */
-    primary-dim: #002c72;
-    primary-light: #dae2ff;
-    primary-mid: #5474c4;
-    
-    /* Error */
-    error-light: #93000a;
-    error-dark: #ffb4ab;
-    on-error: #ffdad6;
+    /* Transparent */
+    transparent: transparent;
 }

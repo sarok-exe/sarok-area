@@ -27,7 +27,7 @@ tooltip {
 
 #window {
     padding: 0 10px;
-    color: #b2c5ff;
+    color: #bbd063;
     font-weight: bold;
 }
 
@@ -48,41 +48,41 @@ tooltip {
 }
 
 #workspaces button.active {
-    color: #b2c5ff;
+    color: #bbd063;
 }
 
 #workspaces button.focused {
-    color: #b2c5ff;
+    color: #bbd063;
 }
 
 #clock {
     padding: 0 8px;
-    color: #b2c5ff;
+    color: #bbd063;
 }
 
 #pulseaudio, #wireplumber {
     padding: 0 6px;
-    color: #c0c6dd;
+    color: #c5c9a8;
 }
 
 #pulseaudio.muted { color: #919191; }
 
 #battery {
     padding: 0 6px;
-    color: #e1bbdd;
+    color: #a1d0c4;
 }
 
-#battery.warning { color: #e1bbdd; }
+#battery.warning { color: #a1d0c4; }
 #battery.critical { color: #ffb4ab; }
 
 #cpu {
     padding: 0 6px;
-    color: #dae2ff;
+    color: #d7ed7c;
 }
 
 #memory {
     padding: 0 6px;
-    color: #e1bbdd;
+    color: #a1d0c4;
 }
 
 #network {
@@ -94,7 +94,7 @@ tooltip {
 
 #temperature {
     padding: 0 6px;
-    color: #5a3d59;
+    color: #214e45;
 }
 
 #temperature.critical { color: #ffb4ab; }
@@ -105,7 +105,7 @@ tooltip {
 
 #backlight {
     padding: 0 6px;
-    color: #1e438f;
+    color: #3f4c00;
 }
 
 #idle_inhibitor {
@@ -115,5 +115,5 @@ tooltip {
 
 #custom-media, #mpd {
     padding: 0 8px;
-    color: #fed7f9;
+    color: #bdece0;
 }
