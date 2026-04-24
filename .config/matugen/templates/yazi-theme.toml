@@ -1,24 +1,85 @@
 [flavor]
 name = "matugen"
-[fg] normal = "#f0dee0"; bold = "#f0dee0"; dim = "#d6c2c4"
-[bg] normal = "#191112"; bold = "#261d1f"
-[border] normal = "#9f8c8e"; active = "#ffb2be"
-[selection] fg = "#561d2a"; bg = "#ffb2be"
-[scrollbar] fg = "#ffb2be"; bg = "#261d1f"
-[separator] fg = "#524345"
-[cursor] fg = "#561d2a"; bg = "#ffb2be"
-[link] fg = "#ffb2be"
-[link_hint] fg = "#e4bdc2"
-[marker] fg = "#ebbe90"
-[flag] fg = "#ffb4ab"
-[info] fg = "#f0dee0"; bg = "#261d1f"
-[warning] fg = "#ffddbb"; bg = "#5f401c"
-[error] fg = "#ffb4ab"; bg = "#93000a"
-[spinner] fg = "#ffb2be"
-[status] loading = "#ffb2be"
-[title] fg = "#f0dee0"; bg = "#261d1f"
-[extra] prompt = "#ffb2be"
-[input] fg = "#f0dee0"; bg = "#261d1f"
-[tab_num] fg = "#f0dee0"; bg = "#312829"
-[tab_active] fg = "#561d2a"; bg = "#ffb2be"
-[tab_sep] fg = "#9f8c8e"
+
+[fg]
+normal = "#e2e2e2"
+bold = "#d6c950"
+dim = "#c6c6c6"
+
+[bg]
+normal = "#131313"
+bold = "#1f1f1f"
+
+[border]
+normal = "#919191"
+active = "#d6c950"
+
+[selection]
+fg = "#363100"
+bg = "#d6c950"
+
+[scrollbar]
+fg = "#d6c950"
+bg = "#1f1f1f"
+
+[separator]
+fg = "#474747"
+
+[cursor]
+fg = "#363100"
+bg = "#d6c950"
+
+[link]
+fg = "#d6c950"
+hover = "#d6c950"
+
+[link_hint]
+fg = "#cec7a3"
+
+[marker]
+fg = "#a6d0b8"
+
+[flag]
+fg = "#ffb4ab"
+
+[info]
+fg = "#e2e2e2"
+bg = "#1f1f1f"
+
+[warning]
+fg = "#c2ecd3"
+bg = "#284e3c"
+
+[error]
+fg = "#ffb4ab"
+bg = "#93000a"
+
+[spinner]
+fg = "#d6c950"
+
+[status]
+loading = "#d6c950"
+
+[title]
+fg = "#e2e2e2"
+bg = "#1f1f1f"
+
+[extra]
+prompt = "#d6c950"
+success = "#cec7a3"
+warning = "#a6d0b8"
+
+[input]
+fg = "#e2e2e2"
+bg = "#1f1f1f"
+
+[tab_num]
+fg = "#e2e2e2"
+bg = "#2a2a2a"
+
+[tab_active]
+fg = "#363100"
+bg = "#d6c950"
+
+[tab_sep]
+fg = "#919191"

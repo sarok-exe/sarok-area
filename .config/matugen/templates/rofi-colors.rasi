@@ -1,10 +1,50 @@
+/* Rofi - Full Material You Palette */
 * {
-    rosewater: #ffb2be; flamingo: #e4bdc2; pink: #ebbe90; mauve: #713340;
-    red: #ffb4ab; maroon: #93000a; peach: #ffd9de; yellow: #ffddbb;
-    green: #e4bdc2; teal: #ebbe90; sky: #ffd9de; sapphire: #ffd9de;
-    blue: #ffb2be; lavender: #713340; text: #f0dee0;
-    subtext1: #d6c2c4; subtext0: #9f8c8e;
-    overlay2: #524345; overlay1: #261d1f; overlay0: #312829;
-    surface2: #312829; surface1: #3c3233; surface0: #261d1f;
-    base: #191112; mantle: #191112; crust: #191112;
+    /* Primary - Main accent */
+    rosewater: #d6c950;
+    flamingo: #baad37;
+    pink: #d6c950;
+    mauve: #4e4800;
+    
+    /* Secondary - Supporting accent */
+    red: #b2ac89;
+    maroon: #979170;
+    peach: #7c7858;
+    yellow: #635f41;
+    green: #4b472b;
+    teal: #343117;
+    sky: #1f1c05;
+    sapphire: #eae3bd;
+    
+    /* Tertiary - Emphasis */
+    blue: #a6d0b8;
+    lavender: #8cb49d;
+    lavender-alt: #729984;
+    sky-alt: #587f6b;
+    
+    /* Surface colors */
+    text: #e2e2e2;
+    subtext1: #c6c6c6;
+    subtext0: #919191;
+    overlay2: #474747;
+    overlay1: #2a2a2a;
+    overlay0: #1f1f1f;
+    surface2: #353535;
+    surface1: #2a2a2a;
+    surface0: #1f1f1f;
+    
+    /* Base */
+    base: #131313;
+    mantle: #131313;
+    crust: #131313;
+    
+    /* Primary shades */
+    primary-dim: #363100;
+    primary-light: #f3e569;
+    primary-mid: #837900;
+    
+    /* Error */
+    error-light: #93000a;
+    error-dark: #ffb4ab;
+    on-error: #ffdad6;
 }
