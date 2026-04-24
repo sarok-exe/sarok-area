@@ -1,0 +1,233 @@
+#!/bin/bash
+# Full theme sync from matugen JSON
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+
+# Pick and set random wallpaper
+image=$(ls "$WALLPAPER_DIR" | shuf -n1)
+full_path="$WALLPAPER_DIR/$image"
+
+awww img "$full_path"
+
+# Generate colors with matugen
+matugen image "$full_path" --source-color-index 0 --mode dark --type scheme-tonal-spot --json hex 2>/dev/null > /tmp/matugen_colors.json
+
+# Extract colors
+BG=$(jq -r '.colors.background.dark.color' /tmp/matugen_colors.json)
+SURFACE=$(jq -r '.colors.surface.dark.color' /tmp/matugen_colors.json)
+SURFACE_DIM=$(jq -r '.colors.surface_dim.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER=$(jq -r '.colors.surface_container.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_HIGH=$(jq -r '.colors.surface_container_high.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_HIGHEST=$(jq -r '.colors.surface_container_highest.dark.color' /tmp/matugen_colors.json)
+ON_SURFACE=$(jq -r '.colors.on_surface.dark.color' /tmp/matugen_colors.json)
+ON_SURFACE_VARIANT=$(jq -r '.colors.on_surface_variant.dark.color' /tmp/matugen_colors.json)
+PRIMARY=$(jq -r '.colors.primary.dark.color' /tmp/matugen_colors.json)
+ON_PRIMARY=$(jq -r '.colors.on_primary.dark.color' /tmp/matugen_colors.json)
+PRIMARY_FIXED=$(jq -r '.colors.primary_fixed.dark.color' /tmp/matugen_colors.json)
+PRIMARY_CONTAINER=$(jq -r '.colors.primary_container.dark.color' /tmp/matugen_colors.json)
+SECONDARY=$(jq -r '.colors.secondary.dark.color' /tmp/matugen_colors.json)
+SECONDARY_FIXED=$(jq -r '.colors.secondary_fixed.dark.color' /tmp/matugen_colors.json)
+SECONDARY_CONTAINER=$(jq -r '.colors.secondary_container.dark.color' /tmp/matugen_colors.json)
+TERTIARY=$(jq -r '.colors.tertiary.dark.color' /tmp/matugen_colors.json)
+TERTIARY_FIXED=$(jq -r '.colors.tertiary_fixed.dark.color' /tmp/matugen_colors.json)
+TERTIARY_CONTAINER=$(jq -r '.colors.tertiary_container.dark.color' /tmp/matugen_colors.json)
+OUTLINE=$(jq -r '.colors.outline.dark.color' /tmp/matugen_colors.json)
+OUTLINE_VARIANT=$(jq -r '.colors.outline_variant.dark.color' /tmp/matugen_colors.json)
+ERROR=$(jq -r '.colors.error.dark.color' /tmp/matugen_colors.json)
+ERROR_CONTAINER=$(jq -r '.colors.error_container.dark.color' /tmp/matugen_colors.json)
+
+# Set GNOME dark mode
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' 2>/dev/null
+
+# ============================================
+# UPDATE WAYBAR (full width, custom styling)
+# ============================================
+cat > "$HOME/.config/waybar/style.css" << EOF
+/* Waybar - Material You */
+* { font-family: "JetBrainsMono Nerd Font"; font-size: 10px; font-weight: bold; min-height: 0; }
+window#waybar { background: transparent; color: $ON_SURFACE; }
+window > box { background: $SURFACE_CONTAINER; border: 1px solid $OUTLINE_VARIANT; border-radius: 6px; margin: 1px; }
+tooltip { background: $SURFACE_CONTAINER_HIGH; border: 1px solid $OUTLINE_VARIANT; border-radius: 4px; color: $ON_SURFACE; }
+#window { padding: 2px 8px; margin: 0; color: $PRIMARY; font-weight: bold; }
+#workspaces { padding: 4px; }
+#workspaces button { padding: 2px 4px; margin: 1px; background: $SURFACE_CONTAINER; color: $ON_SURFACE_VARIANT; border: 1px solid $OUTLINE_VARIANT; border-radius: 4px; min-width: 20px; }
+#workspaces button:hover { background: $SURFACE_CONTAINER_HIGH; color: $ON_SURFACE; }
+#workspaces button.active { background: $PRIMARY; color: $ON_PRIMARY; border-color: $PRIMARY_FIXED; }
+#workspaces button.focused { background: $PRIMARY; color: $ON_PRIMARY; border: 1px solid $PRIMARY_FIXED; }
+#pulseaudio, #wireplumber, #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #tray, #idle_inhibitor, #custom-media, #mpd { padding: 2px 6px; margin: 1px; background: $SURFACE_CONTAINER; border: 1px solid $OUTLINE_VARIANT; border-radius: 6px; color: $ON_SURFACE; }
+#clock { color: $PRIMARY; font-weight: bold; }
+#pulseaudio { color: $SECONDARY; }
+#pulseaudio.muted { color: $OUTLINE; }
+#network.disconnected { color: $ERROR; }
+#battery.warning { color: $TERTIARY; }
+#battery.critical { color: $ERROR; }
+#cpu { color: $PRIMARY_FIXED; }
+#memory { color: $TERTIARY; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+EOF
+
+# ============================================
+# UPDATE ROFI
+# ============================================
+cat > "$HOME/.config/rofi/colors.rasi" << EOF
+* {
+    rosewater: $PRIMARY; flamingo: $SECONDARY; pink: $TERTIARY; mauve: $PRIMARY_CONTAINER;
+    red: $ERROR; maroon: $ERROR_CONTAINER; peach: $SECONDARY_FIXED; yellow: $TERTIARY_FIXED;
+    green: $SECONDARY; teal: $TERTIARY; sky: $PRIMARY_FIXED; sapphire: $PRIMARY_FIXED;
+    blue: $PRIMARY; lavender: $PRIMARY_CONTAINER; text: $ON_SURFACE;
+    subtext1: $ON_SURFACE_VARIANT; subtext0: $OUTLINE;
+    overlay2: $OUTLINE_VARIANT; overlay1: $SURFACE_CONTAINER; overlay0: $SURFACE_CONTAINER_HIGH;
+    surface2: $SURFACE_CONTAINER_HIGH; surface1: $SURFACE_CONTAINER_HIGHEST; surface0: $SURFACE_CONTAINER;
+    base: $SURFACE; mantle: $SURFACE_DIM; crust: $BG;
+}
+EOF
+
+# ============================================
+# UPDATE KITTY
+# ============================================
+cat > "$HOME/.config/kitty/theme.conf" << EOF
+foreground              $ON_SURFACE
+background              $SURFACE
+selection_foreground    $ON_PRIMARY
+selection_background    $PRIMARY_CONTAINER
+cursor                  $PRIMARY
+cursor_text_color       $ON_PRIMARY
+url_color               $PRIMARY
+active_border_color     $PRIMARY
+inactive_border_color   $OUTLINE_VARIANT
+bell_border_color       $ERROR
+wayland_titlebar_color system
+macos_titlebar_color system
+active_tab_foreground   $ON_PRIMARY
+active_tab_background   $PRIMARY_CONTAINER
+inactive_tab_foreground $ON_SURFACE
+inactive_tab_background $SURFACE_CONTAINER
+tab_bar_background      $SURFACE
+mark1_foreground $ON_SURFACE
+mark1_background $SURFACE_CONTAINER
+mark2_foreground $ON_PRIMARY
+mark2_background $PRIMARY_CONTAINER
+mark3_foreground $TERTIARY_FIXED
+mark3_background $TERTIARY_CONTAINER
+color0 $SURFACE_CONTAINER
+color8 $OUTLINE
+color1 $ERROR
+color9 $ERROR
+color2  $SECONDARY
+color10 $SECONDARY_FIXED
+color3  $TERTIARY
+color11 $TERTIARY_FIXED
+color4  $PRIMARY
+color12 $PRIMARY_FIXED
+color5  $TERTIARY
+color13 $TERTIARY_CONTAINER
+color6  $SECONDARY
+color14 $SECONDARY_CONTAINER
+color7  $ON_SURFACE_VARIANT
+color15 $ON_SURFACE
+EOF
+
+# ============================================
+# UPDATE YAZI
+# ============================================
+cat > "$HOME/.config/yazi/flavors/matugen.yazi/theme.toml" << EOF
+[flavor]
+name = "matugen"
+[fg] normal = "$ON_SURFACE"; bold = "$ON_SURFACE"; dim = "$ON_SURFACE_VARIANT"
+[bg] normal = "$SURFACE"; bold = "$SURFACE_CONTAINER"
+[border] normal = "$OUTLINE"; active = "$PRIMARY"
+[selection] fg = "$ON_PRIMARY"; bg = "$PRIMARY"
+[scrollbar] fg = "$PRIMARY"; bg = "$SURFACE_CONTAINER"
+[separator] fg = "$OUTLINE_VARIANT"
+[cursor] fg = "$ON_PRIMARY"; bg = "$PRIMARY"
+[link] fg = "$PRIMARY"
+[link_hint] fg = "$SECONDARY"
+[marker] fg = "$TERTIARY"
+[flag] fg = "$ERROR"
+[info] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER"
+[warning] fg = "$TERTIARY_FIXED"; bg = "$TERTIARY_CONTAINER"
+[error] fg = "$ERROR"; bg = "$ERROR_CONTAINER"
+[spinner] fg = "$PRIMARY"
+[status] loading = "$PRIMARY"
+[title] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER"
+[extra] prompt = "$PRIMARY"
+[input] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER"
+[tab_num] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER_HIGH"
+[tab_active] fg = "$ON_PRIMARY"; bg = "$PRIMARY"
+[tab_sep] fg = "$OUTLINE"
+EOF
+
+# ============================================
+# UPDATE GTK-3.0 & GTK-4.0
+# ============================================
+cat > "$HOME/.config/gtk-3.0/gtk.css" << EOF
+@define-color theme_bg_color $BG;
+@define-color theme fg_color $ON_SURFACE;
+@define-color theme_base_color $SURFACE;
+@define-color theme_selected_bg_color $PRIMARY_CONTAINER;
+@define-color theme_selected_fg_color $ON_PRIMARY;
+@define-color theme_tooltip_bg_color $SURFACE_CONTAINER_HIGH;
+@define-color theme_tooltip_fg_color $ON_SURFACE;
+@define-color theme_headerbar_bg $SURFACE_CONTAINER;
+@define-color theme_headerbar_fg $ON_SURFACE;
+@define-color theme_sidebar_bg $SURFACE_CONTAINER;
+@define-color theme_sidebar_fg $ON_SURFACE;
+@define-color theme_view_bg $SURFACE;
+@define-color theme_view_fg $ON_SURFACE;
+@define-color link_color $PRIMARY;
+@define-color accent_color $PRIMARY;
+@define-color error_color $ERROR;
+EOF
+
+cat > "$HOME/.config/gtk-4.0/gtk.css" << EOF
+@define-color theme_bg_color $BG;
+@define-color theme_fg_color $ON_SURFACE;
+@define-color theme_base_color $SURFACE;
+@define-color theme_selected_bg_color $PRIMARY_CONTAINER;
+@define-color theme_selected_fg_color $ON_PRIMARY;
+@define-color theme_tooltip_bg_color $SURFACE_CONTAINER_HIGH;
+@define-color theme_tooltip_fg_color $ON_SURFACE;
+@define-color theme_headerbar_bg $SURFACE_CONTAINER;
+@define-color theme_headerbar_fg $ON_SURFACE;
+@define-color theme_sidebar_bg $SURFACE_CONTAINER;
+@define-color theme_sidebar_fg $ON_SURFACE;
+@define-color theme_view_bg $SURFACE;
+@define-color theme_view_fg $ON_SURFACE;
+@define-color link_color $PRIMARY;
+@define-color accent_color $PRIMARY;
+@define-color error_color $ERROR;
+EOF
+
+# ============================================
+# UPDATE MAKO (notifications)
+# ============================================
+cat > "$HOME/.config/mako/config" << EOF
+font=JetBrainsMono Nerd Font 11
+background-color=$SURFACE_CONTAINER
+text-color=$ON_SURFACE
+border-color=$OUTLINE_VARIANT
+border-radius=8
+padding=10
+margin=10
+default-timeout=5000
+
+[urgency=low]
+border-color=$OUTLINE
+
+[urgency=normal]
+border-color=$PRIMARY
+
+[urgency=high]
+border-color=$ERROR
+background-color=$ERROR_CONTAINER
+EOF
+
+# Restart waybar
+pkill waybar 2>/dev/null
+waybar &
+
+# Reload kitty theme
+pkill -USR1 kitty 2>/dev/null
+
+echo "Done: $image"

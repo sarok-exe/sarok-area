@@ -1,0 +1,6 @@
+#!/bin/bash
+# Quick WiFi connect
+INTERFACE="wlan0"
+NETWORK="Bendihaj.11"
+
+iwctl station $INTERFACE connect "$NETWORK"

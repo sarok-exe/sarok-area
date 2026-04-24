@@ -1,0 +1,24 @@
+#!/bin/bash
+# WiFi menu with rofi
+
+INTERFACE="wlan0"
+
+# Get current network
+current() {
+    iwctl station $INTERFACE show 2>/dev/null | grep "Connected network" | sed 's/.*Connected network *//' | sed 's/^[[:space:]]//'
+}
+
+# Get available networks
+networks() {
+    iwctl station $INTERFACE scan >/dev/null 2>&1
+    sleep 2
+    iwctl station $INTERFACE get-networks 2>/dev/null | grep -E "^\s*[>]?\s+" | sed 's/.*\[\?[>]\?\s*//' | sed 's/\s*\.\{5\}\s.*//' | sed 's/\s*$//' | grep -v "^$" | sort -u
+}
+
+# Show menu
+CHOICE=$(echo -e "$(current)\n$(networks)" | rofi -dmenu -location 0)
+
+# Connect
+if [ -n "$CHOICE" ]; then
+    iwctl station $INTERFACE connect "$CHOICE"
+fi
