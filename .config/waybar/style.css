@@ -29,7 +29,7 @@ tooltip {
 /* Window/Title */
 #window {
     padding: 4px 12px;
-    color: #d6c950;
+    color: #ffb872;
     font-weight: bold;
 }
 
@@ -54,31 +54,31 @@ tooltip {
 }
 
 #workspaces button.active {
-    background: #d6c950;
-    color: #363100;
-    border-color: #f3e569;
+    background: #ffb872;
+    color: #4a2800;
+    border-color: #ffdcbf;
 }
 
 #workspaces button.focused {
-    background: #d6c950;
-    color: #363100;
-    border: 2px solid #d6c950;
+    background: #ffb872;
+    color: #4a2800;
+    border: 2px solid #ffb872;
 }
 
 /* Clock */
 #clock {
     padding: 4px 12px;
-    color: #d6c950;
+    color: #ffb872;
     font-weight: bold;
-    background: #1f1c00;
+    background: #2d1600;
     border-radius: 8px;
 }
 
 /* Audio */
 #pulseaudio, #wireplumber {
     padding: 4px 10px;
-    background: #1f1c05;
-    color: #cec7a3;
+    background: #291806;
+    color: #e2c0a4;
     border-radius: 8px;
 }
 
@@ -90,14 +90,14 @@ tooltip {
 /* Battery */
 #battery {
     padding: 4px 10px;
-    background: #002113;
-    color: #a6d0b8;
+    background: #171e00;
+    color: #c1cc99;
     border-radius: 8px;
 }
 
 #battery.warning {
-    color: #a6d0b8;
-    background: #284e3c;
+    color: #c1cc99;
+    background: #414b24;
 }
 
 #battery.critical {
@@ -108,24 +108,24 @@ tooltip {
 /* CPU */
 #cpu {
     padding: 4px 10px;
-    background: #1f1c00;
-    color: #d6c950;
+    background: #2d1600;
+    color: #ffb872;
     border-radius: 8px;
 }
 
 /* Memory */
 #memory {
     padding: 4px 10px;
-    background: #002113;
-    color: #c2ecd3;
+    background: #171e00;
+    color: #dde8b3;
     border-radius: 8px;
 }
 
 /* Network */
 #network {
     padding: 4px 10px;
-    background: #4b472b;
-    color: #eae3bd;
+    background: #59422d;
+    color: #ffdcbf;
     border-radius: 8px;
 }
 
@@ -137,8 +137,8 @@ tooltip {
 /* Temperature */
 #temperature {
     padding: 4px 10px;
-    background: #284e3c;
-    color: #c2ecd3;
+    background: #414b24;
+    color: #dde8b3;
     border-radius: 8px;
 }
 
@@ -165,8 +165,8 @@ tooltip {
 /* Backlight */
 #backlight {
     padding: 4px 10px;
-    background: #4e4800;
-    color: #f3e569;
+    background: #6a3b00;
+    color: #ffdcbf;
     border-radius: 8px;
 }
 
@@ -174,15 +174,15 @@ tooltip {
 #idle_inhibitor {
     padding: 4px 10px;
     background: #353535;
-    color: #d6c950;
+    color: #ffb872;
     border-radius: 8px;
 }
 
 /* Custom Media/MPD */
 #custom-media, #mpd {
     padding: 4px 12px;
-    background: linear-gradient(135deg, #363100, #343117);
-    color: #1f1c00;
+    background: linear-gradient(135deg, #4a2800, #412c18);
+    color: #2d1600;
     border-radius: 8px;
 }
 
