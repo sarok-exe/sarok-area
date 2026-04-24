@@ -249,58 +249,31 @@ tooltip {
 ENDOFFILE
 
 # ============================================
-# UPDATE ROFI (full color palette)
+# UPDATE ROFI (matching waybar)
 # ============================================
 cat > "$HOME/.config/rofi/colors.rasi" << EOF
-/* Rofi - Full Material You Palette */
+/* Rofi - Theme (matching waybar) */
 * {
-    /* Primary - Main accent */
-    rosewater: $PRIMARY_80;
-    flamingo: $PRIMARY_70;
-    pink: $PRIMARY;
-    mauve: $PRIMARY_CONTAINER;
-    
-    /* Secondary - Supporting accent */
-    red: $SECONDARY_70;
-    maroon: $SECONDARY_60;
-    peach: $SECONDARY_50;
-    yellow: $SECONDARY_40;
-    green: $SECONDARY_30;
-    teal: $SECONDARY_20;
-    sky: $SECONDARY_10;
-    sapphire: $SECONDARY_FIXED;
-    
-    /* Tertiary - Emphasis */
-    blue: $TERTIARY_80;
-    lavender: $TERTIARY_70;
-    lavender-alt: $TERTIARY_60;
-    sky-alt: $TERTIARY_50;
-    
-    /* Surface colors */
-    text: $ON_SURFACE;
-    subtext1: $ON_SURFACE_VARIANT;
-    subtext0: $OUTLINE;
-    overlay2: $OUTLINE_VARIANT;
-    overlay1: $SURFACE_CONTAINER_HIGH;
-    overlay0: $SURFACE_CONTAINER;
-    surface2: $SURFACE_CONTAINER_HIGHEST;
-    surface1: $SURFACE_CONTAINER_HIGH;
-    surface0: $SURFACE_CONTAINER;
-    
-    /* Base */
+    background: $SURFACE;
     base: $SURFACE;
-    mantle: $SURFACE_DIM;
-    crust: $BG;
-    
-    /* Primary shades */
-    primary-dim: $PRIMARY_20;
-    primary-light: $PRIMARY_90;
-    primary-mid: $PRIMARY_50;
-    
-    /* Error */
-    error-light: $ERROR_CONTAINER;
-    error-dark: $ERROR;
-    on-error: $ON_ERROR_CONTAINER;
+    text: $ON_SURFACE;
+    text-dim: $ON_SURFACE_VARIANT;
+    text-bright: $ON_SURFACE;
+    primary: $PRIMARY;
+    primary-bright: $PRIMARY_90;
+    primary-dim: $PRIMARY_FIXED;
+    secondary: $SECONDARY;
+    accent: $TERTIARY;
+    urgent: $ERROR;
+    warning: $TERTIARY;
+    success: $TERTIARY_80;
+    surface: $SURFACE_CONTAINER;
+    surface-hover: $SURFACE_CONTAINER_HIGH;
+    surface-selected: $SURFACE_CONTAINER_HIGH;
+    border: $OUTLINE_VARIANT;
+    border-focus: $PRIMARY;
+    separator: $OUTLINE_VARIANT;
+    transparent: transparent;
 }
 EOF
 
