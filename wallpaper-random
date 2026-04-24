@@ -1,5 +1,5 @@
 #!/bin/bash
-# Full theme sync from matugen JSON
+# Full theme sync from matugen JSON with full color palette
 
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 
@@ -9,84 +9,306 @@ full_path="$WALLPAPER_DIR/$image"
 
 awww img "$full_path"
 
-# Generate colors with matugen
-matugen image "$full_path" --source-color-index 0 --mode dark --type scheme-tonal-spot --json hex 2>/dev/null > /tmp/matugen_colors.json
+# Generate colors with matugen - using rainbow for more diverse colors
+matugen image "$full_path" --source-color-index 0 --mode dark --type scheme-rainbow --json=hex --old-json-output > /tmp/matugen_colors.json 2>/dev/null
 
-# Extract colors
-BG=$(jq -r '.colors.background.dark.color' /tmp/matugen_colors.json)
-SURFACE=$(jq -r '.colors.surface.dark.color' /tmp/matugen_colors.json)
-SURFACE_DIM=$(jq -r '.colors.surface_dim.dark.color' /tmp/matugen_colors.json)
-SURFACE_CONTAINER=$(jq -r '.colors.surface_container.dark.color' /tmp/matugen_colors.json)
-SURFACE_CONTAINER_HIGH=$(jq -r '.colors.surface_container_high.dark.color' /tmp/matugen_colors.json)
-SURFACE_CONTAINER_HIGHEST=$(jq -r '.colors.surface_container_highest.dark.color' /tmp/matugen_colors.json)
-ON_SURFACE=$(jq -r '.colors.on_surface.dark.color' /tmp/matugen_colors.json)
-ON_SURFACE_VARIANT=$(jq -r '.colors.on_surface_variant.dark.color' /tmp/matugen_colors.json)
-PRIMARY=$(jq -r '.colors.primary.dark.color' /tmp/matugen_colors.json)
-ON_PRIMARY=$(jq -r '.colors.on_primary.dark.color' /tmp/matugen_colors.json)
-PRIMARY_FIXED=$(jq -r '.colors.primary_fixed.dark.color' /tmp/matugen_colors.json)
-PRIMARY_CONTAINER=$(jq -r '.colors.primary_container.dark.color' /tmp/matugen_colors.json)
-SECONDARY=$(jq -r '.colors.secondary.dark.color' /tmp/matugen_colors.json)
-SECONDARY_FIXED=$(jq -r '.colors.secondary_fixed.dark.color' /tmp/matugen_colors.json)
-SECONDARY_CONTAINER=$(jq -r '.colors.secondary_container.dark.color' /tmp/matugen_colors.json)
-TERTIARY=$(jq -r '.colors.tertiary.dark.color' /tmp/matugen_colors.json)
-TERTIARY_FIXED=$(jq -r '.colors.tertiary_fixed.dark.color' /tmp/matugen_colors.json)
-TERTIARY_CONTAINER=$(jq -r '.colors.tertiary_container.dark.color' /tmp/matugen_colors.json)
-OUTLINE=$(jq -r '.colors.outline.dark.color' /tmp/matugen_colors.json)
-OUTLINE_VARIANT=$(jq -r '.colors.outline_variant.dark.color' /tmp/matugen_colors.json)
-ERROR=$(jq -r '.colors.error.dark.color' /tmp/matugen_colors.json)
-ERROR_CONTAINER=$(jq -r '.colors.error_container.dark.color' /tmp/matugen_colors.json)
+# ======== BASE COLORS ========
+BG=$(jq -r '.colors.background.dark' /tmp/matugen_colors.json)
+SURFACE=$(jq -r '.colors.surface.dark' /tmp/matugen_colors.json)
+SURFACE_DIM=$(jq -r '.colors.surface_dim.dark' /tmp/matugen_colors.json)
+SURFACE_BRIGHT=$(jq -r '.colors.surface_bright.dark' /tmp/matugen_colors.json)
+SURFACE_CONTAINER=$(jq -r '.colors.surface_container.dark' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_LOW=$(jq -r '.colors.surface_container_low.dark' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_HIGH=$(jq -r '.colors.surface_container_high.dark' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_HIGHEST=$(jq -r '.colors.surface_container_highest.dark' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_LOWEST=$(jq -r '.colors.surface_container_lowest.dark' /tmp/matugen_colors.json)
+SURFACE_VARIANT=$(jq -r '.colors.surface_variant.dark' /tmp/matugen_colors.json)
+SURFACE_TINT=$(jq -r '.colors.surface_tint.dark' /tmp/matugen_colors.json)
+ON_SURFACE=$(jq -r '.colors.on_surface.dark' /tmp/matugen_colors.json)
+ON_SURFACE_VARIANT=$(jq -r '.colors.on_surface_variant.dark' /tmp/matugen_colors.json)
+OUTLINE=$(jq -r '.colors.outline.dark' /tmp/matugen_colors.json)
+OUTLINE_VARIANT=$(jq -r '.colors.outline_variant.dark' /tmp/matugen_colors.json)
+SCRIM=$(jq -r '.colors.scrim.dark' /tmp/matugen_colors.json)
+SHADOW=$(jq -r '.colors.shadow.dark' /tmp/matugen_colors.json)
+
+# ======== PRIMARY PALETTE ========
+PRIMARY=$(jq -r '.colors.primary.dark' /tmp/matugen_colors.json)
+ON_PRIMARY=$(jq -r '.colors.on_primary.dark' /tmp/matugen_colors.json)
+PRIMARY_CONTAINER=$(jq -r '.colors.primary_container.dark' /tmp/matugen_colors.json)
+ON_PRIMARY_CONTAINER=$(jq -r '.colors.on_primary_container.dark' /tmp/matugen_colors.json)
+PRIMARY_FIXED=$(jq -r '.colors.primary_fixed.dark' /tmp/matugen_colors.json)
+PRIMARY_FIXED_DIM=$(jq -r '.colors.primary_fixed_dim.dark' /tmp/matugen_colors.json)
+ON_PRIMARY_FIXED=$(jq -r '.colors.on_primary_fixed.dark' /tmp/matugen_colors.json)
+ON_PRIMARY_FIXED_VARIANT=$(jq -r '.colors.on_primary_fixed_variant.dark' /tmp/matugen_colors.json)
+
+# Primary shades from palette
+PRIMARY_0=$(jq -r '.palettes.primary."0"' /tmp/matugen_colors.json)
+PRIMARY_10=$(jq -r '.palettes.primary."10"' /tmp/matugen_colors.json)
+PRIMARY_20=$(jq -r '.palettes.primary."20"' /tmp/matugen_colors.json)
+PRIMARY_30=$(jq -r '.palettes.primary."30"' /tmp/matugen_colors.json)
+PRIMARY_40=$(jq -r '.palettes.primary."40"' /tmp/matugen_colors.json)
+PRIMARY_50=$(jq -r '.palettes.primary."50"' /tmp/matugen_colors.json)
+PRIMARY_60=$(jq -r '.palettes.primary."60"' /tmp/matugen_colors.json)
+PRIMARY_70=$(jq -r '.palettes.primary."70"' /tmp/matugen_colors.json)
+PRIMARY_80=$(jq -r '.palettes.primary."80"' /tmp/matugen_colors.json)
+PRIMARY_90=$(jq -r '.palettes.primary."90"' /tmp/matugen_colors.json)
+PRIMARY_95=$(jq -r '.palettes.primary."95"' /tmp/matugen_colors.json)
+PRIMARY_99=$(jq -r '.palettes.primary."99"' /tmp/matugen_colors.json)
+PRIMARY_100=$(jq -r '.palettes.primary."100"' /tmp/matugen_colors.json)
+
+# ======== SECONDARY PALETTE ========
+SECONDARY=$(jq -r '.colors.secondary.dark' /tmp/matugen_colors.json)
+ON_SECONDARY=$(jq -r '.colors.on_secondary.dark' /tmp/matugen_colors.json)
+SECONDARY_CONTAINER=$(jq -r '.colors.secondary_container.dark' /tmp/matugen_colors.json)
+ON_SECONDARY_CONTAINER=$(jq -r '.colors.on_secondary_container.dark' /tmp/matugen_colors.json)
+SECONDARY_FIXED=$(jq -r '.colors.secondary_fixed.dark' /tmp/matugen_colors.json)
+SECONDARY_FIXED_DIM=$(jq -r '.colors.secondary_fixed_dim.dark' /tmp/matugen_colors.json)
+ON_SECONDARY_FIXED=$(jq -r '.colors.on_secondary_fixed.dark' /tmp/matugen_colors.json)
+ON_SECONDARY_FIXED_VARIANT=$(jq -r '.colors.on_secondary_fixed_variant.dark' /tmp/matugen_colors.json)
+
+SECONDARY_10=$(jq -r '.palettes.secondary."10"' /tmp/matugen_colors.json)
+SECONDARY_20=$(jq -r '.palettes.secondary."20"' /tmp/matugen_colors.json)
+SECONDARY_30=$(jq -r '.palettes.secondary."30"' /tmp/matugen_colors.json)
+SECONDARY_40=$(jq -r '.palettes.secondary."40"' /tmp/matugen_colors.json)
+SECONDARY_50=$(jq -r '.palettes.secondary."50"' /tmp/matugen_colors.json)
+SECONDARY_60=$(jq -r '.palettes.secondary."60"' /tmp/matugen_colors.json)
+SECONDARY_70=$(jq -r '.palettes.secondary."70"' /tmp/matugen_colors.json)
+SECONDARY_80=$(jq -r '.palettes.secondary."80"' /tmp/matugen_colors.json)
+SECONDARY_90=$(jq -r '.palettes.secondary."90"' /tmp/matugen_colors.json)
+
+# ======== TERTIARY PALETTE ========
+TERTIARY=$(jq -r '.colors.tertiary.dark' /tmp/matugen_colors.json)
+ON_TERTIARY=$(jq -r '.colors.on_tertiary.dark' /tmp/matugen_colors.json)
+TERTIARY_CONTAINER=$(jq -r '.colors.tertiary_container.dark' /tmp/matugen_colors.json)
+ON_TERTIARY_CONTAINER=$(jq -r '.colors.on_tertiary_container.dark' /tmp/matugen_colors.json)
+TERTIARY_FIXED=$(jq -r '.colors.tertiary_fixed.dark' /tmp/matugen_colors.json)
+TERTIARY_FIXED_DIM=$(jq -r '.colors.tertiary_fixed_dim.dark' /tmp/matugen_colors.json)
+ON_TERTIARY_FIXED=$(jq -r '.colors.on_tertiary_fixed.dark' /tmp/matugen_colors.json)
+ON_TERTIARY_FIXED_VARIANT=$(jq -r '.colors.on_tertiary_fixed_variant.dark' /tmp/matugen_colors.json)
+
+TERTIARY_10=$(jq -r '.palettes.tertiary."10"' /tmp/matugen_colors.json)
+TERTIARY_20=$(jq -r '.palettes.tertiary."20"' /tmp/matugen_colors.json)
+TERTIARY_30=$(jq -r '.palettes.tertiary."30"' /tmp/matugen_colors.json)
+TERTIARY_40=$(jq -r '.palettes.tertiary."40"' /tmp/matugen_colors.json)
+TERTIARY_50=$(jq -r '.palettes.tertiary."50"' /tmp/matugen_colors.json)
+TERTIARY_60=$(jq -r '.palettes.tertiary."60"' /tmp/matugen_colors.json)
+TERTIARY_70=$(jq -r '.palettes.tertiary."70"' /tmp/matugen_colors.json)
+TERTIARY_80=$(jq -r '.palettes.tertiary."80"' /tmp/matugen_colors.json)
+TERTIARY_90=$(jq -r '.palettes.tertiary."90"' /tmp/matugen_colors.json)
+
+# ======== ERROR PALETTE ========
+ERROR=$(jq -r '.colors.error.dark' /tmp/matugen_colors.json)
+ON_ERROR=$(jq -r '.colors.on_error.dark' /tmp/matugen_colors.json)
+ERROR_CONTAINER=$(jq -r '.colors.error_container.dark' /tmp/matugen_colors.json)
+ON_ERROR_CONTAINER=$(jq -r '.colors.on_error_container.dark' /tmp/matugen_colors.json)
+
+# ======== NEUTRAL PALETTE ========
+NEUTRAL_10=$(jq -r '.palettes.neutral."10"' /tmp/matugen_colors.json)
+NEUTRAL_20=$(jq -r '.palettes.neutral."20"' /tmp/matugen_colors.json)
+NEUTRAL_30=$(jq -r '.palettes.neutral."30"' /tmp/matugen_colors.json)
+NEUTRAL_40=$(jq -r '.palettes.neutral."40"' /tmp/matugen_colors.json)
+NEUTRAL_50=$(jq -r '.palettes.neutral."50"' /tmp/matugen_colors.json)
+NEUTRAL_60=$(jq -r '.palettes.neutral."60"' /tmp/matugen_colors.json)
+NEUTRAL_70=$(jq -r '.palettes.neutral."70"' /tmp/matugen_colors.json)
+NEUTRAL_80=$(jq -r '.palettes.neutral."80"' /tmp/matugen_colors.json)
+NEUTRAL_90=$(jq -r '.palettes.neutral."90"' /tmp/matugen_colors.json)
+NEUTRAL_95=$(jq -r '.palettes.neutral."95"' /tmp/matugen_colors.json)
+NEUTRAL_99=$(jq -r '.palettes.neutral."99"' /tmp/matugen_colors.json)
+
+# ======== INVERSE COLORS ========
+INVERSE_SURFACE=$(jq -r '.colors.inverse_surface.dark' /tmp/matugen_colors.json)
+INVERSE_ON_SURFACE=$(jq -r '.colors.inverse_on_surface.dark' /tmp/matugen_colors.json)
+INVERSE_PRIMARY=$(jq -r '.colors.inverse_primary.dark' /tmp/matugen_colors.json)
 
 # Set GNOME dark mode
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' 2>/dev/null
 
 # ============================================
-# UPDATE WAYBAR (full width, custom styling)
+# UPDATE WAYBAR (clean minimal - no backgrounds)
 # ============================================
-cat > "$HOME/.config/waybar/style.css" << EOF
-/* Waybar - Material You */
-* { font-family: "JetBrainsMono Nerd Font"; font-size: 10px; font-weight: bold; min-height: 0; }
-window#waybar { background: transparent; color: $ON_SURFACE; }
-window > box { background: $SURFACE_CONTAINER; border: 1px solid $OUTLINE_VARIANT; border-radius: 6px; margin: 1px; }
-tooltip { background: $SURFACE_CONTAINER_HIGH; border: 1px solid $OUTLINE_VARIANT; border-radius: 4px; color: $ON_SURFACE; }
-#window { padding: 2px 8px; margin: 0; color: $PRIMARY; font-weight: bold; }
-#workspaces { padding: 4px; }
-#workspaces button { padding: 2px 4px; margin: 1px; background: $SURFACE_CONTAINER; color: $ON_SURFACE_VARIANT; border: 1px solid $OUTLINE_VARIANT; border-radius: 4px; min-width: 20px; }
-#workspaces button:hover { background: $SURFACE_CONTAINER_HIGH; color: $ON_SURFACE; }
-#workspaces button.active { background: $PRIMARY; color: $ON_PRIMARY; border-color: $PRIMARY_FIXED; }
-#workspaces button.focused { background: $PRIMARY; color: $ON_PRIMARY; border: 1px solid $PRIMARY_FIXED; }
-#pulseaudio, #wireplumber, #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #tray, #idle_inhibitor, #custom-media, #mpd { padding: 2px 6px; margin: 1px; background: $SURFACE_CONTAINER; border: 1px solid $OUTLINE_VARIANT; border-radius: 6px; color: $ON_SURFACE; }
-#clock { color: $PRIMARY; font-weight: bold; }
-#pulseaudio { color: $SECONDARY; }
+cat > "$HOME/.config/waybar/style.css" << ENDOFFILE
+/* Waybar - Clean Minimal Style */
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: $ON_SURFACE;
+}
+
+window > box {
+    background: rgba(30, 30, 30, 0.85);
+    border-radius: 8px;
+    margin: 2px 4px;
+}
+
+tooltip {
+    background: rgba(40, 40, 40, 0.95);
+    border: 1px solid $OUTLINE_VARIANT;
+    border-radius: 6px;
+    color: $ON_SURFACE;
+    padding: 4px 8px;
+}
+
+#window {
+    padding: 0 10px;
+    color: $PRIMARY;
+    font-weight: bold;
+}
+
+/* Workspaces - transparent background */
+#workspaces { padding: 0 6px; }
+
+#workspaces button {
+    padding: 0;
+    margin: 0 2px;
+    background: transparent;
+    color: $ON_SURFACE_VARIANT;
+    border-radius: 0;
+    min-width: 0;
+}
+
+#workspaces button:hover {
+    color: $ON_SURFACE;
+}
+
+#workspaces button.active {
+    color: $PRIMARY;
+}
+
+#workspaces button.focused {
+    color: $PRIMARY;
+}
+
+#clock {
+    padding: 0 8px;
+    color: $PRIMARY;
+}
+
+#pulseaudio, #wireplumber {
+    padding: 0 6px;
+    color: $SECONDARY;
+}
+
 #pulseaudio.muted { color: $OUTLINE; }
-#network.disconnected { color: $ERROR; }
+
+#battery {
+    padding: 0 6px;
+    color: $TERTIARY_80;
+}
+
 #battery.warning { color: $TERTIARY; }
 #battery.critical { color: $ERROR; }
-#cpu { color: $PRIMARY_FIXED; }
-#memory { color: $TERTIARY; }
+
+#cpu {
+    padding: 0 6px;
+    color: $PRIMARY_FIXED;
+}
+
+#memory {
+    padding: 0 6px;
+    color: $TERTIARY;
+}
+
+#network {
+    padding: 0 6px;
+    color: #ffffff;
+}
+
+#network.disconnected { color: $ERROR; }
+
+#temperature {
+    padding: 0 6px;
+    color: $TERTIARY_CONTAINER;
+}
+
+#temperature.critical { color: $ERROR; }
+
+#tray { padding: 0 4px; }
 #tray > .passive { -gtk-icon-effect: dim; }
 #tray > .needs-attention { -gtk-icon-effect: highlight; }
-EOF
+
+#backlight {
+    padding: 0 6px;
+    color: $PRIMARY_CONTAINER;
+}
+
+#idle_inhibitor {
+    padding: 0 6px;
+    color: $OUTLINE;
+}
+
+#custom-media, #mpd {
+    padding: 0 8px;
+    color: $TERTIARY_FIXED;
+}
+ENDOFFILE
 
 # ============================================
-# UPDATE ROFI
+# UPDATE ROFI (full color palette)
 # ============================================
 cat > "$HOME/.config/rofi/colors.rasi" << EOF
+/* Rofi - Full Material You Palette */
 * {
-    rosewater: $PRIMARY; flamingo: $SECONDARY; pink: $TERTIARY; mauve: $PRIMARY_CONTAINER;
-    red: $ERROR; maroon: $ERROR_CONTAINER; peach: $SECONDARY_FIXED; yellow: $TERTIARY_FIXED;
-    green: $SECONDARY; teal: $TERTIARY; sky: $PRIMARY_FIXED; sapphire: $PRIMARY_FIXED;
-    blue: $PRIMARY; lavender: $PRIMARY_CONTAINER; text: $ON_SURFACE;
-    subtext1: $ON_SURFACE_VARIANT; subtext0: $OUTLINE;
-    overlay2: $OUTLINE_VARIANT; overlay1: $SURFACE_CONTAINER; overlay0: $SURFACE_CONTAINER_HIGH;
-    surface2: $SURFACE_CONTAINER_HIGH; surface1: $SURFACE_CONTAINER_HIGHEST; surface0: $SURFACE_CONTAINER;
-    base: $SURFACE; mantle: $SURFACE_DIM; crust: $BG;
+    /* Primary - Main accent */
+    rosewater: $PRIMARY_80;
+    flamingo: $PRIMARY_70;
+    pink: $PRIMARY;
+    mauve: $PRIMARY_CONTAINER;
+    
+    /* Secondary - Supporting accent */
+    red: $SECONDARY_70;
+    maroon: $SECONDARY_60;
+    peach: $SECONDARY_50;
+    yellow: $SECONDARY_40;
+    green: $SECONDARY_30;
+    teal: $SECONDARY_20;
+    sky: $SECONDARY_10;
+    sapphire: $SECONDARY_FIXED;
+    
+    /* Tertiary - Emphasis */
+    blue: $TERTIARY_80;
+    lavender: $TERTIARY_70;
+    lavender-alt: $TERTIARY_60;
+    sky-alt: $TERTIARY_50;
+    
+    /* Surface colors */
+    text: $ON_SURFACE;
+    subtext1: $ON_SURFACE_VARIANT;
+    subtext0: $OUTLINE;
+    overlay2: $OUTLINE_VARIANT;
+    overlay1: $SURFACE_CONTAINER_HIGH;
+    overlay0: $SURFACE_CONTAINER;
+    surface2: $SURFACE_CONTAINER_HIGHEST;
+    surface1: $SURFACE_CONTAINER_HIGH;
+    surface0: $SURFACE_CONTAINER;
+    
+    /* Base */
+    base: $SURFACE;
+    mantle: $SURFACE_DIM;
+    crust: $BG;
+    
+    /* Primary shades */
+    primary-dim: $PRIMARY_20;
+    primary-light: $PRIMARY_90;
+    primary-mid: $PRIMARY_50;
+    
+    /* Error */
+    error-light: $ERROR_CONTAINER;
+    error-dark: $ERROR;
+    on-error: $ON_ERROR_CONTAINER;
 }
 EOF
 
 # ============================================
-# UPDATE KITTY
+# UPDATE KITTY (rich theme)
 # ============================================
 cat > "$HOME/.config/kitty/theme.conf" << EOF
+# Base colors
 foreground              $ON_SURFACE
 background              $SURFACE
 selection_foreground    $ON_PRIMARY
@@ -94,68 +316,137 @@ selection_background    $PRIMARY_CONTAINER
 cursor                  $PRIMARY
 cursor_text_color       $ON_PRIMARY
 url_color               $PRIMARY
+
+# Borders
 active_border_color     $PRIMARY
 inactive_border_color   $OUTLINE_VARIANT
 bell_border_color       $ERROR
 wayland_titlebar_color system
 macos_titlebar_color system
+
+# Tabs
 active_tab_foreground   $ON_PRIMARY
 active_tab_background   $PRIMARY_CONTAINER
 inactive_tab_foreground $ON_SURFACE
 inactive_tab_background $SURFACE_CONTAINER
 tab_bar_background      $SURFACE
+
+# Marks
 mark1_foreground $ON_SURFACE
 mark1_background $SURFACE_CONTAINER
 mark2_foreground $ON_PRIMARY
 mark2_background $PRIMARY_CONTAINER
 mark3_foreground $TERTIARY_FIXED
 mark3_background $TERTIARY_CONTAINER
-color0 $SURFACE_CONTAINER
-color8 $OUTLINE
-color1 $ERROR
-color9 $ERROR
+
+# ANSI colors (using full palette)
+color0  $SURFACE_CONTAINER
+color1  $ERROR
 color2  $SECONDARY
-color10 $SECONDARY_FIXED
 color3  $TERTIARY
-color11 $TERTIARY_FIXED
 color4  $PRIMARY
-color12 $PRIMARY_FIXED
-color5  $TERTIARY
-color13 $TERTIARY_CONTAINER
-color6  $SECONDARY
-color14 $SECONDARY_CONTAINER
+color5  $TERTIARY_CONTAINER
+color6  $SECONDARY_CONTAINER
 color7  $ON_SURFACE_VARIANT
+color8  $OUTLINE
+color9  $ERROR_CONTAINER
+color10 $SECONDARY_FIXED
+color11 $TERTIARY_FIXED
+color12 $PRIMARY_FIXED
+color13 $TERTIARY_90
+color14 $SECONDARY_90
 color15 $ON_SURFACE
 EOF
 
 # ============================================
-# UPDATE YAZI
+# UPDATE YAZI (full theme)
 # ============================================
 cat > "$HOME/.config/yazi/flavors/matugen.yazi/theme.toml" << EOF
 [flavor]
 name = "matugen"
-[fg] normal = "$ON_SURFACE"; bold = "$ON_SURFACE"; dim = "$ON_SURFACE_VARIANT"
-[bg] normal = "$SURFACE"; bold = "$SURFACE_CONTAINER"
-[border] normal = "$OUTLINE"; active = "$PRIMARY"
-[selection] fg = "$ON_PRIMARY"; bg = "$PRIMARY"
-[scrollbar] fg = "$PRIMARY"; bg = "$SURFACE_CONTAINER"
-[separator] fg = "$OUTLINE_VARIANT"
-[cursor] fg = "$ON_PRIMARY"; bg = "$PRIMARY"
-[link] fg = "$PRIMARY"
-[link_hint] fg = "$SECONDARY"
-[marker] fg = "$TERTIARY"
-[flag] fg = "$ERROR"
-[info] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER"
-[warning] fg = "$TERTIARY_FIXED"; bg = "$TERTIARY_CONTAINER"
-[error] fg = "$ERROR"; bg = "$ERROR_CONTAINER"
-[spinner] fg = "$PRIMARY"
-[status] loading = "$PRIMARY"
-[title] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER"
-[extra] prompt = "$PRIMARY"
-[input] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER"
-[tab_num] fg = "$ON_SURFACE"; bg = "$SURFACE_CONTAINER_HIGH"
-[tab_active] fg = "$ON_PRIMARY"; bg = "$PRIMARY"
-[tab_sep] fg = "$OUTLINE"
+
+[fg]
+normal = "$ON_SURFACE"
+bold = "$PRIMARY"
+dim = "$ON_SURFACE_VARIANT"
+
+[bg]
+normal = "$SURFACE"
+bold = "$SURFACE_CONTAINER"
+
+[border]
+normal = "$OUTLINE"
+active = "$PRIMARY"
+
+[selection]
+fg = "$ON_PRIMARY"
+bg = "$PRIMARY"
+
+[scrollbar]
+fg = "$PRIMARY"
+bg = "$SURFACE_CONTAINER"
+
+[separator]
+fg = "$OUTLINE_VARIANT"
+
+[cursor]
+fg = "$ON_PRIMARY"
+bg = "$PRIMARY"
+
+[link]
+fg = "$PRIMARY"
+hover = "$PRIMARY_80"
+
+[link_hint]
+fg = "$SECONDARY"
+
+[marker]
+fg = "$TERTIARY"
+
+[flag]
+fg = "$ERROR"
+
+[info]
+fg = "$ON_SURFACE"
+bg = "$SURFACE_CONTAINER"
+
+[warning]
+fg = "$TERTIARY_FIXED"
+bg = "$TERTIARY_CONTAINER"
+
+[error]
+fg = "$ERROR"
+bg = "$ERROR_CONTAINER"
+
+[spinner]
+fg = "$PRIMARY"
+
+[status]
+loading = "$PRIMARY"
+
+[title]
+fg = "$ON_SURFACE"
+bg = "$SURFACE_CONTAINER"
+
+[extra]
+prompt = "$PRIMARY"
+success = "$SECONDARY"
+warning = "$TERTIARY"
+
+[input]
+fg = "$ON_SURFACE"
+bg = "$SURFACE_CONTAINER"
+
+[tab_num]
+fg = "$ON_SURFACE"
+bg = "$SURFACE_CONTAINER_HIGH"
+
+[tab_active]
+fg = "$ON_PRIMARY"
+bg = "$PRIMARY"
+
+[tab_sep]
+fg = "$OUTLINE"
 EOF
 
 # ============================================
@@ -163,7 +454,7 @@ EOF
 # ============================================
 cat > "$HOME/.config/gtk-3.0/gtk.css" << EOF
 @define-color theme_bg_color $BG;
-@define-color theme fg_color $ON_SURFACE;
+@define-color theme_fg_color $ON_SURFACE;
 @define-color theme_base_color $SURFACE;
 @define-color theme_selected_bg_color $PRIMARY_CONTAINER;
 @define-color theme_selected_fg_color $ON_PRIMARY;
@@ -178,6 +469,11 @@ cat > "$HOME/.config/gtk-3.0/gtk.css" << EOF
 @define-color link_color $PRIMARY;
 @define-color accent_color $PRIMARY;
 @define-color error_color $ERROR;
+@define-color primary_color $PRIMARY;
+@define-color secondary_color $SECONDARY;
+@define-color tertiary_color $TERTIARY;
+@define-color surface_color $SURFACE;
+@define-color surface_container_color $SURFACE_CONTAINER;
 EOF
 
 cat > "$HOME/.config/gtk-4.0/gtk.css" << EOF
@@ -197,6 +493,11 @@ cat > "$HOME/.config/gtk-4.0/gtk.css" << EOF
 @define-color link_color $PRIMARY;
 @define-color accent_color $PRIMARY;
 @define-color error_color $ERROR;
+@define-color primary_color $PRIMARY;
+@define-color secondary_color $SECONDARY;
+@define-color tertiary_color $TERTIARY;
+@define-color surface_color $SURFACE;
+@define-color surface_container_color $SURFACE_CONTAINER;
 EOF
 
 # ============================================
@@ -207,9 +508,10 @@ font=JetBrainsMono Nerd Font 11
 background-color=$SURFACE_CONTAINER
 text-color=$ON_SURFACE
 border-color=$OUTLINE_VARIANT
-border-radius=8
-padding=10
-margin=10
+border-radius=12
+border-width=2
+padding=12
+margin=8
 default-timeout=5000
 
 [urgency=low]
@@ -217,6 +519,7 @@ border-color=$OUTLINE
 
 [urgency=normal]
 border-color=$PRIMARY
+background-color=$PRIMARY_CONTAINER
 
 [urgency=high]
 border-color=$ERROR
@@ -231,3 +534,6 @@ waybar &
 pkill -USR1 kitty 2>/dev/null
 
 echo "Done: $image"
+echo "Primary: $PRIMARY"
+echo "Secondary: $SECONDARY"
+echo "Tertiary: $TERTIARY"
