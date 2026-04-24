@@ -1,7 +1,7 @@
-/* Waybar - Clean Minimal Style */
+/* Waybar - Full Material You Palette */
 * {
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 13px;
+    font-size: 11px;
     font-weight: bold;
     min-height: 0;
 }
@@ -12,121 +12,146 @@ window#waybar {
 }
 
 window > box {
-    background: rgba(30, 30, 30, 0.85);
-    border-radius: 8px;
-    margin: 2px 4px;
+    background: #1f1f1f;
+    border: 1px solid #474747;
+    border-radius: 12px;
+    margin: 3px 6px;
 }
 
 tooltip {
-    background: rgba(40, 40, 40, 0.95);
-    border: 1px solid #555;
-    border-radius: 6px;
+    background: #2a2a2a;
+    border: 1px solid #474747;
+    border-radius: 8px;
     color: #e2e2e2;
-    padding: 4px 8px;
+    padding: 6px;
 }
 
-/* Window/Title - Orange */
+/* Window/Title */
 #window {
-    padding: 0 10px;
-    color: #ffb872;
+    padding: 4px 12px;
+    color: #ffb3ad;
     font-weight: bold;
 }
 
 /* Workspaces */
 #workspaces {
-    padding: 0 6px;
+    padding: 4px 8px;
 }
 
 #workspaces button {
-    padding: 2px 6px;
-    margin: 1px;
-    background: rgba(50, 50, 50, 0.7);
-    color: #a0a0a0;
-    border-radius: 4px;
-    min-width: 24px;
+    padding: 4px 8px;
+    margin: 2px;
+    background: #1f1f1f;
+    color: #c6c6c6;
+    border: 1px solid #474747;
+    border-radius: 8px;
+    min-width: 28px;
 }
 
 #workspaces button:hover {
-    background: rgba(70, 70, 70, 0.8);
+    background: #2a2a2a;
     color: #e2e2e2;
 }
 
 #workspaces button.active {
-    background: #ffb872;
-    color: #1a1a1a;
+    background: #ffb3ad;
+    color: #5f1413;
+    border-color: #ffdad6;
 }
 
 #workspaces button.focused {
-    background: #ffb872;
-    color: #1a1a1a;
+    background: #ffb3ad;
+    color: #5f1413;
+    border: 2px solid #ffb3ad;
 }
 
-/* Clock - Warm Orange */
+/* Clock */
 #clock {
-    padding: 0 8px;
-    color: #ffb872;
+    padding: 4px 12px;
+    color: #ffb3ad;
     font-weight: bold;
+    background: #410003;
+    border-radius: 8px;
 }
 
-/* Audio - Golden */
+/* Audio */
 #pulseaudio, #wireplumber {
-    padding: 0 6px;
-    color: #daa520;
+    padding: 4px 10px;
+    background: #2c1513;
+    color: #e7bdb9;
+    border-radius: 8px;
 }
 
 #pulseaudio.muted {
-    color: #666;
+    color: #919191;
+    background: #1f1f1f;
 }
 
-/* Battery - Green (normal), Yellow (warning), Red (critical) */
+/* Battery */
 #battery {
-    padding: 0 6px;
-    color: #90ee90;
+    padding: 4px 10px;
+    background: #261900;
+    color: #e1c28c;
+    border-radius: 8px;
 }
 
 #battery.warning {
-    color: #ffd700;
+    color: #e1c28c;
+    background: #584319;
 }
 
 #battery.critical {
-    color: #ff6b6b;
+    color: #ffb4ab;
+    background: #93000a;
 }
 
-/* CPU - Sky Blue */
+/* CPU */
 #cpu {
-    padding: 0 6px;
-    color: #87ceeb;
+    padding: 4px 10px;
+    background: #410003;
+    color: #ffb3ad;
+    border-radius: 8px;
 }
 
-/* Memory - Pale Green */
+/* Memory */
 #memory {
-    padding: 0 6px;
-    color: #98fb98;
+    padding: 4px 10px;
+    background: #261900;
+    color: #ffdea6;
+    border-radius: 8px;
 }
 
-/* Network - Plum */
+/* Network */
 #network {
-    padding: 0 6px;
-    color: #dda0dd;
+    padding: 4px 10px;
+    background: #5d3f3d;
+    color: #ffdad6;
+    border-radius: 8px;
 }
 
 #network.disconnected {
-    color: #ff6b6b;
+    color: #ffb4ab;
+    background: #93000a;
 }
 
-/* Temperature - Cyan */
+/* Temperature */
 #temperature {
-    padding: 0 6px;
-    color: #00ced1;
+    padding: 4px 10px;
+    background: #584319;
+    color: #ffdea6;
+    border-radius: 8px;
 }
 
 #temperature.critical {
-    color: #ff6b6b;
+    background: #93000a;
+    color: #ffdad6;
 }
 
 /* Tray */
 #tray {
-    padding: 0 4px;
+    padding: 2px 6px;
+    background: #1b1b1b;
+    border-radius: 8px;
 }
 
 #tray > .passive {
@@ -137,20 +162,31 @@ tooltip {
     -gtk-icon-effect: highlight;
 }
 
-/* Backlight - Light Blue */
+/* Backlight */
 #backlight {
-    padding: 0 6px;
-    color: #add8e6;
+    padding: 4px 10px;
+    background: #7e2a27;
+    color: #ffdad6;
+    border-radius: 8px;
 }
 
-/* Idle Inhibitor - Gray */
+/* Idle Inhibitor */
 #idle_inhibitor {
-    padding: 0 6px;
-    color: #888;
+    padding: 4px 10px;
+    background: #353535;
+    color: #ffb3ad;
+    border-radius: 8px;
 }
 
 /* Custom Media/MPD */
 #custom-media, #mpd {
-    padding: 0 8px;
-    color: #f0e68c;
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #680009, #442927);
+    color: #410003;
+    border-radius: 8px;
+}
+
+/* Separator style in modules */
+.modules-start > box {
+    background: transparent;
 }
