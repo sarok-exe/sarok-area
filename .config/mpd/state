@@ -1,8 +1,8 @@
 sw_volume: 100
 audio_device_state:1:My PipeWire Output
-state: pause
-current: 68
-time: 0
+state: play
+current: 0
+time: 120.531
 random: 0
 repeat: 0
 single: 0
@@ -12,73 +12,5 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:Air Supply - Here I Am (Lyrics).mp3
-1:Alex Warren - FEVER DREAM (Lyrics).mp3
-2:Alok, Zeeba, Bruno Martini - Hear Me Now (Lyrics).mp3
-3:Ariana Grande - twilight zone (Lyrics).mp3
-4:Backstreet Boys - Shape of My Heart (Lyrics).mp3
-5:Banjaare - Bairan (Lyrics).mp3
-6:beabadoobee - All I Did Was Dream of You (Lyrics) ft.The Marías.mp3
-7:Ben&Ben - Lifetime (Lyrics).mp3
-8:Ben&Ben - Lifetime (Reimagined) (Lyrics).mp3
-9:Berlin - Take My Breath Away (Lyrics).mp3
-10:Billy Joel - Vienna (Lyrics).mp3
-11:BossMan Dlow - Motion Party (Lyrics).mp3
-12:Bruno Mars - Dance With Me (Lyrics).mp3
-13:Bruno Mars - Risk It All (Lyrics).mp3
-14:Celine Dion - Because You Loved Me (Theme from ＂Up Close & Personal＂) Lyrics.mp3
-15:Charlie Puth - Home (Lyrics) ft. Hikaru Utada.mp3
-16:Childish Gambino - Redbone (Lyrics).mp3
-17:Chris Brown - Obvious (Lyrics).mp3
-18:Cigarettes After Sex - Apocalypse (Lyrics).mp3
-19:Cigarettes After Sex - K. (Lyrics).mp3
-20:Cueshé - Pangako (Lyrics).mp3
-21:Céline Dion - Ashes (Lyrics).mp3
-22:Daryl Hall & John Oates - Rich Girl (Lyrics).mp3
-23:Dominic Fike - Babydoll (Lyrics).mp3
-24:EJAE - Time After Time (Lyrics).mp3
-25:Ella Langley - Be Her (Lyrics).mp3
-26:Ella Langley - Choosin' Texas (Lyrics).mp3
-27:F3miii - NOBLE (Lyrics).mp3
-28:Jack Harlow - Trade Places (Lyrics).mp3
-29:James Arthur - Naked (Lyrics).mp3
-30:Janelle Monáe, Jidenna - Yoga (Lyrics).mp3
-31:Jessie Murph - I'm Not There For You (Lyrics).mp3
-32:Julia Wolf - In My Room (Lyrics).mp3
-33:Kali Uchis - Muévelo (Lyrics).mp3
-34:KATSEYE - PINKY UP (Lyrics).mp3
-35:Katy Perry - Wide Awake (Lyrics).mp3
-36:League of Legends - Legends Never Die (Lyrics) ft. Against The Current.mp3
-37:Malcolm Todd - Earrings (Lyrics).mp3
-38:Melanie Martinez - POSSESSION (Lyrics).mp3
-39:Mitta Ror - Sheesha (Lyrics) ft. Swara Verma.mp3
-40:Morgan Wallen - Thought You Should Know (Lyrics).mp3
-41:Ne-Yo - So Sick (Lyrics).mp3
-42:Papaoutai (Afro Soul) - Stromae.mp3
-43:Paul Anka - Put Your Head on My Shoulder (Lyrics).mp3
-44:Pitbull - Options (Lyrics) ft. Stephen Marley.mp3
-45:Pop Smoke - For The Night (Lyrics) ft. Lil Baby, DaBaby.mp3
-46:Pop Smoke - What You Know Bout Love (Lyrics).mp3
-47:Redbone - Come And Get Your Love (Lyrics).mp3
-48:Romeo Santos, Prince Royce - Lokita Por Mí (Letra⧸Lyrics).mp3
-49:Sade - Kiss Of Life (Lyrics).mp3
-50:Shania Twain - You're Still The One (Lyrics).mp3
-51:SIENNA SPIRO - The Visitor (Lyrics).mp3
-52:Simon & Garfunkel - The Boxer (Lyrics).mp3
-53:Simple Minds - Don't You (Forget About Me) (Lyrics).mp3
-54:Skye Newman - Lonely Girl (Lyrics).mp3
-55:Skye Newman - Out Out (Lyrics).mp3
-56:sombr - Homewrecker (Lyrics).mp3
-57:Taffy - Feeling On My Body (Lyrics) ft. PLUTO.mp3
-58:Tame Impala - Dracula (Lyrics).mp3
-59:Tame Impala, JENNIE - Dracula (JENNIE Remix) (Lyrics).mp3
-60:The 1975 - About You (Lyrics).mp3
-61:The Outfield - All The Love In The World (Lyrics).mp3
-62:The Second Voice - Let Me Be (Lyrics).mp3
-63:The Walters - I Love You So (Lyrics).mp3
-64:Three Days Grace - Kill Me Fast (Lyrics).mp3
-65:Toni Gonzaga - You Are the One (Lyrics) ft. Sam Milby.mp3
-66:TOTO  - I'll Be Over You (Lyrics).mp3
-67:Tuca Donka Hakari Dance (Lyrics).mp3
-68:Yuna - Someone Out Of Town (Lyrics).mp3
+0:God's Plan.mp3
 playlist_end
