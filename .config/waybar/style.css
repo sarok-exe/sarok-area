@@ -19,7 +19,7 @@ window > box {
 
 tooltip {
     background: rgba(40, 40, 40, 0.95);
-    border: 1px solid #474747;
+    border: 1px solid #555;
     border-radius: 6px;
     color: #e2e2e2;
     padding: 4px 8px;
@@ -27,80 +27,77 @@ tooltip {
 
 #window {
     padding: 0 10px;
-    color: #e8c349;
+    color: #ffb4a4;
     font-weight: bold;
 }
 
+/* Workspaces - transparent background */
 #workspaces { padding: 0 6px; }
 
 #workspaces button {
-    padding: 2px 6px;
-    margin: 1px;
-    background: #1f1f1f;
-    color: #c6c6c6;
-    border-radius: 4px;
-    min-width: 24px;
+    padding: 0;
+    margin: 0 2px;
+    background: transparent;
+    color: #a0a0a0;
+    border-radius: 0;
+    min-width: 0;
 }
 
 #workspaces button:hover {
-    background: #2a2a2a;
     color: #e2e2e2;
 }
 
 #workspaces button.active {
-    background: #e8c349;
-    color: #3c2f00;
+    color: #ffb4a4;
 }
 
 #workspaces button.focused {
-    background: #e8c349;
-    color: #3c2f00;
+    color: #ffb4a4;
 }
 
 #clock {
     padding: 0 8px;
-    color: #e8c349;
-    font-weight: bold;
+    color: #ffb4a4;
 }
 
 #pulseaudio, #wireplumber {
     padding: 0 6px;
-    color: #d4c5a1;
+    color: #f0e68c;
 }
 
-#pulseaudio.muted { color: #919191; }
+#pulseaudio.muted { color: #666; }
 
 #battery {
     padding: 0 6px;
-    color: #accfaf;
+    color: #90ee90;
 }
 
-#battery.warning { color: #accfaf; }
-#battery.critical { color: #ffb4ab; }
+#battery.warning { color: #ffd700; }
+#battery.critical { color: #ff6b6b; }
 
 #cpu {
     padding: 0 6px;
-    color: #ffe083;
+    color: #87ceeb;
 }
 
 #memory {
     padding: 0 6px;
-    color: #accfaf;
+    color: #98fb98;
 }
 
 #network {
     padding: 0 6px;
-    color: #50462a;
+    color: #ffffff;
 }
 
-#network.disconnected { color: #ffb4ab; }
+#network.disconnected { color: #ff6b6b; }
 
 #temperature {
     padding: 0 6px;
-    color: #2f4e35;
+    color: #00ced1;
 }
 
-#temperature.critical { color: #ffb4ab; }
+#temperature.critical { color: #ff6b6b; }
 
 #tray { padding: 0 4px; }
 #tray > .passive { -gtk-icon-effect: dim; }
@@ -108,15 +105,15 @@ tooltip {
 
 #backlight {
     padding: 0 6px;
-    color: #574500;
+    color: #add8e6;
 }
 
 #idle_inhibitor {
     padding: 0 6px;
-    color: #919191;
+    color: #888;
 }
 
 #custom-media, #mpd {
     padding: 0 8px;
-    color: #c7ecca;
+    color: #f0e68c;
 }

@@ -9,16 +9,16 @@
   "niri/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "0"
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
     },
     "persistent-workspaces": {
       "*": 5
@@ -30,41 +30,31 @@
     "max-length": 30
   },
 
-  "custom-power": {
-    "format": "⚡",
-    "tooltip-format": "Click: Switch power profile",
-    "on-click": "powerprofilesctl switch",
-    "on-click-right": "kitty +full niri powermenu"
-  },
-
   "cpu": {
-    "format": " {usage}%",
+    "format": "  {usage}%",
     "interval": 2
   },
 
   "memory": {
-    "format": " {used}%",
+    "format": " 爵 {used}%",
     "interval": 2
   },
 
   "backlight": {
-    "format": "{percent}%",
+    "format": "  {percent}%",
     "scroll-step": 5
   },
 
   "network": {
-    "format-wifi": " {essid}",
-    "format-ethernet": " Wired",
-    "format-disconnected": " Off",
+    "format-wifi": " 󰤨 {essid}",
+    "format-ethernet": " 󰈀 Wired",
+    "format-disconnected": " 󰤭 Off",
     "tooltip-format": "Signal: {signalStrength}%"
   },
 
   "pulseaudio": {
-    "format": " {volume}%",
-    "format-muted": " Mute",
-    "format-icons": {
-      "default": ["", "", ""]
-    },
+    "format": " 󰕈 {volume}%",
+    "format-muted": " 󰖁 Mute",
     "on-click": "pavucontrol"
   },
 
@@ -73,17 +63,16 @@
       "warning": 30,
       "critical": 15
     },
-    "format": " {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-full": " Full",
-    "format-icons": ["", "", "", "", ""],
+    "format": " 󰁹 {capacity}%",
+    "format-charging": " 󰂄 {capacity}%",
+    "format-plugged": " 󰂄 {capacity}%",
+    "format-full": " 󰁹 Full",
     "tooltip-format": "{time}"
   },
 
   "clock": {
-    "format": " {:%H:%M}",
-    "format-alt": " {:%a %d %b}",
+    "format": " 󰥔 {:%H:%M}",
+    "format-alt": " 󰥔 {:%a %d %b}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
 

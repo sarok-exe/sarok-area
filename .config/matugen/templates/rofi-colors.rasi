@@ -1,26 +1,26 @@
 /* Rofi - Full Material You Palette */
 * {
     /* Primary - Main accent */
-    rosewater: #e8c349;
-    flamingo: #caa82f;
-    pink: #e8c349;
-    mauve: #574500;
+    rosewater: #ffb4a4;
+    flamingo: #fb8d75;
+    pink: #ffb4a4;
+    mauve: #7d2c1b;
     
     /* Secondary - Supporting accent */
-    red: #b8aa87;
-    maroon: #9c906e;
-    peach: #827656;
-    yellow: #685e40;
-    green: #50462a;
-    teal: #383016;
-    sky: #221b04;
-    sapphire: #f1e1bb;
+    red: #caa29a;
+    maroon: #ae8880;
+    peach: #926f67;
+    yellow: #775750;
+    green: #5d3f39;
+    teal: #442a24;
+    sky: #2c1510;
+    sapphire: #ffdad3;
     
     /* Tertiary - Emphasis */
-    blue: #accfaf;
-    lavender: #91b495;
-    lavender-alt: #77997b;
-    sky-alt: #5e7f63;
+    blue: #dbc48c;
+    lavender: #bfa973;
+    lavender-alt: #a38f5b;
+    sky-alt: #887544;
     
     /* Surface colors */
     text: #e2e2e2;
@@ -39,9 +39,9 @@
     crust: #131313;
     
     /* Primary shades */
-    primary-dim: #3c2f00;
-    primary-light: #ffe083;
-    primary-mid: #907400;
+    primary-dim: #5e1607;
+    primary-light: #ffdad3;
+    primary-mid: #bb5b46;
     
     /* Error */
     error-light: #93000a;
