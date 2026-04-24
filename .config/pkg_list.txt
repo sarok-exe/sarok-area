@@ -45,6 +45,8 @@ gobject-introspection 1.86.0-2
 grim 1.5.0-2
 gst-plugin-pipewire 1:1.6.4-1
 gtk-doc 1.36.1-1
+gxml 0.20.4-3
+gxml-debug 0.20.4-3
 hblock 3.5.1-1
 hypridle 0.1.7-8
 hyprlock 0.9.5-1
