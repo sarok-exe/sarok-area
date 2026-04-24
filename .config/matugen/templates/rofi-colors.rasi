@@ -33,11 +33,12 @@
     mantle: #131313;
     crust: #131313;
     
+    primary: #87b4a9;
     primary-dim: #2b3400;
     primary-light: #d7ed7c;
     primary-mid: #6d7f19;
     
+    error: #ffb4ab;
     error-light: #93000a;
-    error-dark: #ffb4ab;
     on-error: #ffdad6;
 }
