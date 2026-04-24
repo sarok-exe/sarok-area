@@ -3,11 +3,8 @@
 //spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_ID"
 //spawn-sh-at-startup "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
-
 //spawn-at-startup "bash" "-c" "systemctl --user import-environment XDG_MENU_PREFIX && kbuildsycoca6"
-// spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
-//spawn-at-startup "bash" "-c" "wl-paste --type text --watch cliphist store &"
-//spawn-at-startup "bash" "-c" "wl-paste --type image --watch cliphist store &"
-spawn-at-startup "awww-daemon"
-//spawn-at-startup "swww" "img" "~/Pictures/Wallpapers/god_red.jpg"
-spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/earth.png"
+//spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+
+// Removed: awww-daemon, quickshell, wallpaper at startup (saves resources)
+// Wallpaper persists from last session

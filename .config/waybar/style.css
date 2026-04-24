@@ -1,7 +1,7 @@
-/* Waybar - Full Material You Palette */
+/* Waybar - Clean Minimal Style */
 * {
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 11px;
+    font-size: 13px;
     font-weight: bold;
     min-height: 0;
 }
@@ -12,146 +12,121 @@ window#waybar {
 }
 
 window > box {
-    background: #1f1f1f;
-    border: 1px solid #474747;
-    border-radius: 12px;
-    margin: 3px 6px;
+    background: rgba(30, 30, 30, 0.85);
+    border-radius: 8px;
+    margin: 2px 4px;
 }
 
 tooltip {
-    background: #2a2a2a;
-    border: 1px solid #474747;
-    border-radius: 8px;
+    background: rgba(40, 40, 40, 0.95);
+    border: 1px solid #555;
+    border-radius: 6px;
     color: #e2e2e2;
-    padding: 6px;
+    padding: 4px 8px;
 }
 
-/* Window/Title */
+/* Window/Title - Orange */
 #window {
-    padding: 4px 12px;
+    padding: 0 10px;
     color: #ffb872;
     font-weight: bold;
 }
 
 /* Workspaces */
 #workspaces {
-    padding: 4px 8px;
+    padding: 0 6px;
 }
 
 #workspaces button {
-    padding: 4px 8px;
-    margin: 2px;
-    background: #1f1f1f;
-    color: #c6c6c6;
-    border: 1px solid #474747;
-    border-radius: 8px;
-    min-width: 28px;
+    padding: 2px 6px;
+    margin: 1px;
+    background: rgba(50, 50, 50, 0.7);
+    color: #a0a0a0;
+    border-radius: 4px;
+    min-width: 24px;
 }
 
 #workspaces button:hover {
-    background: #2a2a2a;
+    background: rgba(70, 70, 70, 0.8);
     color: #e2e2e2;
 }
 
 #workspaces button.active {
     background: #ffb872;
-    color: #4a2800;
-    border-color: #ffdcbf;
+    color: #1a1a1a;
 }
 
 #workspaces button.focused {
     background: #ffb872;
-    color: #4a2800;
-    border: 2px solid #ffb872;
+    color: #1a1a1a;
 }
 
-/* Clock */
+/* Clock - Warm Orange */
 #clock {
-    padding: 4px 12px;
+    padding: 0 8px;
     color: #ffb872;
     font-weight: bold;
-    background: #2d1600;
-    border-radius: 8px;
 }
 
-/* Audio */
+/* Audio - Golden */
 #pulseaudio, #wireplumber {
-    padding: 4px 10px;
-    background: #291806;
-    color: #e2c0a4;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #daa520;
 }
 
 #pulseaudio.muted {
-    color: #919191;
-    background: #1f1f1f;
+    color: #666;
 }
 
-/* Battery */
+/* Battery - Green (normal), Yellow (warning), Red (critical) */
 #battery {
-    padding: 4px 10px;
-    background: #171e00;
-    color: #c1cc99;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #90ee90;
 }
 
 #battery.warning {
-    color: #c1cc99;
-    background: #414b24;
+    color: #ffd700;
 }
 
 #battery.critical {
-    color: #ffb4ab;
-    background: #93000a;
+    color: #ff6b6b;
 }
 
-/* CPU */
+/* CPU - Sky Blue */
 #cpu {
-    padding: 4px 10px;
-    background: #2d1600;
-    color: #ffb872;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #87ceeb;
 }
 
-/* Memory */
+/* Memory - Pale Green */
 #memory {
-    padding: 4px 10px;
-    background: #171e00;
-    color: #dde8b3;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #98fb98;
 }
 
-/* Network */
+/* Network - Plum */
 #network {
-    padding: 4px 10px;
-    background: #59422d;
-    color: #ffdcbf;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #dda0dd;
 }
 
 #network.disconnected {
-    color: #ffb4ab;
-    background: #93000a;
+    color: #ff6b6b;
 }
 
-/* Temperature */
+/* Temperature - Cyan */
 #temperature {
-    padding: 4px 10px;
-    background: #414b24;
-    color: #dde8b3;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #00ced1;
 }
 
 #temperature.critical {
-    background: #93000a;
-    color: #ffdad6;
+    color: #ff6b6b;
 }
 
 /* Tray */
 #tray {
-    padding: 2px 6px;
-    background: #1b1b1b;
-    border-radius: 8px;
+    padding: 0 4px;
 }
 
 #tray > .passive {
@@ -162,31 +137,20 @@ tooltip {
     -gtk-icon-effect: highlight;
 }
 
-/* Backlight */
+/* Backlight - Light Blue */
 #backlight {
-    padding: 4px 10px;
-    background: #6a3b00;
-    color: #ffdcbf;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #add8e6;
 }
 
-/* Idle Inhibitor */
+/* Idle Inhibitor - Gray */
 #idle_inhibitor {
-    padding: 4px 10px;
-    background: #353535;
-    color: #ffb872;
-    border-radius: 8px;
+    padding: 0 6px;
+    color: #888;
 }
 
 /* Custom Media/MPD */
 #custom-media, #mpd {
-    padding: 4px 12px;
-    background: linear-gradient(135deg, #4a2800, #412c18);
-    color: #2d1600;
-    border-radius: 8px;
-}
-
-/* Separator style in modules */
-.modules-start > box {
-    background: transparent;
+    padding: 0 8px;
+    color: #f0e68c;
 }

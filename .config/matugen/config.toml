@@ -44,4 +44,17 @@ post_hook   = 'sudo ~/.config/niri-caelestia-sddm/sddm-theme-apply.sh &'
 input_path = '/home/sarok/.config/matugen/templates/obsidian-template.css'
 output_path = '/home/sarok/Documents/Story/.obsidian/snippets/matugen-colors.css'
 
-# Removed waybar template - not working with matugen
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/theme.conf'
+post_hook = 'pkill -USR1 kitty'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/flavors/matugen.yazi/theme.toml'
+
+# Removed waybar template - using custom wallpaper-random script

@@ -1,0 +1,1 @@
+alias wprand ~/Documents/Scripts/wallpaper-random
