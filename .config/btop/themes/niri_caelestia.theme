@@ -19,7 +19,7 @@ theme[main_fg]="#e2e2e2"
 theme[title]="#e2e2e2"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#e8c349"
+theme[hi_fg]="#c1c1ff"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#2a2a2a"
@@ -55,46 +55,46 @@ theme[proc_box]="#474747"
 theme[div_line]="#474747"
 
 # Temperature graph colors
-theme[temp_start]="#accfaf"
-theme[temp_mid]="#d4c5a1"
+theme[temp_start]="#e9b9d3"
+theme[temp_mid]="#c6c4dd"
 theme[temp_end]="#ffb4ab"
 
 # CPU graph colors
-theme[cpu_start]="#accfaf"
-theme[cpu_mid]="#d4c5a1"
+theme[cpu_start]="#e9b9d3"
+theme[cpu_mid]="#c6c4dd"
 theme[cpu_end]="#ffb4ab"
 
 # Mem/Disk free meter
-theme[free_start]="#accfaf"
-theme[free_mid]="#accfaf"
-theme[free_end]="#accfaf"
+theme[free_start]="#e9b9d3"
+theme[free_mid]="#e9b9d3"
+theme[free_end]="#e9b9d3"
 
 # Mem/Disk cached meter
-theme[cached_start]="#e8c349"
-theme[cached_mid]="#e8c349"
-theme[cached_end]="#e8c349"
+theme[cached_start]="#c1c1ff"
+theme[cached_mid]="#c1c1ff"
+theme[cached_end]="#c1c1ff"
 
 # Mem/Disk available meter
-theme[available_start]="#d4c5a1"
-theme[available_mid]="#d4c5a1"
-theme[available_end]="#d4c5a1"
+theme[available_start]="#c6c4dd"
+theme[available_mid]="#c6c4dd"
+theme[available_end]="#c6c4dd"
 
 # Mem/Disk used meter
-theme[used_start]="#accfaf"
-theme[used_mid]="#d4c5a1"
+theme[used_start]="#e9b9d3"
+theme[used_mid]="#c6c4dd"
 theme[used_end]="#ffb4ab"
 
 # Download graph colors
-theme[download_start]="#accfaf"
-theme[download_mid]="#accfaf"
-theme[download_end]="#accfaf"
+theme[download_start]="#e9b9d3"
+theme[download_mid]="#e9b9d3"
+theme[download_end]="#e9b9d3"
 
 # Upload graph colors
-theme[upload_start]="#d4c5a1"
-theme[upload_mid]="#d4c5a1"
-theme[upload_end]="#d4c5a1"
+theme[upload_start]="#c6c4dd"
+theme[upload_mid]="#c6c4dd"
+theme[upload_end]="#c6c4dd"
 
 # Process graph colors
-theme[process_start]="#e8c349"
-theme[process_mid]="#e8c349"
-theme[process_end]="#e8c349"
+theme[process_start]="#c1c1ff"
+theme[process_mid]="#c1c1ff"
+theme[process_end]="#c1c1ff"
