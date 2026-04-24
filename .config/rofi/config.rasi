@@ -6,174 +6,58 @@
 }
 
 configuration {
-    modi: "drun,run";
+    modi: "drun";
     show-icons: true;
-    display-drun: "  Applications";
-    display-run: "  Run";
+    display-drun: "Apps";
     icon-theme: "Papirus";
-    disable-history: false;
-    hide-scrollbar: true;
-    case-sensitive: false;
-    sidebar-mode: false;
 }
 
 listview {
     columns: 1;
     lines: 8;
-    fixed-height: false;
-    fixed-columns: true;
-    cycle: true;
+    fixed-height: true;
+    cycle: false;
     scrollbar: false;
-    border: 0px;
 }
 
 window {
-    transparency: "real";
-    width: 500px;
+    width: 480px;
     border-radius: 10px;
     background-color: @base;
     border: 1px solid @border;
     padding: 8px;
-    location: center;
-    anchor: center;
 }
 
 prompt {
     text-color: @primary;
-    padding: 0px 8px 0px 0px;
 }
 
 inputbar {
     children: ["prompt", "entry"];
     spacing: 8px;
-    margin: 0px 0px 8px 0px;
-    border: 0px;
-    background: transparent;
 }
 
 entry {
     placeholder: "Search...";
     text-color: @text;
     placeholder-color: @text-dim;
-    background: transparent;
-    border: none;
-    padding: 0px;
-}
-
-entry:focus {
-    border: none;
-    text-color: @text-bright;
-}
-
-mainbox {
-    spacing: 0px;
-    margin: 0px;
-    padding: 0px;
-    children: ["inputbar", "listview"];
-    border: 0px;
-    background: transparent;
 }
 
 element {
     spacing: 8px;
-    margin: 2px 0px;
     padding: 6px 10px;
-    border: 0px;
     border-radius: 6px;
-    background: transparent;
-    text-color: @text;
-}
-
-element-icon {
-    background-color: transparent;
-    padding: 0px;
-    margin: 0px 8px 0px 0px;
-    border: none;
-    border-radius: 0px;
-    size: 24px;
-}
-
-element-text {
-    text-color: inherit;
-    vertical-align: 0.5;
-}
-
-element normal.normal {
     background-color: transparent;
     text-color: @text;
 }
 
-element normal.urgent {
-    background-color: transparent;
-    text-color: @urgent;
-}
-
-element normal.selected {
-    background-color: transparent;
+element selected.normal {
+    background-color: @surface;
     text-color: @primary;
+    border-left: 3px solid @primary;
 }
 
 element hover.normal {
     background-color: @surface-hover;
     text-color: @text-bright;
-    border-radius: 6px;
-}
-
-element selected.normal {
-    background-color: @surface;
-    text-color: @primary-bright;
-    border-radius: 6px;
-    border-left: 3px solid @primary;
-}
-
-element alternate.normal {
-    background-color: transparent;
-    text-color: @text-dim;
-}
-
-element alternate.urgent {
-    background-color: transparent;
-    text-color: @urgent;
-}
-
-element alternate.selected {
-    background-color: @surface;
-    text-color: @primary;
-}
-
-element-icon selected {
-    background-color: transparent;
-}
-
-message {
-    background-color: transparent;
-    border: 0px;
-    margin: 8px 0px 0px 0px;
-}
-
-textbox {
-    text-color: @text-dim;
-    background: transparent;
-    border: none;
-    padding: 0px;
-}
-
-button {
-    text-color: @text;
-    background-color: transparent;
-    border: none;
-    padding: 4px 8px;
-    margin: 0px 4px;
-}
-
-button selected {
-    background-color: @surface;
-    text-color: @primary;
-    border-radius: 4px;
-}
-
-scrollbar {
-    background-color: transparent;
-    handle-color: @text-dim;
-    handle-width: 0px;
 }
