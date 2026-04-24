@@ -10,36 +10,38 @@ full_path="$WALLPAPER_DIR/$image"
 awww img "$full_path"
 
 # Generate colors with matugen - using rainbow for more diverse colors
-matugen image "$full_path" --source-color-index 0 --mode dark --type scheme-rainbow --json=hex --old-json-output > /tmp/matugen_colors.json 2>/dev/null
+matugen image "$full_path" --source-color-index 0 --mode dark --type scheme-rainbow --json=hex > /tmp/matugen_colors_raw.json 2>/dev/null
+# Extract just the JSON (truncate at line 1073 to avoid extra output)
+head -n 1073 /tmp/matugen_colors_raw.json > /tmp/matugen_colors.json
 
 # ======== BASE COLORS ========
-BG=$(jq -r '.colors.background.dark' /tmp/matugen_colors.json)
-SURFACE=$(jq -r '.colors.surface.dark' /tmp/matugen_colors.json)
-SURFACE_DIM=$(jq -r '.colors.surface_dim.dark' /tmp/matugen_colors.json)
-SURFACE_BRIGHT=$(jq -r '.colors.surface_bright.dark' /tmp/matugen_colors.json)
-SURFACE_CONTAINER=$(jq -r '.colors.surface_container.dark' /tmp/matugen_colors.json)
-SURFACE_CONTAINER_LOW=$(jq -r '.colors.surface_container_low.dark' /tmp/matugen_colors.json)
-SURFACE_CONTAINER_HIGH=$(jq -r '.colors.surface_container_high.dark' /tmp/matugen_colors.json)
-SURFACE_CONTAINER_HIGHEST=$(jq -r '.colors.surface_container_highest.dark' /tmp/matugen_colors.json)
-SURFACE_CONTAINER_LOWEST=$(jq -r '.colors.surface_container_lowest.dark' /tmp/matugen_colors.json)
-SURFACE_VARIANT=$(jq -r '.colors.surface_variant.dark' /tmp/matugen_colors.json)
-SURFACE_TINT=$(jq -r '.colors.surface_tint.dark' /tmp/matugen_colors.json)
-ON_SURFACE=$(jq -r '.colors.on_surface.dark' /tmp/matugen_colors.json)
-ON_SURFACE_VARIANT=$(jq -r '.colors.on_surface_variant.dark' /tmp/matugen_colors.json)
-OUTLINE=$(jq -r '.colors.outline.dark' /tmp/matugen_colors.json)
-OUTLINE_VARIANT=$(jq -r '.colors.outline_variant.dark' /tmp/matugen_colors.json)
-SCRIM=$(jq -r '.colors.scrim.dark' /tmp/matugen_colors.json)
-SHADOW=$(jq -r '.colors.shadow.dark' /tmp/matugen_colors.json)
+BG=$(jq -r '.colors.background.dark.color' /tmp/matugen_colors.json)
+SURFACE=$(jq -r '.colors.surface.dark.color' /tmp/matugen_colors.json)
+SURFACE_DIM=$(jq -r '.colors.surface_dim.dark.color' /tmp/matugen_colors.json)
+SURFACE_BRIGHT=$(jq -r '.colors.surface_bright.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER=$(jq -r '.colors.surface_container.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_LOW=$(jq -r '.colors.surface_container_low.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_HIGH=$(jq -r '.colors.surface_container_high.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_HIGHEST=$(jq -r '.colors.surface_container_highest.dark.color' /tmp/matugen_colors.json)
+SURFACE_CONTAINER_LOWEST=$(jq -r '.colors.surface_container_lowest.dark.color' /tmp/matugen_colors.json)
+SURFACE_VARIANT=$(jq -r '.colors.surface_variant.dark.color' /tmp/matugen_colors.json)
+SURFACE_TINT=$(jq -r '.colors.surface_tint.dark.color' /tmp/matugen_colors.json)
+ON_SURFACE=$(jq -r '.colors.on_surface.dark.color' /tmp/matugen_colors.json)
+ON_SURFACE_VARIANT=$(jq -r '.colors.on_surface_variant.dark.color' /tmp/matugen_colors.json)
+OUTLINE=$(jq -r '.colors.outline.dark.color' /tmp/matugen_colors.json)
+OUTLINE_VARIANT=$(jq -r '.colors.outline_variant.dark.color' /tmp/matugen_colors.json)
+SCRIM=$(jq -r '.colors.scrim.dark.color' /tmp/matugen_colors.json)
+SHADOW=$(jq -r '.colors.shadow.dark.color' /tmp/matugen_colors.json)
 
 # ======== PRIMARY PALETTE ========
-PRIMARY=$(jq -r '.colors.primary.dark' /tmp/matugen_colors.json)
-ON_PRIMARY=$(jq -r '.colors.on_primary.dark' /tmp/matugen_colors.json)
-PRIMARY_CONTAINER=$(jq -r '.colors.primary_container.dark' /tmp/matugen_colors.json)
-ON_PRIMARY_CONTAINER=$(jq -r '.colors.on_primary_container.dark' /tmp/matugen_colors.json)
-PRIMARY_FIXED=$(jq -r '.colors.primary_fixed.dark' /tmp/matugen_colors.json)
-PRIMARY_FIXED_DIM=$(jq -r '.colors.primary_fixed_dim.dark' /tmp/matugen_colors.json)
-ON_PRIMARY_FIXED=$(jq -r '.colors.on_primary_fixed.dark' /tmp/matugen_colors.json)
-ON_PRIMARY_FIXED_VARIANT=$(jq -r '.colors.on_primary_fixed_variant.dark' /tmp/matugen_colors.json)
+PRIMARY=$(jq -r '.colors.primary.dark.color' /tmp/matugen_colors.json)
+ON_PRIMARY=$(jq -r '.colors.on_primary.dark.color' /tmp/matugen_colors.json)
+PRIMARY_CONTAINER=$(jq -r '.colors.primary_container.dark.color' /tmp/matugen_colors.json)
+ON_PRIMARY_CONTAINER=$(jq -r '.colors.on_primary_container.dark.color' /tmp/matugen_colors.json)
+PRIMARY_FIXED=$(jq -r '.colors.primary_fixed.dark.color' /tmp/matugen_colors.json)
+PRIMARY_FIXED_DIM=$(jq -r '.colors.primary_fixed_dim.dark.color' /tmp/matugen_colors.json)
+ON_PRIMARY_FIXED=$(jq -r '.colors.on_primary_fixed.dark.color' /tmp/matugen_colors.json)
+ON_PRIMARY_FIXED_VARIANT=$(jq -r '.colors.on_primary_fixed_variant.dark.color' /tmp/matugen_colors.json)
 
 # Primary shades from palette
 PRIMARY_0=$(jq -r '.palettes.primary."0"' /tmp/matugen_colors.json)
@@ -52,73 +54,73 @@ PRIMARY_60=$(jq -r '.palettes.primary."60"' /tmp/matugen_colors.json)
 PRIMARY_70=$(jq -r '.palettes.primary."70"' /tmp/matugen_colors.json)
 PRIMARY_80=$(jq -r '.palettes.primary."80"' /tmp/matugen_colors.json)
 PRIMARY_90=$(jq -r '.palettes.primary."90"' /tmp/matugen_colors.json)
-PRIMARY_95=$(jq -r '.palettes.primary."95"' /tmp/matugen_colors.json)
-PRIMARY_99=$(jq -r '.palettes.primary."99"' /tmp/matugen_colors.json)
-PRIMARY_100=$(jq -r '.palettes.primary."100"' /tmp/matugen_colors.json)
+PRIMARY_95=$(jq -r '.palettes.primary."95".color' /tmp/matugen_colors.json)
+PRIMARY_99=$(jq -r '.palettes.primary."99".color' /tmp/matugen_colors.json)
+PRIMARY_100=$(jq -r '.palettes.primary."100".color' /tmp/matugen_colors.json)
 
 # ======== SECONDARY PALETTE ========
-SECONDARY=$(jq -r '.colors.secondary.dark' /tmp/matugen_colors.json)
-ON_SECONDARY=$(jq -r '.colors.on_secondary.dark' /tmp/matugen_colors.json)
-SECONDARY_CONTAINER=$(jq -r '.colors.secondary_container.dark' /tmp/matugen_colors.json)
-ON_SECONDARY_CONTAINER=$(jq -r '.colors.on_secondary_container.dark' /tmp/matugen_colors.json)
-SECONDARY_FIXED=$(jq -r '.colors.secondary_fixed.dark' /tmp/matugen_colors.json)
-SECONDARY_FIXED_DIM=$(jq -r '.colors.secondary_fixed_dim.dark' /tmp/matugen_colors.json)
-ON_SECONDARY_FIXED=$(jq -r '.colors.on_secondary_fixed.dark' /tmp/matugen_colors.json)
-ON_SECONDARY_FIXED_VARIANT=$(jq -r '.colors.on_secondary_fixed_variant.dark' /tmp/matugen_colors.json)
+SECONDARY=$(jq -r '.colors.secondary.dark.color' /tmp/matugen_colors.json)
+ON_SECONDARY=$(jq -r '.colors.on_secondary.dark.color' /tmp/matugen_colors.json)
+SECONDARY_CONTAINER=$(jq -r '.colors.secondary_container.dark.color' /tmp/matugen_colors.json)
+ON_SECONDARY_CONTAINER=$(jq -r '.colors.on_secondary_container.dark.color' /tmp/matugen_colors.json)
+SECONDARY_FIXED=$(jq -r '.colors.secondary_fixed.dark.color' /tmp/matugen_colors.json)
+SECONDARY_FIXED_DIM=$(jq -r '.colors.secondary_fixed_dim.dark.color' /tmp/matugen_colors.json)
+ON_SECONDARY_FIXED=$(jq -r '.colors.on_secondary_fixed.dark.color' /tmp/matugen_colors.json)
+ON_SECONDARY_FIXED_VARIANT=$(jq -r '.colors.on_secondary_fixed_variant.dark.color' /tmp/matugen_colors.json)
 
-SECONDARY_10=$(jq -r '.palettes.secondary."10"' /tmp/matugen_colors.json)
-SECONDARY_20=$(jq -r '.palettes.secondary."20"' /tmp/matugen_colors.json)
-SECONDARY_30=$(jq -r '.palettes.secondary."30"' /tmp/matugen_colors.json)
-SECONDARY_40=$(jq -r '.palettes.secondary."40"' /tmp/matugen_colors.json)
-SECONDARY_50=$(jq -r '.palettes.secondary."50"' /tmp/matugen_colors.json)
-SECONDARY_60=$(jq -r '.palettes.secondary."60"' /tmp/matugen_colors.json)
-SECONDARY_70=$(jq -r '.palettes.secondary."70"' /tmp/matugen_colors.json)
-SECONDARY_80=$(jq -r '.palettes.secondary."80"' /tmp/matugen_colors.json)
-SECONDARY_90=$(jq -r '.palettes.secondary."90"' /tmp/matugen_colors.json)
+SECONDARY_10=$(jq -r '.palettes.secondary."10".color' /tmp/matugen_colors.json)
+SECONDARY_20=$(jq -r '.palettes.secondary."20".color' /tmp/matugen_colors.json)
+SECONDARY_30=$(jq -r '.palettes.secondary."30".color' /tmp/matugen_colors.json)
+SECONDARY_40=$(jq -r '.palettes.secondary."40".color' /tmp/matugen_colors.json)
+SECONDARY_50=$(jq -r '.palettes.secondary."50".color' /tmp/matugen_colors.json)
+SECONDARY_60=$(jq -r '.palettes.secondary."60".color' /tmp/matugen_colors.json)
+SECONDARY_70=$(jq -r '.palettes.secondary."70".color' /tmp/matugen_colors.json)
+SECONDARY_80=$(jq -r '.palettes.secondary."80".color' /tmp/matugen_colors.json)
+SECONDARY_90=$(jq -r '.palettes.secondary."90".color' /tmp/matugen_colors.json)
 
 # ======== TERTIARY PALETTE ========
-TERTIARY=$(jq -r '.colors.tertiary.dark' /tmp/matugen_colors.json)
-ON_TERTIARY=$(jq -r '.colors.on_tertiary.dark' /tmp/matugen_colors.json)
-TERTIARY_CONTAINER=$(jq -r '.colors.tertiary_container.dark' /tmp/matugen_colors.json)
-ON_TERTIARY_CONTAINER=$(jq -r '.colors.on_tertiary_container.dark' /tmp/matugen_colors.json)
-TERTIARY_FIXED=$(jq -r '.colors.tertiary_fixed.dark' /tmp/matugen_colors.json)
-TERTIARY_FIXED_DIM=$(jq -r '.colors.tertiary_fixed_dim.dark' /tmp/matugen_colors.json)
-ON_TERTIARY_FIXED=$(jq -r '.colors.on_tertiary_fixed.dark' /tmp/matugen_colors.json)
-ON_TERTIARY_FIXED_VARIANT=$(jq -r '.colors.on_tertiary_fixed_variant.dark' /tmp/matugen_colors.json)
+TERTIARY=$(jq -r '.colors.tertiary.dark.color' /tmp/matugen_colors.json)
+ON_TERTIARY=$(jq -r '.colors.on_tertiary.dark.color' /tmp/matugen_colors.json)
+TERTIARY_CONTAINER=$(jq -r '.colors.tertiary_container.dark.color' /tmp/matugen_colors.json)
+ON_TERTIARY_CONTAINER=$(jq -r '.colors.on_tertiary_container.dark.color' /tmp/matugen_colors.json)
+TERTIARY_FIXED=$(jq -r '.colors.tertiary_fixed.dark.color' /tmp/matugen_colors.json)
+TERTIARY_FIXED_DIM=$(jq -r '.colors.tertiary_fixed_dim.dark.color' /tmp/matugen_colors.json)
+ON_TERTIARY_FIXED=$(jq -r '.colors.on_tertiary_fixed.dark.color' /tmp/matugen_colors.json)
+ON_TERTIARY_FIXED_VARIANT=$(jq -r '.colors.on_tertiary_fixed_variant.dark.color' /tmp/matugen_colors.json)
 
-TERTIARY_10=$(jq -r '.palettes.tertiary."10"' /tmp/matugen_colors.json)
-TERTIARY_20=$(jq -r '.palettes.tertiary."20"' /tmp/matugen_colors.json)
-TERTIARY_30=$(jq -r '.palettes.tertiary."30"' /tmp/matugen_colors.json)
-TERTIARY_40=$(jq -r '.palettes.tertiary."40"' /tmp/matugen_colors.json)
-TERTIARY_50=$(jq -r '.palettes.tertiary."50"' /tmp/matugen_colors.json)
-TERTIARY_60=$(jq -r '.palettes.tertiary."60"' /tmp/matugen_colors.json)
-TERTIARY_70=$(jq -r '.palettes.tertiary."70"' /tmp/matugen_colors.json)
-TERTIARY_80=$(jq -r '.palettes.tertiary."80"' /tmp/matugen_colors.json)
-TERTIARY_90=$(jq -r '.palettes.tertiary."90"' /tmp/matugen_colors.json)
+TERTIARY_10=$(jq -r '.palettes.tertiary."10".color' /tmp/matugen_colors.json)
+TERTIARY_20=$(jq -r '.palettes.tertiary."20".color' /tmp/matugen_colors.json)
+TERTIARY_30=$(jq -r '.palettes.tertiary."30".color' /tmp/matugen_colors.json)
+TERTIARY_40=$(jq -r '.palettes.tertiary."40".color' /tmp/matugen_colors.json)
+TERTIARY_50=$(jq -r '.palettes.tertiary."50".color' /tmp/matugen_colors.json)
+TERTIARY_60=$(jq -r '.palettes.tertiary."60".color' /tmp/matugen_colors.json)
+TERTIARY_70=$(jq -r '.palettes.tertiary."70".color' /tmp/matugen_colors.json)
+TERTIARY_80=$(jq -r '.palettes.tertiary."80".color' /tmp/matugen_colors.json)
+TERTIARY_90=$(jq -r '.palettes.tertiary."90".color' /tmp/matugen_colors.json)
 
 # ======== ERROR PALETTE ========
-ERROR=$(jq -r '.colors.error.dark' /tmp/matugen_colors.json)
-ON_ERROR=$(jq -r '.colors.on_error.dark' /tmp/matugen_colors.json)
-ERROR_CONTAINER=$(jq -r '.colors.error_container.dark' /tmp/matugen_colors.json)
-ON_ERROR_CONTAINER=$(jq -r '.colors.on_error_container.dark' /tmp/matugen_colors.json)
+ERROR=$(jq -r '.colors.error.dark.color' /tmp/matugen_colors.json)
+ON_ERROR=$(jq -r '.colors.on_error.dark.color' /tmp/matugen_colors.json)
+ERROR_CONTAINER=$(jq -r '.colors.error_container.dark.color' /tmp/matugen_colors.json)
+ON_ERROR_CONTAINER=$(jq -r '.colors.on_error_container.dark.color' /tmp/matugen_colors.json)
 
 # ======== NEUTRAL PALETTE ========
-NEUTRAL_10=$(jq -r '.palettes.neutral."10"' /tmp/matugen_colors.json)
-NEUTRAL_20=$(jq -r '.palettes.neutral."20"' /tmp/matugen_colors.json)
-NEUTRAL_30=$(jq -r '.palettes.neutral."30"' /tmp/matugen_colors.json)
-NEUTRAL_40=$(jq -r '.palettes.neutral."40"' /tmp/matugen_colors.json)
-NEUTRAL_50=$(jq -r '.palettes.neutral."50"' /tmp/matugen_colors.json)
-NEUTRAL_60=$(jq -r '.palettes.neutral."60"' /tmp/matugen_colors.json)
-NEUTRAL_70=$(jq -r '.palettes.neutral."70"' /tmp/matugen_colors.json)
-NEUTRAL_80=$(jq -r '.palettes.neutral."80"' /tmp/matugen_colors.json)
-NEUTRAL_90=$(jq -r '.palettes.neutral."90"' /tmp/matugen_colors.json)
-NEUTRAL_95=$(jq -r '.palettes.neutral."95"' /tmp/matugen_colors.json)
-NEUTRAL_99=$(jq -r '.palettes.neutral."99"' /tmp/matugen_colors.json)
+NEUTRAL_10=$(jq -r '.palettes.neutral."10".color' /tmp/matugen_colors.json)
+NEUTRAL_20=$(jq -r '.palettes.neutral."20".color' /tmp/matugen_colors.json)
+NEUTRAL_30=$(jq -r '.palettes.neutral."30".color' /tmp/matugen_colors.json)
+NEUTRAL_40=$(jq -r '.palettes.neutral."40".color' /tmp/matugen_colors.json)
+NEUTRAL_50=$(jq -r '.palettes.neutral."50".color' /tmp/matugen_colors.json)
+NEUTRAL_60=$(jq -r '.palettes.neutral."60".color' /tmp/matugen_colors.json)
+NEUTRAL_70=$(jq -r '.palettes.neutral."70".color' /tmp/matugen_colors.json)
+NEUTRAL_80=$(jq -r '.palettes.neutral."80".color' /tmp/matugen_colors.json)
+NEUTRAL_90=$(jq -r '.palettes.neutral."90".color' /tmp/matugen_colors.json)
+NEUTRAL_95=$(jq -r '.palettes.neutral."95".color' /tmp/matugen_colors.json)
+NEUTRAL_99=$(jq -r '.palettes.neutral."99".color' /tmp/matugen_colors.json)
 
 # ======== INVERSE COLORS ========
-INVERSE_SURFACE=$(jq -r '.colors.inverse_surface.dark' /tmp/matugen_colors.json)
-INVERSE_ON_SURFACE=$(jq -r '.colors.inverse_on_surface.dark' /tmp/matugen_colors.json)
-INVERSE_PRIMARY=$(jq -r '.colors.inverse_primary.dark' /tmp/matugen_colors.json)
+INVERSE_SURFACE=$(jq -r '.colors.inverse_surface.dark.color' /tmp/matugen_colors.json)
+INVERSE_ON_SURFACE=$(jq -r '.colors.inverse_on_surface.dark.color' /tmp/matugen_colors.json)
+INVERSE_PRIMARY=$(jq -r '.colors.inverse_primary.dark.color' /tmp/matugen_colors.json)
 
 # Set GNOME dark mode
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' 2>/dev/null
@@ -278,9 +280,14 @@ cat > "$HOME/.config/rofi/colors.rasi" << EOF
 EOF
 
 # ============================================
-# UPDATE KITTY (rich theme)
+# UPDATE KITTY (rich theme with wallpaper background)
 # ============================================
 cat > "$HOME/.config/kitty/theme.conf" << EOF
+# Wallpaper background
+background_image $full_path
+background_anchoring top
+background_tint 0.7
+
 # Base colors
 foreground              $ON_SURFACE
 background              $SURFACE
