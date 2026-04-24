@@ -108,6 +108,7 @@ binds {
     // === Apps ===
     Mod+Z hotkey-overlay-title="Planify" { spawn "flatpak" "run" "io.github.alainm23.planify"; }
     Mod+M hotkey-overlay-title="rmpc" { spawn "kitty" "-e" "rmpc"; }
+    Mod+Shift+A hotkey-overlay-title="Almaany" { spawn "xdg-open" "https://www.almaany.com/"; }
 
     // === Sizing & Layout ===
     Mod+R { switch-preset-column-width; }
