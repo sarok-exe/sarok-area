@@ -1,47 +1,12 @@
-/* Rofi - Clean Dark Theme (matching waybar) */
+/* Rofi Colors - matching waybar */
 * {
-    /* Base */
     background: #1a1a1a;
-    base: #1e1e1e;
-    base-dark: #181818;
-    base-light: #2a2a2a;
-    
-    /* Text */
+    base: #252525;
     text: #e2e2e2;
     text-dim: #888888;
-    text-bright: #ffffff;
-    
-    /* Primary - Orange */
     primary: #ffb4a4;
     primary-bright: #ffd4c4;
-    primary-dim: #cc8a7a;
-    
-    /* Secondary - Yellow */
-    secondary: #f0e68c;
-    secondary-bright: #fff0a0;
-    secondary-dim: #c0b060;
-    
-    /* Accent */
-    accent: #87ceeb;
-    accent-bright: #add8e6;
-    accent-dim: #5f9ea0;
-    
-    /* Status */
-    urgent: #ff6b6b;
-    warning: #ffd700;
-    success: #90ee90;
-    info: #87ceeb;
-    
-    /* Surface */
-    surface: #262626;
-    surface-hover: #333333;
-    surface-selected: #404040;
-    
-    /* Border */
+    surface: #2d2d2d;
+    surface-hover: #3a3a3a;
     border: #404040;
-    border-focus: #ffb4a4;
-    
-    /* Misc */
-    transparent: transparent;
-    separator: #404040;
 }
