@@ -1,117 +1,33 @@
-@import "colors.rasi"
-
+/* Rofi Colors */
 * {
-    font: "JetBrainsMono Nerd Font 13";
-    g-spacing: 12px;
-    g-margin: 0;
-    b-radius: 12px;
-    g-padding: 12px;
-    w-padding: 16px;
+    background: #131313;
+    base: #131313;
+    text: #e2e2e2;
+    dim: #919191;
+    lavender: #87b4a9;
+    surface: #1f1f1f;
+    hover: #2a2a2a;
 }
 
 configuration {
     modi: "drun";
     show-icons: true;
     display-drun: "  ";
-    icon-theme: "Adwaita";
-    disable-history: false;
 }
 
 listview {
-    columns: 1;
     lines: 8;
-    fixed-height: true;
-    fixed-columns: true;
-    cycle: false;
-    scrollbar: false;
-    border: 0px solid;
-}
-
-window {
-    transparency: "real";
-    width: 480px;
-    border-radius: @b-radius;
-    background-color: @base;
-    border: 2px solid;
-    border-color: @surface0;
-    padding: @w-padding;
-}
-
-prompt {
-    text-color: @lavender;
-}
-
-inputbar {
-    children: ["prompt", "entry"];
-    spacing: @g-spacing;
-}
-
-entry {
-    placeholder: "Search Apps";
-    text-color: @text;
-    placeholder-color: @overlay0;
-}
-
-mainbox {
-    spacing: @g-spacing;
-    margin: @g-margin;
-    padding: @g-padding;
-    children: ["inputbar", "listview", "message"];
 }
 
 element {
-    spacing: @g-spacing;
-    margin: @g-margin;
     padding: 8px 12px;
-    border: 0px solid;
-    border-radius: @b-radius;
-    background-color: transparent;
-    text-color: @text;
-    border-color: transparent;
+    border-radius: 12px;
 }
 
-element-icon {
-    background-color: transparent;
-    padding: 0px;
-    margin: 0px;
-    border: none;
-    border-radius: 0px;
-}
-
-element-icon selected {
-    background-color: transparent;
-}
-
-element normal.normal {
-    background-color: transparent;
-    text-color: @text;
-}
-
-element alternate.normal {
-    background-color: @surface0;
-    text-color: @text;
-}
-
-element selected.active {
-    background-color: transparent;
-    text-color: @lavender;
-}
-
-element selected.normal {
-    background-color: transparent;
+element selected {
     text-color: @lavender;
 }
 
 element hover {
-    background-color: @surface0;
-    text-color: @text;
-}
-
-message {
-    background-color: transparent;
-    border: 0px solid;
-}
-
-textbox {
-    text-color: @overlay0;
+    background-color: @hover;
 }

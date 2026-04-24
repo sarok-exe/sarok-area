@@ -3,7 +3,7 @@ name = "matugen"
 
 [fg]
 normal = "#e2e2e2"
-bold = "#d6c950"
+bold = "#bbd063"
 dim = "#c6c6c6"
 
 [bg]
@@ -12,32 +12,34 @@ bold = "#1f1f1f"
 
 [border]
 normal = "#919191"
-active = "#d6c950"
+active = "#bbd063"
 
 [selection]
-fg = "#363100"
-bg = "#d6c950"
+fg = "#2b3400"
+bg = "#bbd063"
 
 [scrollbar]
-fg = "#d6c950"
+fg = "#bbd063"
 bg = "#1f1f1f"
 
 [separator]
 fg = "#474747"
 
 [cursor]
-fg = "#363100"
-bg = "#d6c950"
+fg = "#2b3400"
+bg = "#bbd063"
 
 [link]
-fg = "#d6c950"
-hover = "#d6c950"
+fg = "#bbd063"
+hover = "{
+  "color": "#bbd063"
+}"
 
 [link_hint]
-fg = "#cec7a3"
+fg = "#c5c9a8"
 
 [marker]
-fg = "#a6d0b8"
+fg = "#a1d0c4"
 
 [flag]
 fg = "#ffb4ab"
@@ -47,27 +49,27 @@ fg = "#e2e2e2"
 bg = "#1f1f1f"
 
 [warning]
-fg = "#c2ecd3"
-bg = "#284e3c"
+fg = "#bdece0"
+bg = "#214e45"
 
 [error]
 fg = "#ffb4ab"
 bg = "#93000a"
 
 [spinner]
-fg = "#d6c950"
+fg = "#bbd063"
 
 [status]
-loading = "#d6c950"
+loading = "#bbd063"
 
 [title]
 fg = "#e2e2e2"
 bg = "#1f1f1f"
 
 [extra]
-prompt = "#d6c950"
-success = "#cec7a3"
-warning = "#a6d0b8"
+prompt = "#bbd063"
+success = "#c5c9a8"
+warning = "#a1d0c4"
 
 [input]
 fg = "#e2e2e2"
@@ -78,8 +80,8 @@ fg = "#e2e2e2"
 bg = "#2a2a2a"
 
 [tab_active]
-fg = "#363100"
-bg = "#d6c950"
+fg = "#2b3400"
+bg = "#bbd063"
 
 [tab_sep]
 fg = "#919191"

@@ -1,44 +1,25 @@
-/* Rofi - Full Material You Palette */
+/* Rofi - Theme (matching waybar) */
 * {
-    rosewater: #bbd063;
-    flamingo: #a0b44b;
-    pink: #bbd063;
-    mauve: #3f4c00;
-    
-    red: #a9ae8e;
-    maroon: #8f9475;
-    peach: #757a5d;
-    yellow: #5c6146;
-    green: #444930;
-    teal: #2e331b;
-    sky: #191d08;
-    sapphire: #e1e6c3;
-    
-    blue: #a1d0c4;
-    lavender: #87b4a9;
-    lavender-alt: #6c998f;
-    sky-alt: #537f75;
-    
-    text: #e2e2e2;
-    subtext1: #c6c6c6;
-    subtext0: #919191;
-    overlay2: #474747;
-    overlay1: #2a2a2a;
-    overlay0: #1f1f1f;
-    surface2: #353535;
-    surface1: #2a2a2a;
-    surface0: #1f1f1f;
-    
+    background: #131313;
     base: #131313;
-    mantle: #131313;
-    crust: #131313;
-    
-    primary: #87b4a9;
-    primary-dim: #2b3400;
-    primary-light: #d7ed7c;
-    primary-mid: #6d7f19;
-    
-    error: #ffb4ab;
-    error-light: #93000a;
-    on-error: #ffdad6;
+    text: #e2e2e2;
+    text-dim: #c6c6c6;
+    text-bright: #e2e2e2;
+    primary: #bbd063;
+    primary-bright: {
+  "color": "#d7ed7c"
+};
+    primary-dim: #d7ed7c;
+    secondary: #c5c9a8;
+    accent: #a1d0c4;
+    urgent: #ffb4ab;
+    warning: #a1d0c4;
+    success: #a1d0c4;
+    surface: #1f1f1f;
+    surface-hover: #2a2a2a;
+    surface-selected: #2a2a2a;
+    border: #474747;
+    border-focus: #bbd063;
+    separator: #474747;
+    transparent: transparent;
 }
