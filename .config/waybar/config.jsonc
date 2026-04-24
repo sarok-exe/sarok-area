@@ -1,6 +1,7 @@
 {
   "position": "top",
   "width": 1600,
+  "height": 20,
   "modules-left": ["niri/workspaces"],
   "modules-center": ["niri/window"],
   "modules-right": ["tray", "cpu", "memory", "backlight", "network", "pulseaudio", "battery", "clock"],

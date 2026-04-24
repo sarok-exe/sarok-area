@@ -1,0 +1,7 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    address: "127.0.0.1:6605",
+    theme: Some("/home/sarok/.config/rmpc/themes/default.ron"),
+)

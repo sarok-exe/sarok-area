@@ -1,0 +1,105 @@
+* {
+    normal-foreground: #ffffff;
+    normal-background: #2e3440;
+    urgent-background: #bf616a;
+    urgent-foreground: #ffffff;
+    active-background: #5e81ac;
+    active-foreground: #ffffff;
+    selected-normal-background: #4c566a;
+    selected-normal-foreground: #ffffff;
+    selected-urgent-background: #bf616a;
+    selected-urgent-foreground: #ffffff;
+    alternate-normal-foreground: #d8dee9;
+    var-win-bg: #2e3440;
+    var-message-bg: #3b4252;
+    var-text-dim: #8fbcbb;
+    var-text-def: #eceff4;
+    var-input-bg: #434c5e;
+}
+
+window {
+    background-color: var(var-win-bg);
+}
+
+textbox {
+    background-color: var(var-message-bg);
+    text-color: var(var-text-dim);
+}
+
+button {
+    text-color: var(normal-foreground);
+}
+
+button selected {
+    background-color: var(selected-normal-background);
+    text-color: var(selected-normal-foreground);
+}
+
+inputbar {
+    background-color: var(var-input-bg);
+    text-color: var(var-text-def);
+}
+
+entry {
+    text-color: var(var-text-def);
+    placeholder-color: var(var-text-dim);
+}
+
+prompt {
+    text-color: var(var-text-dim);
+}
+
+scrollbar {
+    handle-color: var(normal-foreground);
+}
+
+overlay {
+    background-color: var(normal-foreground);
+}
+
+case-indicator {
+    text-color: var(normal-foreground);
+}
+
+element normal normal {
+    text-color: var(normal-foreground);
+}
+
+element normal urgent {
+    background-color: var(urgent-background);
+    text-color: var(urgent-foreground);
+}
+
+element normal active {
+    background-color: var(active-background);
+    text-color: var(active-foreground);
+}
+
+element selected normal {
+    background-color: var(selected-normal-background);
+    text-color: var(selected-normal-foreground);
+}
+
+element selected urgent {
+    background-color: var(selected-urgent-background);
+    text-color: var(selected-urgent-foreground);
+}
+
+element selected active {
+    background-color: var(selected-normal-background);
+    text-color: var(selected-normal-foreground);
+}
+
+element alternate normal {
+    text-color: var(alternate-normal-foreground);
+}
+
+element alternate urgent {
+    background-color: var(urgent-background);
+    text-color: var(urgent-foreground);
+}
+
+element alternate active {
+    background-color: var(active-background);
+    text-color: var(active-foreground);
+}

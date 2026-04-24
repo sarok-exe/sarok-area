@@ -1,0 +1,10 @@
+* {
+    rosewater: #ffb2be; flamingo: #e4bdc2; pink: #ebbe90; mauve: #713340;
+    red: #ffb4ab; maroon: #93000a; peach: #ffd9de; yellow: #ffddbb;
+    green: #e4bdc2; teal: #ebbe90; sky: #ffd9de; sapphire: #ffd9de;
+    blue: #ffb2be; lavender: #713340; text: #f0dee0;
+    subtext1: #d6c2c4; subtext0: #9f8c8e;
+    overlay2: #524345; overlay1: #261d1f; overlay0: #312829;
+    surface2: #312829; surface1: #3c3233; surface0: #261d1f;
+    base: #191112; mantle: #191112; crust: #191112;
+}

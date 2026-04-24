@@ -1,11 +1,11 @@
-spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "flameshot"
+//spawn-at-startup "fcitx5" "-d"
+//spawn-at-startup "flameshot"
 //spawn-at-startup "ags" "run" "/home/sarok/.config/ags/app.js"
 spawn-at-startup "com.todoist.Todoist"
 spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
 //spawn-at-startup "swww" "img" "~/Pictures/Wallpapers/god_red.jpg"
-spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/1_cat.png"
+spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/earth.png"
 
 config-notification {
     disable-failed
@@ -45,7 +45,7 @@ input {
 }
 
 layout {
-    gaps 2
+    gaps 6
     background-color "transparent"
     center-focused-column "never"
     preset-column-widths {
@@ -56,7 +56,7 @@ layout {
     default-column-width { proportion 0.5; }
     
     border {
-        width 1
+        width 2
         active-color   "#707070"
         inactive-color "#d0d0d0"
         urgent-color   "#cc4444"
@@ -142,7 +142,7 @@ animations {
 }
 
 window-rule {
-    geometry-corner-radius 1
+    geometry-corner-radius 8
     clip-to-geometry true
 }
 
@@ -155,9 +155,7 @@ binds {
     Mod+C { toggle-window-floating; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-    //Mod+Shift+T { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    //Mod+W { toggle-column-tabbed-display; }
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
@@ -238,38 +236,28 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
+    Mod+T { spawn "Telegram"; }
     Mod+D { spawn "rofi" "-show" "drun"; }
-    // Quickshell bindings disabled - using AGS instead
-    //Mod+X { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "controlCenter" "open"; }
-    //Mod+Shift+D { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "dashboard"; }
-    //Mod+V { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "clipboard" "toggle"; }
-    //Mod+Alt+L { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "lock" "lock"; }
-    //Mod+Alt+S { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "picker" "open"; }
-    //Mod+F4 { spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "session"; }
     Mod+Return { spawn "kitty"; }
     Mod+Ctrl+T { spawn "sh" "-c" "GDK_BACKEND=x11 XDG_CURRENT_DESKTOP=GNOME GTK_USE_PORTAL=1 dialect"; }
     Mod+E { spawn "kitty" "-e" "yazi" "toggle-overview"; }
     Mod+O { spawn "obsidian" "toggle-overview"; }
     Mod+B { spawn "brave" "--password-store=basic"; }
-    Mod+Y { spawn "kitty" "-e" "impala"; }
     Mod+N { spawn "kitty" "-e" "wiremix"; }
-    Mod+Z { spawn "com.todoist.Todoist"; }
-    Mod+W { spawn "kitty" "-e" "nmtui"; }
+    Mod+Z { spawn "sh" "-c" "GDK_BACKEND=x11 XDG_CURRENT_DESKTOP=GNOME GTK_USE_PORTAL=1 planify"; }
 
-    Mod+S { spawn "niri" "msg" "action" "toggle-overview"; }
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Print { spawn "flameshot" "gui"; }
-    Ctrl+Print { screenshot-screen; }
+    Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    Mod+T { spawn "sh" "-c" "~/Documents/Scripts/ocr_selection.sh"; }
+    Mod+S { spawn "sh" "-c" "~/.config/scripts/ocr_selection.sh"; }
     Mod+Shift+T { spawn "sh" "-c" "grim - | tesseract stdin stdout -l eng | wl-copy && notify-send OCR 'Fullscreen text copied' -t 2000"; }
-    Mod+P { spawn "sh" "-c" "~/Documents/Scripts/wayclick/dusky_wayclick.sh"; }
+    Mod+P { spawn "sh" "-c" "~/.config/scripts/wayclick/dusky_wayclick.sh"; }
 
-    Mod+Ctrl+bracketright { spawn "sh" "-c" "~/Documents/Scripts/fractional_scale.sh in"; }
-    Mod+Ctrl+bracketleft { spawn "sh" "-c" "~/Documents/Scripts/fractional_scale.sh out"; }
-    Mod+Ctrl+0 { spawn "sh" "-c" "~/Documents/Scripts/fractional_scale.sh reset"; }
+    Mod+Ctrl+bracketright { spawn "sh" "-c" "~/.config/scripts/fractional_scale.sh in"; }
+    Mod+Ctrl+bracketleft { spawn "sh" "-c" "~/.config/scripts/fractional_scale.sh out"; }
+    Mod+Ctrl+0 { spawn "sh" "-c" "~/.config/scripts/fractional_scale.sh reset"; }
 
     Mod+Shift+E { quit; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
@@ -288,3 +276,4 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
     XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
 }
+

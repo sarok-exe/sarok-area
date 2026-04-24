@@ -1,0 +1,5 @@
+{
+    "editor.defaultFormatter": "theqtcompany.qt-qml",
+    "qt-qml.qmlls.useQmlImportPathEnvVar": false,
+    "codium.codeCompletion.enable": false
+}
