@@ -24,8 +24,12 @@ window {
     width: 480px;
     border-radius: 10px;
     background-color: @base;
-    border: 1px solid @border;
     padding: 8px;
+}
+
+window border {
+    width: 2px;
+    color: @border;
 }
 
 prompt {
@@ -54,7 +58,11 @@ element {
 element selected.normal {
     background-color: @surface;
     text-color: @primary;
-    border-left: 3px solid @primary;
+}
+
+element selected.normal border {
+    width: 3px;
+    color: @primary;
 }
 
 element hover.normal {
