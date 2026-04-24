@@ -12,8 +12,8 @@ default-timeout=5000
 border-color=#919191
 
 [urgency=normal]
-border-color=#ffb3ac
-background-color=#7e2b27
+border-color=#b2c5ff
+background-color=#1e438f
 
 [urgency=high]
 border-color=#ffb4ab

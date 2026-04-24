@@ -85,6 +85,7 @@ noto-fonts-emoji 1:2.051-1
 obsidian-bin 1.12.7-1
 openssh 10.3p1-1
 otf-space-grotesk 2-2
+pavucontrol 1:6.2-1
 pavucontrol-qt 2.4.0-1
 pipewire 1:1.6.4-1
 pipewire-alsa 1:1.6.4-1

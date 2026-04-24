@@ -125,10 +125,10 @@ PKGS=(
     kitty fish starship zoxide thefuck neovim
     yazi fastfetch wiremix
     # System Monitoring & Utils
-    btop cava dunst libqalculate brightnessctl pamixer
+    btop cava dunst libqalculate brightnessctl pamixer pavucontrol
     networkmanager openssh rsync zip unzip nload htop
     # Bar & Notifications
-    waybar swaync wlogout mako
+    waybar swaync wlogout mako rofi
     # Media & Graphics
     mpv imv feh drawing inkscape flameshot
     # Fonts
