@@ -32,6 +32,7 @@ binds {
     Mod+E { spawn "kitty" "-e" "yazi" "toggle-overview"; }
     Mod+B hotkey-overlay-title="Brave Browser" { spawn "brave"; }
     Mod+X hotkey-overlay-title="IDE" { spawn "code-insiders"; }
+    Mod+A hotkey-overlay-title="Almaany" { spawn-sh "xdg-open https://www.almaany.com/"; }
     // === Quit Niri ===
     Mod+Shift+E { quit; }
 
