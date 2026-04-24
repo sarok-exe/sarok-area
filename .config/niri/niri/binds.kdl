@@ -32,7 +32,6 @@ binds {
     Mod+E { spawn "kitty" "-e" "yazi" "toggle-overview"; }
     Mod+B hotkey-overlay-title="Brave Browser" { spawn "brave"; }
     Mod+X hotkey-overlay-title="IDE" { spawn "code-insiders"; }
-    Mod+A hotkey-overlay-title="Almaany" { spawn-sh "xdg-open https://www.almaany.com/"; }
     // === Quit Niri ===
     Mod+Shift+E { quit; }
 
@@ -108,7 +107,6 @@ binds {
     // === Apps ===
     Mod+Z hotkey-overlay-title="Planify" { spawn "flatpak" "run" "io.github.alainm23.planify"; }
     Mod+M hotkey-overlay-title="rmpc" { spawn "kitty" "-e" "rmpc"; }
-    Mod+Shift+A hotkey-overlay-title="Almaany" { spawn "xdg-open" "https://www.almaany.com/"; }
 
     // === Sizing & Layout ===
     Mod+R { switch-preset-column-width; }
