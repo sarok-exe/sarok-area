@@ -18,6 +18,9 @@ CONFIGS=(
     "dunst"
     "nvim"
     "starship.toml"
+    "mpd"
+    "rmpc"
+    "matugen"
 )
 
 echo "Starting sync: Moving everything into $DEST_CONFIG"
@@ -49,6 +52,6 @@ echo "Generating pkg_list.txt inside .config/"
 pacman -Qe > "$DEST_CONFIG/pkg_list.txt"
 
 cd "$PROJECT_DIR"
-rm -rf btop cava dunst kitty niri niri_caelestia quickshell thefuck yazi nvim micro starship.toml .bashrc pkg_list.txt hosts
+rm -rf btop cava dunst kitty niri niri_caelestia quickshell thefuck yazi nvim micro starship.toml .bashrc pkg_list.txt hosts mpd rmpc
 
 echo "Sync finished. Everything is now inside .config"
