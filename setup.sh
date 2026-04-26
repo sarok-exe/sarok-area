@@ -135,7 +135,7 @@ PKGS=(
     ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd
     ttf-nerd-fonts-symbols-mono noto-fonts-cjk
     # Themes & Icons
-    adw-gtk-theme papirus-icon-theme
+    adw-gtk-theme papirus-icon-theme gnome-tweaks
     # Build tools
     cmake ninja slurp grim tesseract tesseract-data-eng wl-clipboard
     # Development
@@ -166,6 +166,8 @@ if command -v yay &>/dev/null; then
         vesktop
         awww
         matugen
+        gpu-screen-recorder
+        gpu-screen-recorder-gtk
     )
     run "AUR install" yay -S --needed --noconfirm "${AUR_PKGS[@]}"
 else
@@ -173,25 +175,7 @@ else
 fi
 
 # ============================================================
-#  6. Flatpak
-# ============================================================
-step "Flatpak setup"
-
-run "Install flatpak" sudo pacman -S --needed --noconfirm flatpak
-run "Add Flathub remote" sudo flatpak remote-add --if-not-exists flathub \
-    https://flathub.org/repo/flathub.flatpakrepo
-
-FLAT_PKGS=(
-    org.altaqwaa.Altaqwaa
-    com.github.PintaProject.Pinta
-    io.github.alainm23.planify
-    io.github.mimbrero.WhatsAppDesktop
-)
-
-run "Flatpak install" flatpak install -y flathub "${FLAT_PKGS[@]}"
-
-# ============================================================
-#  7. Ollama (AI)
+#  6. Ollama (AI)
 # ============================================================
 step "Ollama AI"
 
@@ -206,7 +190,7 @@ else
 fi
 
 # ============================================================
-#  8. Python tools (pipx)
+#  6. Python tools (pipx)
 # ============================================================
 step "Python tools"
 
