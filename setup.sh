@@ -20,7 +20,7 @@ DIM='\033[0;90m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-TOTAL_STEPS=12
+TOTAL_STEPS=10
 CURRENT_STEP=0
 
 step() {
@@ -81,14 +81,29 @@ if [ "$EUID" -eq 0 ]; then
     exit 1
 fi
 
+# Ask for password once at start
+echo ""
+echo -e "  ${CYAN}→ Getting sudo password...${NC}"
+sudo -v
+echo -e "  ${GREEN}✓ Password cached${NC}"
+
 # ============================================================
-#  1. Base Build Tools
+#  1. Deploy System Configs (etc/)
+# ============================================================
+step "Deploy system configs"
+
+if [ -d "$REPO_DIR/etc" ]; then
+    run "Copy etc/" sudo cp -rf "$REPO_DIR/etc/"* /etc/
+fi
+
+# ============================================================
+#  2. Base Build Tools
 # ============================================================
 step "Base build tools"
 run "Install base-devel git curl jq" sudo pacman -S --needed --noconfirm base-devel git curl jq
 
 # ============================================================
-#  2. yay (AUR Helper)
+#  3. yay (AUR Helper)
 # ============================================================
 step "AUR helper (yay)"
 
@@ -108,13 +123,13 @@ else
 fi
 
 # ============================================================
-#  3. Full System Update
+#  4. System Update
 # ============================================================
 step "System update"
 run "pacman -Syu" sudo pacman -Syu --noconfirm
 
 # ============================================================
-#  4. Pacman Packages
+#  5. Pacman Packages
 # ============================================================
 step "Pacman packages"
 
@@ -203,19 +218,7 @@ else
 fi
 
 # ============================================================
-#  9. System Configs (etc/)
-# ============================================================
-step "System configs (etc/)"
-
-if [ -d "$REPO_DIR/etc" ]; then
-    run "Copy system configs" sudo cp -rf "$REPO_DIR/etc/"* /etc/
-    run "Lock hosts file" sudo chattr +i /etc/hosts 2>/dev/null || true
-else
-    warn "No etc/ directory found, skipping."
-fi
-
-# ============================================================
-#  10. Deploy Dotfiles
+#  2. Base Build Tools
 # ============================================================
 step "Deploy dotfiles"
 
