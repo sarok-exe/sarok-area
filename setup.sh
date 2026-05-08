@@ -21,26 +21,23 @@ fail() { echo -e "  ${RED}  fail${NC}  $1"; FAILURES+=("$1"); log "[FAIL] $1"; }
 run() {
   local label="$1"; shift
   local start; start=$(date +%s)
-  echo -ne "  ${DIM}  ·${NC} ${label}${DIM}...${NC}"
+  printf "  ${DIM}  \u00b7${NC} ${label}${DIM}...${NC}"
   "$@" >> "$LOG_FILE" 2>&1 &
   local pid=$!
   local spin='-\|/'
   local i=0
   while kill -0 $pid 2>/dev/null; do
     i=$(( (i+1) % 4 ))
-    local now; now=$(date +%s)
-    local elapsed=$((now - start))
-    echo -ne "\r  ${DIM}  ${spin:$i:1}${NC} ${label}  ${DIM}${elapsed}s${NC}"
+    printf "\r  ${DIM}  ${spin:$i:1}${NC} ${label}  ${DIM}%ds${NC}" $(($(date +%s) - start))
     sleep 0.12
   done
   wait $pid
   local rc=$?
-  local end; end=$(date +%s)
-  local total=$((end - start))
+  local total=$(($(date +%s) - start))
   if [ $rc -eq 0 ]; then
-    echo -e "\r  ${GREEN}  ok${NC}    ${label}  ${DIM}${total}s${NC}"
+    printf "\033[2K\r  ${GREEN}  ok${NC}    ${label}  ${DIM}%ds${NC}\n" $total
   else
-    echo -e "\r  ${RED}  fail${NC}  ${label}  ${DIM}${total}s${NC}"
+    printf "\033[2K\r  ${RED}  fail${NC}  ${label}  ${DIM}%ds${NC}\n" $total
   fi
   return $rc
 }
@@ -58,8 +55,8 @@ echo
 command -v pacman &>/dev/null || { echo -e "  ${RED}requires arch linux${NC}"; exit 1; }
 [ "$EUID" -eq 0 ] && { echo -e "  ${RED}do not run as root${NC}"; exit 1; }
 
-echo -ne "  ${DIM}  ·${NC} caching sudo password..."
-sudo -v && echo -e "\r  ${GREEN}  ok${NC}    password cached"
+printf "  ${DIM}  \u00b7${NC} caching sudo password..."
+sudo -v && printf "\033[2K\r  ${GREEN}  ok${NC}    password cached\n"
 
 # ── 1. System & base packages ──────────────────────────────────
 step "System & base packages"
@@ -104,9 +101,9 @@ run "Install ${#PKGS[@]} packages" sudo pacman -S --needed --noconfirm "${PKGS[@
 step "AUR packages"
 
 if command -v yay &>/dev/null; then
-  run "opencode-bin, keypunch, rmpc, vesktop, awww, gpu-screen-recorder" \
+  run "keypunch, rmpc, awww, gpu-screen-recorder" \
     yay -S --needed --noconfirm --cleanafter=false --diffmenu=false --nodiffmenu --nocleanafter \
-    opencode-bin keypunch rmpc vesktop awww gpu-screen-recorder gpu-screen-recorder-gtk
+    keypunch rmpc awww gpu-screen-recorder gpu-screen-recorder-gtk
 else fail "yay not available"; fi
 
 extract_aur() {
@@ -124,8 +121,6 @@ extract_aur() {
 }
 extract_aur mpvpaper mpvpaper
 extract_aur bibata-cursor-theme-bin ""
-
-run "Ollama AI" bash -c 'command -v ollama &>/dev/null && exit 0; curl -fsSL https://ollama.com/install.sh | sh'
 
 # ── 4. Dotfiles ───────────────────────────────────────────────
 step "Dotfiles"
@@ -194,7 +189,6 @@ echo -e "  ${DIM}log → ${LOG_FILE}${NC}"
 echo
 echo -e "  ${BOLD}next:${NC}"
 echo -e "    source ~/.bashrc"
-echo -e "    ollama pull llama3.2"
 echo -e "    set wallpaper → update-kitty-theme"
 echo -e "    reboot"
 echo
