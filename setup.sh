@@ -149,7 +149,7 @@ if command -v yay &>/dev/null; then
   run "AUR packages" \
     yay -S --needed --noconfirm --cleanafter=false --diffmenu=false --nodiffmenu --nocleanafter \
     keypunch rmpc awww gpu-screen-recorder gpu-screen-recorder-gtk \
-    beaver-notes brave-bin pawn-appetit-bin tonearm
+    beaver-notes brave-bin pawn-appetit-bin
 else fail "yay not available"; fi
 
 extract_aur() {
