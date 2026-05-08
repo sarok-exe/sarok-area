@@ -39,7 +39,6 @@ input {
         accel-profile "adaptive"
         click-method "clickfinger"
         middle-emulation
-        disable-on-external-mouse
     }
     mouse {
          accel-speed 0.1
