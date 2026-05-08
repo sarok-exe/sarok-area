@@ -10,7 +10,7 @@ DIM='\033[0;90m'; BOLD='\033[1m'; NC='\033[0m'
 GREEN='\033[0;92m'; YELLOW='\033[0;93m'; RED='\033[0;91m'
 MAGENTA='\033[0;95m'
 
-TOTAL=6; cur=0
+TOTAL=7; cur=0
 
 log() { echo "[$(date '+%H:%M:%S')] $*" >> "$LOG_FILE"; }
 step() { cur=$((cur + 1)); echo -e "\n  ${DIM}── ${NC}${BOLD}${cur}.${NC} ${BOLD}$*${NC}"; }
@@ -174,20 +174,17 @@ step "Dotfiles"
 mkdir -p "$HOME/.config"
 if [ -d "$DOT_SRC" ]; then
   scripts_target="$HOME/.config/Scripts"
-  if [ -e "$scripts_target" ] && [ ! -L "$scripts_target" ]; then
+  if [ -e "$scripts_target" ]; then
     mv "$scripts_target" "$scripts_target.bak-$(date +%s)" && log "[Dotfiles] Backed up: Scripts"
-  elif [ -L "$scripts_target" ]; then
-    rm "$scripts_target"
   fi
   for item in "$DOT_SRC"/*; do
     name="$(basename "$item")"
     [ "$name" = "Scripts" ] && continue
     target="$HOME/.config/$name"
-    [ -e "$target" ] && [ ! -L "$target" ] && mv "$target" "$target.bak-$(date +%s)" && log "[Dotfiles] Backed up: $target"
-    [ -L "$target" ] && rm "$target"
-    ln -sf "$item" "$target"
+    [ -e "$target" ] && mv "$target" "$target.bak-$(date +%s)" && log "[Dotfiles] Backed up: $target"
+    cp -rf "$item" "$target"
   done
-  ok "Dotfiles linked"
+  ok "Dotfiles copied"
 else fail "Source directory not found: $DOT_SRC"; fi
 
 SCRIPTS_DIR="$HOME/.config/Scripts"
@@ -221,6 +218,12 @@ for svc in pipewire.service pipewire-pulse.service; do
   run "Enable ${svc}" sudo systemctl enable --now "$svc"
 done
 run "Disable MPD auto-start" systemctl --user disable mpd
+
+# ── Cleanup ──────────────────────────────────────────────────
+step "Cleanup"
+
+rm -rf "$REPO_DIR"
+ok "Removed repo directory"
 
 # ── Summary ───────────────────────────────────────────────────
 echo
