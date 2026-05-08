@@ -9,7 +9,7 @@ FAILURES=()
 MAGENTA='\033[1;35m'; CYAN='\033[1;36m'; GREEN='\033[1;32m'
 YELLOW='\033[1;33m'; RED='\033[1;31m'; DIM='\033[0;90m'; BOLD='\033[1m'; NC='\033[0m'
 
-TOTAL_STEPS=13; CURRENT_STEP=0
+TOTAL_STEPS=14; CURRENT_STEP=0
 
 step() { CURRENT_STEP=$((CURRENT_STEP + 1)); echo ""; echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"; echo -e "  ${BOLD}${MAGENTA}▶${NC} ${BOLD}$CURRENT_STEP/$TOTAL_STEPS:${NC} $1"; echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"; }
 ok()   { echo -e "    ${GREEN}✓${NC} $1"; log "[OK] $1"; }
@@ -69,17 +69,21 @@ PKGS=(
 )
 run "Pacman install" sudo pacman -S --needed --noconfirm "${PKGS[@]}"
 
-# 6. AUR packages
+# 6. Python tools
+step "Python tools"
+run "Upgrade pip" python -m pip install --user --upgrade pip
+
+# 7. AUR packages
 step "AUR packages"
 if command -v yay &>/dev/null; then
   run "AUR install" yay -S --needed --noconfirm opencode-bin keypunch rmpc vesktop awww gpu-screen-recorder gpu-screen-recorder-gtk
 else; fail "yay not available"; fi
 
-# 7. Extract AUR packages (no sudo needed)
+# 8. Extract AUR packages (no sudo needed)
 step "Extract AUR packages"
 extract_aur() {
   local pkg="$1"; local bin="$2"
-  if command -v "$bin" &>/dev/null; then ok "$bin already installed"; return 0; fi
+  if [ -n "$bin" ] && command -v "$bin" &>/dev/null; then ok "$bin already installed"; return 0; fi
   if yay -S --noconfirm "$pkg" >>"$LOG_FILE" 2>&1; then ok "$pkg installed"; return 0; fi
   local cache; cache=$(find ~/.cache/yay/"$pkg" -name "*.pkg.tar.zst" 2>/dev/null | head -1)
   if [ -n "$cache" ]; then
@@ -93,45 +97,53 @@ extract_aur() {
 extract_aur mpvpaper mpvpaper
 extract_aur bibata-cursor-theme-bin ""
 
-# 8. Ollama
+# 9. Ollama
 step "Ollama AI"
 if command -v ollama &>/dev/null; then ok "Ollama already installed"
 else curl -fsSL https://ollama.com/install.sh | sh >> "$LOG_FILE" 2>&1 && ok "Ollama installed" || fail "Ollama install failed"; fi
 
-# 9. Deploy dotfiles
+# 10. Deploy dotfiles
 step "Deploy dotfiles"
 mkdir -p "$HOME/.config"
 if [ -d "$DOT_SRC" ]; then
+  # Backup Scripts separately — must stay a real directory for user modifications
+  scripts_target="$HOME/.config/Scripts"
+  if [ -e "$scripts_target" ] && [ ! -L "$scripts_target" ]; then
+    mv "$scripts_target" "$scripts_target.bak-$(date +%s)" && log "[Dotfiles] Backed up: Scripts"
+  elif [ -L "$scripts_target" ]; then
+    rm "$scripts_target"
+  fi
   for item in "$DOT_SRC"/*; do
     name="$(basename "$item")"
+    [ "$name" = "Scripts" ] && continue
     target="$HOME/.config/$name"
     [ -e "$target" ] && [ ! -L "$target" ] && mv "$target" "$target.bak-$(date +%s)" && log "[Dotfiles] Backed up: $target"
     [ -L "$target" ] && rm "$target"
     ln -sf "$item" "$target"
   done
-  ok "All dotfiles linked"
+  ok "All dotfiles linked (Scripts handled separately)"
 else; fail "Source directory not found: $DOT_SRC"; fi
 
-# 10. Copy scripts
+# 11. Setup scripts
 step "Setup scripts"
 SCRIPTS_DIR="$HOME/.config/Scripts"
 if [ -d "$DOT_SRC/Scripts" ]; then
   mkdir -p "$SCRIPTS_DIR"
-  cp -rf "$DOT_SRC/Scripts/"* "$SCRIPTS_DIR/"
+  cp -rn "$DOT_SRC/Scripts/"* "$SCRIPTS_DIR/"
   chmod +x "$SCRIPTS_DIR"/* 2>/dev/null
   # Also copy legacy scripts
   [ -d "$DOT_SRC/scripts_legacy" ] && cp -rn "$DOT_SRC/scripts_legacy/"* "$SCRIPTS_DIR/" 2>/dev/null
   ok "Scripts copied to ~/.config/Scripts"
 fi
 
-# 11. Starship & bash
+# 12. Starship prompt
 step "Starship prompt"
 if ! grep -q "starship" "$HOME/.bashrc" 2>/dev/null; then
   echo -e '\n# Starship prompt\neval "$(starship init bash)"' >> "$HOME/.bashrc"
   ok "Starship added to .bashrc"
 else; ok "Starship already in .bashrc"; fi
 
-# 12. Cursor theme
+# 13. Cursor theme
 step "Cursor theme"
 CURSOR_DIR=$(find "$HOME/.local/share/icons" -maxdepth 1 -name "Bibata*" -type d 2>/dev/null | head -1)
 if [ -n "$CURSOR_DIR" ]; then
@@ -140,7 +152,7 @@ if [ -n "$CURSOR_DIR" ]; then
   ok "Bibata cursor set"
 else; warn "Bibata cursor not found"; fi
 
-# 13. Enable services
+# 14. Services
 step "Services"
 for svc in pipewire.service pipewire-pulse.service; do
   run "Enable $svc" sudo systemctl enable --now "$svc" 2>/dev/null || true
@@ -159,5 +171,6 @@ echo ""; echo -e "  ${DIM}Log: $LOG_FILE${NC}"; echo ""
 echo -e "  ${BOLD}Next:${NC}"
 echo -e "    source ~/.bashrc"
 echo -e "    ollama pull llama3.2"
+echo -e "    Set wallpaper then: update-kitty-theme"
 echo -e "    reboot"
 echo ""
