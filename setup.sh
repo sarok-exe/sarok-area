@@ -21,23 +21,15 @@ fail() { echo -e "  ${RED}  fail${NC}  $1"; FAILURES+=("$1"); log "[FAIL] $1"; }
 run() {
   local label="$1"; shift
   local start; start=$(date +%s)
-  printf "  ${DIM}  \u00b7${NC} ${label}${DIM}...${NC}"
-  "$@" >> "$LOG_FILE" 2>&1 &
-  local pid=$!
-  local spin='-\|/'
-  local i=0
-  while kill -0 $pid 2>/dev/null; do
-    i=$(( (i+1) % 4 ))
-    printf "\r  ${DIM}  ${spin:$i:1}${NC} ${label}  ${DIM}%ds${NC}" $(($(date +%s) - start))
-    sleep 0.12
-  done
-  wait $pid
-  local rc=$?
+  printf "  ${DIM}  \u00b7${NC} ${label}\n"
+  "$@" 2>&1 | tee -a "$LOG_FILE" | grep -vE '^\s*[0-9]+K\s' || true
+  local rc=${PIPESTATUS[0]}
   local total=$(($(date +%s) - start))
+  tput cuu1 2>/dev/null || printf "\033[A"
   if [ $rc -eq 0 ]; then
-    printf "\033[2K\r  ${GREEN}  ok${NC}    ${label}  ${DIM}%ds${NC}\n" $total
+    printf "  ${GREEN}  ok${NC}    ${label}  ${DIM}%ds${NC}\n" $total
   else
-    printf "\033[2K\r  ${RED}  fail${NC}  ${label}  ${DIM}%ds${NC}\n" $total
+    printf "  ${RED}  fail${NC}  ${label}  ${DIM}%ds${NC}\n" $total
   fi
   return $rc
 }
@@ -54,6 +46,12 @@ echo
 
 command -v pacman &>/dev/null || { echo -e "  ${RED}requires arch linux${NC}"; exit 1; }
 [ "$EUID" -eq 0 ] && { echo -e "  ${RED}do not run as root${NC}"; exit 1; }
+
+if [ -f /var/lib/pacman/db.lck ]; then
+  echo -e "  ${YELLOW}  warn${NC}  stale pacman lock found"
+  echo -e "  ${DIM}         run: sudo rm /var/lib/pacman/db.lck${NC}"
+  exit 1
+fi
 
 printf "  ${DIM}  \u00b7${NC} caching sudo password..."
 sudo -v && printf "\033[2K\r  ${GREEN}  ok${NC}    password cached\n"
