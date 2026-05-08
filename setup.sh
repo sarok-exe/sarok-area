@@ -19,8 +19,8 @@ run() { local l="$1"; shift; echo -e "  ${DIM}  → $*${NC}"; if "$@" 2>&1 | tee
 log() { echo "[$(date '+%H:%M:%S')] $1" >> "$LOG_FILE"; }
 
 clear
-echo ""; echo -e "  ${MAGENTA}  ╔═══╗╔═══╗╔═══╗${NC}"; echo -e "  ${MAGENTA}  ║   ║║   ║║   ║${NC}"; echo -e "  ${MAGENTA}  ║   ║║   ║║   ║${NC}"; echo -e "  ${MAGENTA}  ╚═══╝╚═══╝╚═══╝${NC}"; echo ""
-echo -e "  ${BOLD}  SAROK AREA${NC} — Arch Setup"; echo ""; echo -e "  ${DIM}  Log: $LOG_FILE${NC}"; echo ""
+echo ""; echo -e "  ${MAGENTA}  ┌─── ${BOLD}SAROK AREA${NC}${MAGENTA} ───┐${NC}"; echo -e "  ${MAGENTA}  │   Arch Linux Setup   │${NC}"; echo -e "  ${MAGENTA}  └──────────────────────┘${NC}"; echo ""
+echo -e "  ${BOLD}  sarok-area${NC} — bootstrapping..."; echo ""; echo -e "  ${DIM}  Log: $LOG_FILE${NC}"; echo ""
 
 if ! command -v pacman &>/dev/null; then echo -e "  ${RED}Requires Arch Linux${NC}"; exit 1; fi
 if [ "$EUID" -eq 0 ]; then echo -e "  ${RED}Do not run as root${NC}"; exit 1; fi
@@ -42,7 +42,7 @@ if command -v yay &>/dev/null; then
 else
   if git clone https://aur.archlinux.org/yay.git /tmp/yay >>"$LOG_FILE" 2>&1; then
     (cd /tmp/yay && makepkg -si --noconfirm >>"$LOG_FILE" 2>&1) && ok "yay installed" || fail "yay build failed"
-  else; fail "yay clone failed"; fi
+  else fail "yay clone failed"; fi
   rm -rf /tmp/yay
 fi
 
@@ -77,7 +77,7 @@ run "Upgrade pip" python -m pip install --user --upgrade pip
 step "AUR packages"
 if command -v yay &>/dev/null; then
   run "AUR install" yay -S --needed --noconfirm opencode-bin keypunch rmpc vesktop awww gpu-screen-recorder gpu-screen-recorder-gtk
-else; fail "yay not available"; fi
+else fail "yay not available"; fi
 
 # 8. Extract AUR packages (no sudo needed)
 step "Extract AUR packages"
@@ -92,7 +92,7 @@ extract_aur() {
     tar --zstd -xf "$cache" -C /tmp usr/share/icons/ 2>/dev/null && cp -r /tmp/usr/share/icons/* ~/.local/share/icons/ 2>/dev/null
     rm -rf /tmp/usr; chmod +x ~/.local/bin/* 2>/dev/null
     ok "$pkg extracted to ~/.local"
-  else; warn "Could not install $pkg (needs manual sudo)"; fi
+  else warn "Could not install $pkg (needs manual sudo)"; fi
 }
 extract_aur mpvpaper mpvpaper
 extract_aur bibata-cursor-theme-bin ""
@@ -122,7 +122,7 @@ if [ -d "$DOT_SRC" ]; then
     ln -sf "$item" "$target"
   done
   ok "All dotfiles linked (Scripts handled separately)"
-else; fail "Source directory not found: $DOT_SRC"; fi
+else fail "Source directory not found: $DOT_SRC"; fi
 
 # 11. Setup scripts
 step "Setup scripts"
@@ -141,7 +141,7 @@ step "Starship prompt"
 if ! grep -q "starship" "$HOME/.bashrc" 2>/dev/null; then
   echo -e '\n# Starship prompt\neval "$(starship init bash)"' >> "$HOME/.bashrc"
   ok "Starship added to .bashrc"
-else; ok "Starship already in .bashrc"; fi
+else ok "Starship already in .bashrc"; fi
 
 # 13. Cursor theme
 step "Cursor theme"
@@ -150,7 +150,7 @@ if [ -n "$CURSOR_DIR" ]; then
   gsettings set org.gnome.desktop.interface cursor-theme "$(basename "$CURSOR_DIR")" 2>/dev/null || true
   gsettings set org.gnome.desktop.interface cursor-size 24 2>/dev/null || true
   ok "Bibata cursor set"
-else; warn "Bibata cursor not found"; fi
+else warn "Bibata cursor not found"; fi
 
 # 14. Services
 step "Services"
