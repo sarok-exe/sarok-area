@@ -6,37 +6,68 @@ DOT_SRC="$REPO_DIR/.config"
 LOG_FILE="/tmp/sarok-setup-$(date +%Y%m%d-%H%M%S).log"
 FAILURES=()
 
-MAGENTA='\033[1;35m'; CYAN='\033[1;36m'; GREEN='\033[1;32m'
-YELLOW='\033[1;33m'; RED='\033[1;31m'; DIM='\033[0;90m'; BOLD='\033[1m'; NC='\033[0m'
+DIM='\033[0;90m'; BOLD='\033[1m'; NC='\033[0m'
+GREEN='\033[0;92m'; YELLOW='\033[0;93m'; RED='\033[0;91m'
+MAGENTA='\033[0;95m'
 
-TOTAL_STEPS=14; CURRENT_STEP=0
+TOTAL=6; cur=0
 
-step() { CURRENT_STEP=$((CURRENT_STEP + 1)); echo ""; echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"; echo -e "  ${BOLD}${MAGENTA}▶${NC} ${BOLD}$CURRENT_STEP/$TOTAL_STEPS:${NC} $1"; echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"; }
-ok()   { echo -e "    ${GREEN}✓${NC} $1"; log "[OK] $1"; }
-warn() { echo -e "    ${YELLOW}!${NC} $1"; log "[WARN] $1"; }
-fail() { echo -e "    ${RED}✗${NC} $1"; FAILURES+=("$1"); log "[FAIL] $1"; }
-run() { local l="$1"; shift; echo -e "  ${DIM}  → $*${NC}"; if "$@" 2>&1 | tee -a "$LOG_FILE"; then ok "$l"; else fail "$l"; fi; }
-log() { echo "[$(date '+%H:%M:%S')] $1" >> "$LOG_FILE"; }
+log() { echo "[$(date '+%H:%M:%S')] $*" >> "$LOG_FILE"; }
+step() { cur=$((cur + 1)); echo -e "\n  ${DIM}── ${NC}${BOLD}${cur}.${NC} ${BOLD}$*${NC}"; }
+ok()   { echo -e "  ${GREEN}  ok${NC}    $1"; log "[OK] $1"; }
+warn() { echo -e "  ${YELLOW}  warn${NC}  $1"; log "[WARN] $1"; }
+fail() { echo -e "  ${RED}  fail${NC}  $1"; FAILURES+=("$1"); log "[FAIL] $1"; }
+
+run() {
+  local label="$1"; shift
+  local start; start=$(date +%s)
+  echo -ne "  ${DIM}  ·${NC} ${label}${DIM}...${NC}"
+  "$@" >> "$LOG_FILE" 2>&1 &
+  local pid=$!
+  local spin='-\|/'
+  local i=0
+  while kill -0 $pid 2>/dev/null; do
+    i=$(( (i+1) % 4 ))
+    local now; now=$(date +%s)
+    local elapsed=$((now - start))
+    echo -ne "\r  ${DIM}  ${spin:$i:1}${NC} ${label}  ${DIM}${elapsed}s${NC}"
+    sleep 0.12
+  done
+  wait $pid
+  local rc=$?
+  local end; end=$(date +%s)
+  local total=$((end - start))
+  if [ $rc -eq 0 ]; then
+    echo -e "\r  ${GREEN}  ok${NC}    ${label}  ${DIM}${total}s${NC}"
+  else
+    echo -e "\r  ${RED}  fail${NC}  ${label}  ${DIM}${total}s${NC}"
+  fi
+  return $rc
+}
 
 clear
-echo ""; echo -e "  ${MAGENTA}  ┌─── ${BOLD}SAROK AREA${NC}${MAGENTA} ───┐${NC}"; echo -e "  ${MAGENTA}  │   Arch Linux Setup   │${NC}"; echo -e "  ${MAGENTA}  └──────────────────────┘${NC}"; echo ""
-echo -e "  ${BOLD}  sarok-area${NC} — bootstrapping..."; echo ""; echo -e "  ${DIM}  Log: $LOG_FILE${NC}"; echo ""
+echo
+echo -e "  ${MAGENTA}┌──────────────────────────┐${NC}"
+echo -e "  ${MAGENTA}│${NC}  ◆  ${BOLD}SAROK AREA${NC}          ${MAGENTA}│${NC}"
+echo -e "  ${MAGENTA}│${NC}  ${DIM}arch linux setup${NC}       ${MAGENTA}│${NC}"
+echo -e "  ${MAGENTA}└──────────────────────────┘${NC}"
+echo
+echo -e "  ${DIM}log → ${LOG_FILE}${NC}"
+echo
 
-if ! command -v pacman &>/dev/null; then echo -e "  ${RED}Requires Arch Linux${NC}"; exit 1; fi
-if [ "$EUID" -eq 0 ]; then echo -e "  ${RED}Do not run as root${NC}"; exit 1; fi
+command -v pacman &>/dev/null || { echo -e "  ${RED}requires arch linux${NC}"; exit 1; }
+[ "$EUID" -eq 0 ] && { echo -e "  ${RED}do not run as root${NC}"; exit 1; }
 
-echo ""; echo -e "  ${CYAN}→ Getting sudo password...${NC}"; sudo -v; echo -e "  ${GREEN}✓ Password cached${NC}"
+echo -ne "  ${DIM}  ·${NC} caching sudo password..."
+sudo -v && echo -e "\r  ${GREEN}  ok${NC}    password cached"
 
-# 1. System configs
-step "Deploy system configs"
-[ -d "$REPO_DIR/etc" ] && run "Copy etc/" sudo cp -rf "$REPO_DIR/etc/"* /etc/
+# ── 1. System & base packages ──────────────────────────────────
+step "System & base packages"
 
-# 2. Base build tools
-step "Base build tools"
+[ -d "$REPO_DIR/etc" ] && run "Apply etc configs" sudo cp -rf "$REPO_DIR/etc/"* /etc/
+
 run "Install base-devel git curl jq" sudo pacman -S --needed --noconfirm base-devel git curl jq
 
-# 3. yay
-step "AUR helper (yay)"
 if command -v yay &>/dev/null; then
   ok "yay already installed"
 else
@@ -46,12 +77,12 @@ else
   rm -rf /tmp/yay
 fi
 
-# 4. System update
-step "System update"
-run "pacman -Syu" sudo pacman -Syu --noconfirm
+run "System upgrade" sudo pacman -Syu --noconfirm
+run "Python pip upgrade" python -m pip install --user --upgrade pip --break-system-packages
 
-# 5. Pacman packages
+# ── 2. Pacman packages ────────────────────────────────────────
 step "Pacman packages"
+
 PKGS=(
   niri xorg-xwayland wayland-protocols qt6-wayland
   kitty starship zoxide thefuck neovim yazi fastfetch
@@ -67,20 +98,17 @@ PKGS=(
   mpd mpc
   wlsunset imagemagick matugen
 )
-run "Pacman install" sudo pacman -S --needed --noconfirm "${PKGS[@]}"
+run "Install ${#PKGS[@]} packages" sudo pacman -S --needed --noconfirm "${PKGS[@]}"
 
-# 6. Python tools
-step "Python tools"
-run "Upgrade pip" python -m pip install --user --upgrade pip
-
-# 7. AUR packages
+# ── 3. AUR packages ───────────────────────────────────────────
 step "AUR packages"
+
 if command -v yay &>/dev/null; then
-  run "AUR install" yay -S --needed --noconfirm opencode-bin keypunch rmpc vesktop awww gpu-screen-recorder gpu-screen-recorder-gtk
+  run "opencode-bin, keypunch, rmpc, vesktop, awww, gpu-screen-recorder" \
+    yay -S --needed --noconfirm --cleanafter=false --diffmenu=false --nodiffmenu --nocleanafter \
+    opencode-bin keypunch rmpc vesktop awww gpu-screen-recorder gpu-screen-recorder-gtk
 else fail "yay not available"; fi
 
-# 8. Extract AUR packages (no sudo needed)
-step "Extract AUR packages"
 extract_aur() {
   local pkg="$1"; local bin="$2"
   if [ -n "$bin" ] && command -v "$bin" &>/dev/null; then ok "$bin already installed"; return 0; fi
@@ -97,16 +125,13 @@ extract_aur() {
 extract_aur mpvpaper mpvpaper
 extract_aur bibata-cursor-theme-bin ""
 
-# 9. Ollama
-step "Ollama AI"
-if command -v ollama &>/dev/null; then ok "Ollama already installed"
-else curl -fsSL https://ollama.com/install.sh | sh >> "$LOG_FILE" 2>&1 && ok "Ollama installed" || fail "Ollama install failed"; fi
+run "Ollama AI" bash -c 'command -v ollama &>/dev/null && exit 0; curl -fsSL https://ollama.com/install.sh | sh'
 
-# 10. Deploy dotfiles
-step "Deploy dotfiles"
+# ── 4. Dotfiles ───────────────────────────────────────────────
+step "Dotfiles"
+
 mkdir -p "$HOME/.config"
 if [ -d "$DOT_SRC" ]; then
-  # Backup Scripts separately — must stay a real directory for user modifications
   scripts_target="$HOME/.config/Scripts"
   if [ -e "$scripts_target" ] && [ ! -L "$scripts_target" ]; then
     mv "$scripts_target" "$scripts_target.bak-$(date +%s)" && log "[Dotfiles] Backed up: Scripts"
@@ -121,30 +146,26 @@ if [ -d "$DOT_SRC" ]; then
     [ -L "$target" ] && rm "$target"
     ln -sf "$item" "$target"
   done
-  ok "All dotfiles linked (Scripts handled separately)"
+  ok "Dotfiles linked"
 else fail "Source directory not found: $DOT_SRC"; fi
 
-# 11. Setup scripts
-step "Setup scripts"
 SCRIPTS_DIR="$HOME/.config/Scripts"
 if [ -d "$DOT_SRC/Scripts" ]; then
   mkdir -p "$SCRIPTS_DIR"
   cp -rn "$DOT_SRC/Scripts/"* "$SCRIPTS_DIR/"
   chmod +x "$SCRIPTS_DIR"/* 2>/dev/null
-  # Also copy legacy scripts
   [ -d "$DOT_SRC/scripts_legacy" ] && cp -rn "$DOT_SRC/scripts_legacy/"* "$SCRIPTS_DIR/" 2>/dev/null
-  ok "Scripts copied to ~/.config/Scripts"
+  ok "Scripts copied"
 fi
 
-# 12. Starship prompt
-step "Starship prompt"
+# ── 5. Shell & theming ────────────────────────────────────────
+step "Shell & theming"
+
 if ! grep -q "starship" "$HOME/.bashrc" 2>/dev/null; then
   echo -e '\n# Starship prompt\neval "$(starship init bash)"' >> "$HOME/.bashrc"
   ok "Starship added to .bashrc"
 else ok "Starship already in .bashrc"; fi
 
-# 13. Cursor theme
-step "Cursor theme"
 CURSOR_DIR=$(find "$HOME/.local/share/icons" -maxdepth 1 -name "Bibata*" -type d 2>/dev/null | head -1)
 if [ -n "$CURSOR_DIR" ]; then
   gsettings set org.gnome.desktop.interface cursor-theme "$(basename "$CURSOR_DIR")" 2>/dev/null || true
@@ -152,25 +173,28 @@ if [ -n "$CURSOR_DIR" ]; then
   ok "Bibata cursor set"
 else warn "Bibata cursor not found"; fi
 
-# 14. Services
+# ── 6. Services ───────────────────────────────────────────────
 step "Services"
-for svc in pipewire.service pipewire-pulse.service; do
-  run "Enable $svc" sudo systemctl enable --now "$svc" 2>/dev/null || true
-done
-run "Disable MPD auto-start" systemctl --user disable mpd 2>/dev/null || true
 
-# Summary
-echo ""; echo -e "  ${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+for svc in pipewire.service pipewire-pulse.service; do
+  run "Enable ${svc}" sudo systemctl enable --now "$svc"
+done
+run "Disable MPD auto-start" systemctl --user disable mpd
+
+# ── Summary ───────────────────────────────────────────────────
+echo
 if [ ${#FAILURES[@]} -eq 0 ]; then
-  echo -e "  ${GREEN}✓ SETUP COMPLETE${NC}"; echo ""; echo -e "  ${GREEN}All $TOTAL_STEPS steps done!${NC}"
+  echo -e "  ${GREEN}  ok${NC}    ${BOLD}setup complete${NC} — all ${TOTAL} steps done"
 else
-  echo -e "  ${YELLOW}⚠ SETUP FINISHED (${#FAILURES[@]} issues)${NC}"
-  for f in "${FAILURES[@]}"; do echo -e "    ${RED}✗ $f${NC}"; done
+  echo -e "  ${YELLOW}  warn${NC}  ${BOLD}setup finished with ${#FAILURES[@]} issue(s)${NC}"
+  for f in "${FAILURES[@]}"; do echo -e "  ${RED}  fail${NC}  ${f}"; done
 fi
-echo ""; echo -e "  ${DIM}Log: $LOG_FILE${NC}"; echo ""
-echo -e "  ${BOLD}Next:${NC}"
+echo
+echo -e "  ${DIM}log → ${LOG_FILE}${NC}"
+echo
+echo -e "  ${BOLD}next:${NC}"
 echo -e "    source ~/.bashrc"
 echo -e "    ollama pull llama3.2"
-echo -e "    Set wallpaper then: update-kitty-theme"
+echo -e "    set wallpaper → update-kitty-theme"
 echo -e "    reboot"
-echo ""
+echo
