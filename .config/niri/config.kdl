@@ -1,18 +1,14 @@
-//spawn-at-startup "fcitx5" "-d"
-//spawn-at-startup "flameshot"
-//spawn-at-startup "ags" "run" "/home/sarok/.config/ags/app.js"
-//spawn-at-startup "com.todoist.Todoist"
+spawn-at-startup "errands"
 spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
-//spawn-at-startup "swww" "img" "~/Pictures/Wallpapers/god_red.jpg"
-//spawn-at-startup "sh" "-c" "sleep 3 && awww img /home/sarok/Pictures/Wallpapers/earth.png"
-
+spawn-at-startup "sh" "-c" "killall swaybg mpvpaper mpv 2>/dev/null; ~/.local/bin/mpvpaper -f -o \"no-audio loop\" LVDS-1 ~/Pictures/Wallpapers/28a1e36191eb43fae5347624b17edf10.gif"
 config-notification {
     disable-failed
 }
 
-cursor { 
-    xcursor-size 1
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 24
 }
 
 output "eDP-1" {
@@ -35,7 +31,7 @@ input {
     }
     touchpad {	   
           tap
-          accel-speed 0.4
+          accel-speed 0.6
     }
     mouse {
          accel-speed 0.1
@@ -45,7 +41,7 @@ input {
 }
 
 layout {
-    gaps 6
+    gaps 14
     background-color "transparent"
     center-focused-column "never"
     preset-column-widths {
@@ -56,7 +52,7 @@ layout {
     default-column-width { proportion 0.5; }
     
     border {
-        width 2
+        width 0
         active-color   "#707070"
         inactive-color "#d0d0d0"
         urgent-color   "#cc4444"
@@ -239,19 +235,22 @@ binds {
     Mod+T { spawn "Telegram"; }
     Mod+D { spawn "rofi" "-show" "drun"; }
     Mod+Return { spawn "kitty"; }
-    Mod+Ctrl+T { spawn "sh" "-c" "GDK_BACKEND=x11 XDG_CURRENT_DESKTOP=GNOME GTK_USE_PORTAL=1 dialect"; }
+    Mod+Ctrl+T { spawn "dialect"; }
     Mod+E { spawn "kitty" "-e" "yazi" "toggle-overview"; }
     Mod+O { spawn "obsidian" "toggle-overview"; }
-    Mod+B { spawn "brave" "--password-store=basic"; }
+    //Mod+B { spawn "brave" "--password-store=basic"; }
+    Mod+B { spawn "firefox"; }
     Mod+N { spawn "kitty" "-e" "wiremix"; }
-    Mod+Z { spawn "sh" "-c" "GDK_BACKEND=x11 XDG_CURRENT_DESKTOP=GNOME GTK_USE_PORTAL=1 planify"; }
+    Mod+Z { spawn "errands"; }
+    Mod+Shift+N { spawn "sh" "-c" "~/.config/Scripts/nightlight.sh toggle"; }
+    Mod+Shift+W { spawn "sh" "-c" "~/.config/Scripts/wprand s"; }
 
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    Mod+S { spawn "sh" "-c" "~/.config/scripts/ocr_selection.sh"; }
+    Mod+S { spawn "sh" "-c" "~/.config/Scripts/ocr_selection.sh"; }
     Mod+Shift+T { spawn "sh" "-c" "grim - | tesseract stdin stdout -l eng | wl-copy && notify-send OCR 'Fullscreen text copied' -t 2000"; }
     Mod+P { spawn "sh" "-c" "~/.config/scripts/wayclick/dusky_wayclick.sh"; }
 

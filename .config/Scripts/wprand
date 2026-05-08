@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+WALL_DIR="$HOME/Pictures/Wallpapers"
+CACHE_DIR="$HOME/.cache/wallpaper-thumbs"
+OUTPUT="LVDS-1"
+MPVPAPER="$HOME/.local/bin/mpvpaper"
+
+find_walls() {
+  find "$WALL_DIR" -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' -o -iname '*.gif' \) "$@"
+}
+
+is_gif() {
+  [[ "$1" == *.gif ]] && return 0 || return 1
+}
+
+set_wall() {
+  killall swaybg mpvpaper mpv 2>/dev/null
+  sleep 0.2
+  if is_gif "$1"; then
+    "$MPVPAPER" -f -o "no-audio loop" "$OUTPUT" "$1" &
+  else
+    swaybg -i "$1" -m fill &
+  fi
+  ~/.config/Scripts/update-kitty-theme "$1" 2>/dev/null
+}
+
+gen_thumbs() {
+  mkdir -p "$CACHE_DIR"
+  find_walls | sort | while read -r f; do
+    name=$(basename "$f")
+    thumb="$CACHE_DIR/${name%.*}.jpg"
+    [ -f "$thumb" ] || magick "${f}[0]" -resize 200x200^ -gravity center -extent 200x200 "$thumb" 2>/dev/null
+  done
+}
+
+random() {
+  find_walls -printf '%p\n' | shuf -n1 | while read -r f; do
+    set_wall "$f"
+  done
+}
+
+pick() {
+  gen_thumbs
+  files=()
+  while IFS= read -r f; do
+    files+=("$f")
+  done < <(find_walls | sort)
+
+  killall rofi 2>/dev/null
+  sleep 0.2
+
+  selected=$(
+    for f in "${files[@]}"; do
+      name=$(basename "$f")
+      thumb="$CACHE_DIR/${name%.*}.jpg"
+      printf "%s\0icon\x1f%s\n" "${name%.*}" "$thumb"
+    done | rofi -dmenu -theme wallpaper -show-icons -p "" -mesg "Select Wallpaper" -format i
+  )
+
+  if [ -n "$selected" ] && [ "$selected" -ge 0 ] 2>/dev/null; then
+    set_wall "${files[$selected]}"
+  fi
+}
+
+case "${1:-}" in
+  s|pick) pick ;;
+  *) random ;;
+esac

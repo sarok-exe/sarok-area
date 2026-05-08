@@ -4,7 +4,7 @@
   "height": 48,
   "modules-left": ["niri/workspaces"],
   "modules-center": ["niri/window"],
-  "modules-right": ["tray", "cpu", "memory", "backlight", "network", "pulseaudio", "battery", "clock"],
+  "modules-right": ["tray", "cpu", "memory", "backlight", "network", "pulseaudio", "custom/mic", "battery", "custom/nightlight", "clock"],
 
   "niri/workspaces": {
     "format": "{icon}",
@@ -74,6 +74,22 @@
     "format": " 󰥔 {:%H:%M}",
     "format-alt": " 󰥔 {:%a %d %b}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "custom/mic": {
+    "exec": "$HOME/.config/Scripts/mic.sh",
+    "on-click": "$HOME/.config/Scripts/mic.sh toggle",
+    "on-scroll-up": "$HOME/.config/Scripts/mic.sh up",
+    "on-scroll-down": "$HOME/.config/Scripts/mic.sh down",
+    "return-type": "json",
+    "interval": 1
+  },
+
+  "custom/nightlight": {
+    "exec": "$HOME/.config/Scripts/nightlight.sh",
+    "on-click": "$HOME/.config/Scripts/nightlight.sh toggle",
+    "return-type": "json",
+    "interval": 10
   },
 
   "tray": {

@@ -1,1 +1,2 @@
-/home/sarok/.sarok-area/.config/starship.toml
+format = "$directory$character"
+add_newline = false

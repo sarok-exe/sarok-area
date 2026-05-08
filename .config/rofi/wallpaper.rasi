@@ -1,7 +1,7 @@
 /* 🖼️ ROFI WALLPAPER GRID THEME */
 /* Fixed 4x2 grid with keybind header */
 
-@import "~/.config/rofi/config.rasi"
+@import "config.rasi"
 
 configuration {
     show-icons: true;
@@ -82,8 +82,8 @@ element normal.normal {
 }
 
 element selected.normal {
-    background-color: @selected-normal-background;
-    text-color: @selected-normal-foreground;
+    background-color: @surface-hover;
+    text-color: @primary;
     border: 2px;
     border-color: @primary;
 }
