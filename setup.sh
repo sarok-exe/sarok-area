@@ -79,19 +79,66 @@ run "Python pip upgrade" python -m pip install --user --upgrade pip --break-syst
 step "Pacman packages"
 
 PKGS=(
+  # Compositor & WM
   niri xorg-xwayland wayland-protocols qt6-wayland
-  kitty starship zoxide thefuck neovim yazi fastfetch
-  btop cava dunst brightnessctl pamixer pavucontrol
-  networkmanager openssh rsync zip unzip
-  waybar rofi
-  mpv imv feh
+  swaybg swayidle swaylock swaync fuzzel wlr-randr
+
+  # Terminal & shell
+  kitty alacritty fish starship zoxide thefuck
+
+  # Editors & dev tools
+  neovim vim mousepad code
+  cmake ninja meson vala mingw-w64-gcc
+  nodejs npm github-cli
+  python python-pip base-devel
+
+  # File management
+  yazi nautilus rsync zip unzip
+
+  # System info
+  fastfetch btop htop nload cmatrix
+
+  # Audio & notifications
+  cava dunst brightnessctl pamixer pavucontrol
+  mpd mpc pipewire-alsa pipewire-jack blanket
+
+  # Network
+  networkmanager openssh iwd wireless_tools
+  wget curl yt-dlp
+
+  # UI components
+  waybar rofi mako
+  mpv imv feh flameshot
+  adw-gtk-theme papirus-icon-theme nwg-look
+  gnome-keyring gnome-tweaks
+
+  # Fonts
   ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd
   ttf-nerd-fonts-symbols-mono noto-fonts-cjk
-  adw-gtk-theme papirus-icon-theme
-  cmake ninja slurp grim tesseract tesseract-data-eng wl-clipboard libnotify
-  python python-pip base-devel
-  mpd mpc
-  wlsunset imagemagick matugen
+
+  # Screenshot & OCR
+  slurp grim tesseract tesseract-data-eng wl-clipboard libnotify
+
+  # Input
+  fcitx5 fcitx5-configtool fcitx5-table-extra
+
+  # Apps
+  firefox telegram-desktop obsidian
+  inkscape foliate drawing
+  dialect errands
+
+  # System & hardware
+  polkit ly
+  intel-media-driver libva-intel-driver
+  vulkan-intel vulkan-tools
+  tlp powertop smartmontools zram-generator
+  xdg-desktop-portal-wlr xdg-utils
+
+  # Theming
+  wlsunset imagemagick matugen gpu-screen-recorder
+
+  # Misc
+  libqalculate
 )
 run "Install ${#PKGS[@]} packages" sudo pacman -S --needed --noconfirm "${PKGS[@]}"
 
@@ -99,9 +146,10 @@ run "Install ${#PKGS[@]} packages" sudo pacman -S --needed --noconfirm "${PKGS[@
 step "AUR packages"
 
 if command -v yay &>/dev/null; then
-  run "keypunch, rmpc, awww, gpu-screen-recorder" \
+  run "AUR packages" \
     yay -S --needed --noconfirm --cleanafter=false --diffmenu=false --nodiffmenu --nocleanafter \
-    keypunch rmpc awww gpu-screen-recorder gpu-screen-recorder-gtk
+    keypunch rmpc awww gpu-screen-recorder gpu-screen-recorder-gtk \
+    beaver-notes brave-bin pawn-appetit-bin tonearm
 else fail "yay not available"; fi
 
 extract_aur() {
