@@ -29,9 +29,17 @@ input {
         xkb {
         }
     }
-    touchpad {	   
-          tap
-          accel-speed 0.6
+    touchpad {
+        tap
+        tap-button-map "left-middle-right"
+        dwt
+        natural-scroll
+        scroll-factor 0.5
+        accel-speed 0.7
+        accel-profile "adaptive"
+        click-method "clickfinger"
+        middle-emulation
+        disable-on-external-mouse
     }
     mouse {
          accel-speed 0.1
