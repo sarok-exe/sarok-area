@@ -1,0 +1,14 @@
+# تحديد المسار التلقائي للحفظ في مجلد الفيديوهات
+-o "~/Videos/%(title)s.%(ext)s"
+
+# ضبط الدقة: يبحث عن أفضل جودة بين 720p و 1080p
+-f "bestvideo[height<=1080][height>=720]+bestaudio/best[height<=1080][height>=720]/best"
+
+# دمج الفيديو والصوت في حاوية MKV حصراً
+--merge-output-format mkv
+
+# معالجة الصور المصغرة والبيانات الوصفية
+--write-thumbnail
+--embed-thumbnail
+--convert-thumbnails jpg
+--embed-metadata
