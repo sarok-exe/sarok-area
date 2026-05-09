@@ -1,4 +1,5 @@
 # sarok-area
-Arch Linux dotfiles and desktop setup script. Configures Niri WM, Waybar, Rofi, Kitty, swaync, and GTK theming with warm accent colors. Run `setup.sh` to deploy everything automatically.
+
+Arch Linux desktop configuration: Niri compositor, Waybar, Rofi launcher, Kitty terminal, swaync notifications. Warm accent theming with Orchis-Purple and Linox-Slate. Setup script included.
 
 [Wiki](https://github.com/sarok-exe/sarok-area/wiki)
