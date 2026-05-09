@@ -211,6 +211,35 @@ if [ -n "$CURSOR_DIR" ]; then
   ok "Bibata cursor set"
 else warn "Bibata cursor not found"; fi
 
+# Install GTK theme & icons
+THEME_SRC="$REPO_DIR/themes"
+ICON_SRC="$REPO_DIR/icons"
+if [ -d "$THEME_SRC" ]; then
+  mkdir -p "$HOME/.themes"
+  for theme in "$THEME_SRC"/*; do
+    name="$(basename "$theme")"
+    [ -e "$HOME/.themes/$name" ] && mv "$HOME/.themes/$name" "$HOME/.themes/$name.bak-$(date +%s)"
+    cp -r "$theme" "$HOME/.themes/"
+  done
+  ok "GTK themes installed"
+else warn "Themes directory not found"; fi
+
+if [ -d "$ICON_SRC" ]; then
+  mkdir -p "$HOME/.local/share/icons"
+  for icon in "$ICON_SRC"/*; do
+    name="$(basename "$icon")"
+    [ -e "$HOME/.local/share/icons/$name" ] && mv "$HOME/.local/share/icons/$name" "$HOME/.local/share/icons/$name.bak-$(date +%s)"
+    cp -r "$icon" "$HOME/.local/share/icons/"
+  done
+  ok "Icon themes installed"
+else warn "Icons directory not found"; fi
+
+# Apply GTK theme & icon settings
+gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Purple-Dark-Compact" 2>/dev/null || true
+gsettings set org.gnome.desktop.interface icon-theme "Linox-Slate" 2>/dev/null || true
+gsettings set org.gnome.desktop.interface font-name "JetBrainsMono Nerd Font 11" 2>/dev/null || true
+ok "GTK theme & icon settings applied"
+
 # ── 6. Services ───────────────────────────────────────────────
 step "Services"
 
