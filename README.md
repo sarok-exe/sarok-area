@@ -1,37 +1,32 @@
 # sarok-area
 
-My Arch Linux dotfiles with niri WM.
+My Arch Linux desktop configuration — Niri Wayland compositor with warm accent theming.
 
-## Quick Install
+![Desktop](screenshots/desktop.png)
+![App Launcher](screenshots/apps.png)
+
+## Stack
+
+| Component | Choice |
+|-----------|--------|
+| **WM** | Niri (scrolling tiler) |
+| **Bar** | Waybar |
+| **Launcher** | Rofi |
+| **Notifications** | Swaync |
+| **Terminal** | Kitty |
+| **Shell** | Bash + Starship |
+| **GTK Theme** | Orchis-Purple-Dark-Compact |
+| **Icons** | Linox-Slate |
+| **Cursor** | Bibata-Modern-Classic |
+| **Font** | JetBrainsMono Nerd Font |
+| **Accent** | `#ffb4a9` |
+
+## Setup
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sarok-exe/sarok-area/main/install.sh | bash
+git clone https://github.com/sarok-exe/sarok-area.git
+cd sarok-area
+./setup.sh
 ```
 
-## What's Included
-
-- **WM**: niri (Wayland compositor)
-- **Bar**: waybar with mic & nightlight modules
-- **Terminal**: kitty with matugen dynamic theming
-- **Launcher**: rofi with wallpaper picker
-- **Prompt**: starship (bash)
-- **Cursor**: Bibata-Modern-Classic
-- **Wallpapers**: animated GIF support via mpvpaper
-
-## Scripts (`~/.config/Scripts/`)
-
-| Script | Function |
-|---|---|
-| `wprand` | Random wallpaper / rofi picker |
-| `nightlight.sh` | Toggle wlsunset 3500K |
-| `mic.sh` | Mic volume control |
-| `ocr_selection.sh` | Region screenshot → OCR |
-| `update-kitty-theme` | Auto-generates kitty colors from wallpaper |
-
-## Keybinds
-
-| Key | Action |
-|---|---|
-| `Mod+Shift+N` | Toggle night light |
-| `Mod+Shift+W` | Wallpaper picker |
-| `Mod+S` | OCR region |
+The setup script installs packages, copies configs, themes, icons, and system files.
