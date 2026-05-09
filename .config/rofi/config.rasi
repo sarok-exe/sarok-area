@@ -2,11 +2,11 @@
 
 * {
     font: "JetBrainsMono Nerd Font 13";
-    g-spacing: 12px;
+    g-spacing: 8px;
     g-margin: 0;
-    b-radius: 12px;
-    g-padding: 12px;
-    w-padding: 16px;
+    b-radius: 10px;
+    g-padding: 8px;
+    w-padding: 10px;
 }
 
 configuration {
@@ -32,8 +32,8 @@ window {
     width: 480px;
     border-radius: @b-radius;
     background-color: @base;
-    border: 2px solid;
-    border-color: @surface;
+    border: 1px solid;
+    border-color: @border;
     padding: @w-padding;
 }
 
@@ -44,6 +44,9 @@ prompt {
 inputbar {
     children: ["prompt", "entry"];
     spacing: @g-spacing;
+    background-color: @surface;
+    border-radius: @b-radius;
+    padding: 10px 14px;
 }
 
 entry {
@@ -55,13 +58,13 @@ entry {
 mainbox {
     spacing: @g-spacing;
     margin: @g-margin;
-    padding: @g-padding;
+    padding: 0;
     children: ["inputbar", "listview", "message"];
 }
 
 element {
     spacing: @g-spacing;
-    margin: @g-margin;
+    margin: 2px 0;
     padding: 8px 12px;
     border: 0px solid;
     border-radius: @b-radius;
@@ -73,13 +76,10 @@ element {
 element-icon {
     background-color: transparent;
     padding: 0px;
-    margin: 0px;
+    margin: 0px 8px 0px 0px;
     border: none;
     border-radius: 0px;
-}
-
-element-icon selected {
-    background-color: transparent;
+    size: 28px;
 }
 
 element normal.normal {
@@ -88,17 +88,17 @@ element normal.normal {
 }
 
 element alternate.normal {
-    background-color: @surface;
+    background-color: transparent;
     text-color: @text;
 }
 
-element selected.active {
-    background-color: transparent;
+element selected.normal {
+    background-color: @surface-hover;
     text-color: @primary;
 }
 
-element selected.normal {
-    background-color: transparent;
+element selected.active {
+    background-color: @surface-hover;
     text-color: @primary;
 }
 

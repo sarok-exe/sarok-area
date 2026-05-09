@@ -1,6 +1,7 @@
 spawn-at-startup "errands"
 spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
+spawn-at-startup "swaync"
 spawn-at-startup "sh" "-c" "killall swaybg mpvpaper mpv 2>/dev/null; ~/.local/bin/mpvpaper -f -o \"no-audio loop\" LVDS-1 ~/Pictures/Wallpapers/28a1e36191eb43fae5347624b17edf10.gif"
 config-notification {
     disable-failed
@@ -33,7 +34,7 @@ input {
         tap
         tap-button-map "left-middle-right"
         dwt
-        natural-scroll
+        //natural-scroll
         scroll-factor 0.5
         accel-speed 0.7
         accel-profile "adaptive"
@@ -48,8 +49,8 @@ input {
 }
 
 layout {
-    gaps 14
-    background-color "transparent"
+    gaps 4
+    background-color "#131313"
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
@@ -60,23 +61,19 @@ layout {
     
     border {
         width 0
-        active-color   "#707070"
-        inactive-color "#d0d0d0"
-        urgent-color   "#cc4444"
     }
     
     focus-ring {
-	width 0
-        active-color   "#808080"
-        inactive-color "#505050"
+        width 0
+        active-color   "#ffb4a9"
+        inactive-color "#3a2a29"
     }
     
     shadow {
-        off
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
+        softness 40
+        spread 6
+        offset x=0 y=6
+        color "#00000080"
     }
     
     struts {
@@ -91,7 +88,10 @@ layout {
 
 overview {
     workspace-shadow {
-        off
+        softness 40
+        spread 4
+        offset x=0 y=4
+        color "#00000080"
     }
 }
 
@@ -113,39 +113,38 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
     workspace-switch {
-        spring damping-ratio=0.900 stiffness=800 epsilon=0.0001
+        spring damping-ratio=0.85 stiffness=600 epsilon=0.0001
     }
     window-open {
-        duration-ms 400
-        curve "ease-out-expo"
-    }
-    window-close {
-        duration-ms 400
+        duration-ms 300
         curve "ease-out-quad"
     }
+    window-close {
+        duration-ms 250
+        curve "ease-out-cubic"
+    }
     horizontal-view-movement {
-        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+        spring damping-ratio=0.82 stiffness=380 epsilon=0.0001
     }
     window-movement {
-        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+        spring damping-ratio=0.72 stiffness=300 epsilon=0.0001
     }
     window-resize {
-        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+        spring damping-ratio=0.80 stiffness=380 epsilon=0.0001
     }
     config-notification-open-close {
-        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+        spring damping-ratio=0.60 stiffness=800 epsilon=0.001
     }
     screenshot-ui-open {
         duration-ms 200
         curve "ease-out-quad"
     }
     overview-open-close {
-        spring damping-ratio=0.85 stiffness=400 epsilon=0.0001
+        spring damping-ratio=0.80 stiffness=350 epsilon=0.0001
     }
 }
 
 window-rule {
-    geometry-corner-radius 8
     clip-to-geometry true
 }
 
@@ -245,10 +244,10 @@ binds {
     Mod+Ctrl+T { spawn "dialect"; }
     Mod+E { spawn "kitty" "-e" "yazi" "toggle-overview"; }
     Mod+O { spawn "obsidian" "toggle-overview"; }
-    //Mod+B { spawn "brave" "--password-store=basic"; }
-    Mod+B { spawn "firefox"; }
+    Mod+B { spawn "brave" "--password-store=basic"; }
+    //Mod+B { spawn "firefox"; }
     Mod+N { spawn "kitty" "-e" "wiremix"; }
-    Mod+Z { spawn "errands"; }
+    //Mod+Z { spawn "errands"; }
     Mod+Shift+N { spawn "sh" "-c" "~/.config/Scripts/nightlight.sh toggle"; }
     Mod+Shift+W { spawn "sh" "-c" "~/.config/Scripts/wprand s"; }
 

@@ -1,23 +1,18 @@
-/* Rofi - Theme (matching waybar) */
+/* Rofi - Theme (Matugen from wallpaper) */
 * {
-    background: #131313;
-    base: #131313;
-    text: #e2e2e2;
-    text-dim: #c6c6c6;
-    text-bright: #e2e2e2;
-    primary: #bbd063;
-    primary-bright: #d7ed7c;
-    primary-dim: #d7ed7c;
-    secondary: #c5c9a8;
-    accent: #a1d0c4;
+    background: #0f1511;
+    base: #0f1511;
+    text: #dfe4dd;
+    text-dim: #bfc8bb;
+    text-bright: #dfe4dd;
+    primary: #93d5ab;
+    accent: #b5ccba;
     urgent: #ffb4ab;
-    warning: #a1d0c4;
-    success: #a1d0c4;
-    surface: #1f1f1f;
-    surface-hover: #2a2a2a;
-    surface-selected: #2a2a2a;
-    border: #474747;
-    border-focus: #bbd063;
-    separator: #474747;
+    warning: #b5ccba;
+    surface: #1b211d;
+    surface-hover: #2a332d;
+    border: #404942;
+    border-focus: #93d5ab;
+    separator: #404942;
     transparent: transparent;
 }
