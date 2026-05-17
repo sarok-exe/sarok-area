@@ -136,14 +136,22 @@ step "Pacman packages"
 PKGS=(
     # Core System & Window Manager
     niri xorg-xwayland wayland-protocols qt6-wayland
+    # Desktop essentials
+    swaybg swaylock polkit-kde-agent xdg-utils
     # Terminal & Shell tools
-    kitty fish starship zoxide thefuck neovim
-    yazi fastfetch wiremix
+    kitty fish starship zoxide thefuck neovim fzf
+    yazi fastfetch wiremix eza bat
     # System Monitoring & Utils
-    btop cava dunst libqalculate brightnessctl pamixer pavucontrol
+    btop cava dunst libqcalculate brightnessctl pamixer pavucontrol
     networkmanager openssh rsync zip unzip nload htop
     # Bar & Notifications
     waybar swaync wlogout mako rofi
+    # Audio
+    wireplumber pipewire-pulse pipewire-jack
+    # Bluetooth
+    bluez bluez-utils
+    # Input method (fcitx5 config tracked)
+    fcitx5 fcitx5-configtool fcitx5-table-extra
     # Media & Graphics
     mpv imv feh drawing inkscape flameshot
     # Fonts
@@ -154,11 +162,11 @@ PKGS=(
     # Build tools
     cmake ninja slurp grim tesseract tesseract-data-eng wl-clipboard
     # Development
-    python python-pip base-devel
+    python python-pip base-devel git github-cli
     # MPD Music Server
     mpd mpc
     # GPU tools
-    vulkan-tools
+    vulkan-tools vulkan-intel intel-media-driver
     # Power management
     tlp powertop
     # OpenCode dependencies
@@ -181,6 +189,8 @@ if command -v yay &>/dev/null; then
         vesktop
         awww
         matugen
+        quickshell
+        timekpr-next
         gpu-screen-recorder
         gpu-screen-recorder-gtk
     )
