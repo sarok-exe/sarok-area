@@ -1,7 +1,7 @@
 // --- Key Binds & Window Navigation ---
 recent-windows {
     binds {
-        Alt+Tab         { next-window scope="output"; }
+        Mod+Tab         { next-window scope="output"; }
         Alt+Shift+Tab   { previous-window scope="output"; }
         Alt+grave       { next-window filter="app-id"; }
         Alt+Shift+grave { previous-window filter="app-id"; }
@@ -17,7 +17,7 @@ binds {
     // === System & Overview ===
     //Mod+D repeat=false { toggle-overview; }
     Mod+Shift+D repeat=false { toggle-overview; }
-    Mod+Tab repeat=false { toggle-overview; }
+    //Alt+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Escape hotkey-overlay-title="System Info" { spawn-sh "~/Desktop/sys_info.sh"; }
     Ctrl+Shift+Escape hotkey-overlay-title="Btop" { spawn-sh "command -v btop && kitty -1 fish -c btop"; }

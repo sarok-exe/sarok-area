@@ -1,99 +1,120 @@
 {
-  "position": "top",
-  "width": 1600,
-  "height": 32,
-  "modules-left": ["niri/workspaces"],
-  "modules-center": ["niri/window"],
-  "modules-right": ["tray", "cpu", "memory", "backlight", "network", "pulseaudio", "custom/mic", "battery", "custom/nightlight", "clock"],
-
+  "layer": "top",
+  "margin-top": 5,
+  "margin-right": 5,
+  "margin-left": 5,
+  "spacing": 4,
+  "modules-left": [
+    "custom/rofi",
+    "niri/workspaces",
+    "niri/window",
+    "custom/timer"
+  ],
+  "modules-right": [
+    "network",
+    "disk",
+    "cpu",
+    "custom/cpu_temp",
+    "backlight",
+    "custom/memory",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+  "custom/rofi": {
+    "format": " ",
+    "on-click": "rofi -show drun -disable-history -show-icons -theme-str 'window { width: 22% ; location: northwest; margin: 10px 0 0 10px; } listview { lines: 20; }'",
+    "on-click-right": "~/.config/custom_scripts/power.sh",
+    "escape": true,
+    "tooltip": false
+  },
   "niri/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "10"
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{index}"
+  },
+  "niri/window": {
+    "format": "{app_id}",
+    "separate-outputs": true,
+    "tooltip": false
+  },
+  "disk": {
+    "format": "{free}",
+    "interval": 20
+  },
+  "cpu": {
+    "format": "{usage}%",
+    "tooltip": false,
+    "interval": 60,
+    "on-click-right": "~/.config/custom_scripts/launch_tui.sh btop"
+  },
+  "custom/cpu_temp": {
+    "exec": "~/.config/waybar/scripts/waybarTemp.sh",
+    "return-type": "json",
+    "interval": 2,
+    "format": "{}",
+    "tooltip": false
+  },
+  "backlight": {
+    "format": "{percent}%",
+    "tooltip": false,
+    "on-click-right": "~/.config/custom_scripts/wlsunset.sh"
+  },
+  "custom/memory": {
+    "exec": "~/.config/waybar/scripts/memory_usage.sh",
+    "interval": 2,
+    "return-type": "json",
+    "format": "{}"
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{volume}%",
+    "format-muted": "{volume}%",
+    "format-bluetooth": "{volume}%",
+    "format-bluetooth-muted": "{volume}%",
+    "format-source": "{volume}%",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "~/.config/custom_scripts/launch_tui.sh wiremix",
+    "tooltip": false,
+    "max-volume": 130
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "good": 99,
+      "warning": 30,
+      "critical": 20
     },
-    "persistent-workspaces": {
-      "*": 5
+    "format": "{capacity}%",
+    "format-critical": "{capacity}%!!",
+    "format-warning": "{capacity}%",
+    "format-charging": "{capacity}%",
+    "format-plugged": "{capacity}%",
+    "format-alt": "{time}",
+    "tooltip": false
+  },
+  "network": {
+    "interval": 2,
+    "format": "{bandwidthDownBits}",
+    "format-wifi": "{bandwidthDownBits}",
+    "format-ethernet": "{bandwidthDownBits}",
+    "tooltip": false,
+    "states": {
+      "normal": 25
     }
   },
-
-  "niri/window": {
+  "custom/timer": {
+    "exec": "~/.config/waybar/scripts/timer.sh",
+    "return-type": "json",
     "format": "{}",
-    "max-length": 30
+    "on-click": "~/.config/waybar/scripts/timer.sh toggle",
+    "on-click-right": "~/.config/waybar/scripts/timer.sh reset",
+    "tooltip": true
   },
-
-  "cpu": {
-    "format": "  {usage}%",
-    "interval": 2
-  },
-
-  "memory": {
-    "format": " 爵 {used}%",
-    "interval": 2
-  },
-
-  "backlight": {
-    "format": "  {percent}%",
-    "scroll-step": 5
-  },
-
-  "network": {
-    "format-wifi": " 󰤨 {essid}",
-    "format-ethernet": " 󰈀 Wired",
-    "format-disconnected": " 󰤭 Off",
-    "tooltip-format": "Signal: {signalStrength}%"
-  },
-
-  "pulseaudio": {
-    "format": " 󰕈 {volume}%",
-    "format-muted": " 󰖁 Mute",
-    "on-click": "pavucontrol"
-  },
-
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": " 󰁹 {capacity}%",
-    "format-charging": " 󰂄 {capacity}%",
-    "format-plugged": " 󰂄 {capacity}%",
-    "format-full": " 󰁹 Full",
-    "tooltip-format": "{time}"
-  },
-
   "clock": {
-    "format": " 󰥔 {:%H:%M}",
-    "format-alt": " 󰥔 {:%a %d %b}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-
-  "custom/mic": {
-    "exec": "$HOME/.config/Scripts/mic.sh",
-    "on-click": "$HOME/.config/Scripts/mic.sh toggle",
-    "on-scroll-up": "$HOME/.config/Scripts/mic.sh up",
-    "on-scroll-down": "$HOME/.config/Scripts/mic.sh down",
-    "return-type": "json",
+    "format": "{:%a %d | %H:%M}",
+    "tooltip": false,
     "interval": 1
-  },
-
-  "custom/nightlight": {
-    "exec": "$HOME/.config/Scripts/nightlight.sh",
-    "on-click": "$HOME/.config/Scripts/nightlight.sh toggle",
-    "return-type": "json",
-    "interval": 10
-  },
-
-  "tray": {
-    "icon-size": 14,
-    "spacing": 4
   }
 }

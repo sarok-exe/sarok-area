@@ -1,11 +1,29 @@
-# sarok-area
+# Sarok Area
 
-Arch Linux desktop configuration files: Niri, Waybar, Rofi, Kitty, swaync, GTK. Warm accent theming with Orchis-Purple and Linox-Slate.
+Arch Linux setup with Niri window manager.
 
+## Install
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sarok-exe/sarok-area/main/install.sh | bash
 ```
-git clone https://github.com/sarok-exe/sarok-area.git
-cd sarok-area
-bash setup.sh
+
+## Manual
+
+```bash
+git clone git@github.com:sarok-exe/sarok-area.git ~/.sarok-area
+cd ~/.sarok-area
+./setup.sh
 ```
 
-Pulls configs from `~/.config/` via hardlinks.
+## Structure
+
+- `setup.sh` - Main installer
+- `etc/` - System configs (hosts, pacman.conf)
+- `.config/` - User configs (niri, kitty, waybar, etc.)
+- `install.sh` - Bootstrap (curl | bash)
+
+## After Install
+
+- Reboot or restart niri: `Mod+Shift+E`
+- Set shell: `chsh -s /usr/bin/fish`

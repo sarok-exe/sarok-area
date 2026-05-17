@@ -19,7 +19,7 @@ theme[main_fg]="#e2e2e2"
 theme[title]="#e2e2e2"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#c1c1ff"
+theme[hi_fg]="#d0bcff"
 
 # Background color of selected item in processes box
 theme[selected_bg]="#2a2a2a"
@@ -55,46 +55,46 @@ theme[proc_box]="#474747"
 theme[div_line]="#474747"
 
 # Temperature graph colors
-theme[temp_start]="#e9b9d3"
-theme[temp_mid]="#c6c4dd"
+theme[temp_start]="#efb8c7"
+theme[temp_mid]="#ccc2db"
 theme[temp_end]="#ffb4ab"
 
 # CPU graph colors
-theme[cpu_start]="#e9b9d3"
-theme[cpu_mid]="#c6c4dd"
+theme[cpu_start]="#efb8c7"
+theme[cpu_mid]="#ccc2db"
 theme[cpu_end]="#ffb4ab"
 
 # Mem/Disk free meter
-theme[free_start]="#e9b9d3"
-theme[free_mid]="#e9b9d3"
-theme[free_end]="#e9b9d3"
+theme[free_start]="#efb8c7"
+theme[free_mid]="#efb8c7"
+theme[free_end]="#efb8c7"
 
 # Mem/Disk cached meter
-theme[cached_start]="#c1c1ff"
-theme[cached_mid]="#c1c1ff"
-theme[cached_end]="#c1c1ff"
+theme[cached_start]="#d0bcff"
+theme[cached_mid]="#d0bcff"
+theme[cached_end]="#d0bcff"
 
 # Mem/Disk available meter
-theme[available_start]="#c6c4dd"
-theme[available_mid]="#c6c4dd"
-theme[available_end]="#c6c4dd"
+theme[available_start]="#ccc2db"
+theme[available_mid]="#ccc2db"
+theme[available_end]="#ccc2db"
 
 # Mem/Disk used meter
-theme[used_start]="#e9b9d3"
-theme[used_mid]="#c6c4dd"
+theme[used_start]="#efb8c7"
+theme[used_mid]="#ccc2db"
 theme[used_end]="#ffb4ab"
 
 # Download graph colors
-theme[download_start]="#e9b9d3"
-theme[download_mid]="#e9b9d3"
-theme[download_end]="#e9b9d3"
+theme[download_start]="#efb8c7"
+theme[download_mid]="#efb8c7"
+theme[download_end]="#efb8c7"
 
 # Upload graph colors
-theme[upload_start]="#c6c4dd"
-theme[upload_mid]="#c6c4dd"
-theme[upload_end]="#c6c4dd"
+theme[upload_start]="#ccc2db"
+theme[upload_mid]="#ccc2db"
+theme[upload_end]="#ccc2db"
 
 # Process graph colors
-theme[process_start]="#c1c1ff"
-theme[process_mid]="#c1c1ff"
-theme[process_end]="#c1c1ff"
+theme[process_start]="#d0bcff"
+theme[process_mid]="#d0bcff"
+theme[process_end]="#d0bcff"

@@ -1,326 +1,111 @@
-sw_volume: 59
+sw_volume: 81
 audio_device_state:1:My PipeWire Output
-state: stop
-current: 37
+state: pause
+current: 12
+time: 22.766000000000002
 random: 1
-repeat: 0
-single: 0
+repeat: 1
+single: 1
 consume: 1
 crossfade: 0
 mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:Arman Cekin - Better Days.flac
-1:Blueface - Better Days 2 (Pain In The Ghetto).mp3
-2:Clara Mann - Waiting For the Flight.mp3
-3:1_1 - Better Days - NEIKED  Mae Muller  Polo G (320).mp3
-4:Paris_&_Simo_feat_Steve_Reece_Fire.mp3
-5:Around_the_World_La_La_La_La_La_Radio_Version_A_Touch_Of_Class_FLAC.flac
-6:Emerson,_Lake_&_Palmer_Welcome.mp3
-7:Hellwalker   Mick Gordon - DOOM.mp3
-8:Disrupted Original   Kelly Bailey(Half life2).mp3
-9:ESQUARIA_葉月ゆら_–_Drivi'n_greedy_Nh.mp3
-10:Dangerous Days   Perturbator.mp3
-11:GaMetal - It Has To Be This Way (From  Metal Gear Rising  Re.mp3
-12:Soda Pop.mp3
-13:Penultimatum.mp3
-14:Vocaloid_Hatsune_Miku_Вокалоид_Хатсуне.mp3
-15:Soundtrack 1   Half-Life.mp3
-16:2_513703871290532735.mp3
-17:Lynyrd Skynyrd – Free Bird.mp3
-18:Parade [Paprika OST]   Hirasawa Susumu.mp3
-19:Lynyrd Skynyrd - Free Bird (1973_Live Demo Version).mp3
-20:13 I Want You (Gone).mp3
-21:Talking Heads – Lifetime Piling Up.mp3
-22:All My Exes Live In Texas   Johnny Cash.mp3
-23:Хозяин леса   Король и Шут.mp3
-24:＊NSYNC - Bye Bye Bye (Official Video).mp3
-25:Highrider - 42PATH.m4a
-26:دولتى باقيه .mp3
-27:Make Me Wanna Die (Miss Nothin)   The Pretty Reckless.mp3
-28:music_trackmaker_x_melodic_minor_djdou_yin_ban_remix_tiktok_2025.m4a
-29:A_Touch_of_Class_Topic_Around_the_World_La_La_La_La_La_Radio_Version.m4a
-30:pax.mp3
-31:Adele - Rolling in the Deep (Official Music Video).mp3
-32:Adele - Skyfall (Official Lyric Video).mp3
-33:Akon - Right Now (Na Na Na) (Official Video).mp3
-34:Alexandra Stan - Mr. Saxobeat (Official Video).mp3
-35:ATOLS feat. VOCALOID Fukase  – アリス オリジナル.mp3
-36:Blitz (Slowed + Reverb).mp3
-37:Amy Winehouse - Back To Black.mp3
-38:Aphex Twin - Alberto Balsam.mp3
-39:Ava Max - Kings & Queens [Official Music Video].mp3
-40:average-channel-ultrakill-ost-the-fire-is-gone.m4a
-41:Avicii - Wake Me Up (Official Video).mp3
-42:Bendy  build our machine __ Español.m4a
-43:Beyoncé - Crazy In Love ft. JAY Z.mp3
-44:Beyoncé - Halo.mp3
-45:Billie Eilish - BIRDS OF A FEATHER (Official Music Video).mp3
-46:The Black Eyed Peas - I Gotta Feeling (Official Music Video).mp3
-47:Want you gone [portal] (RUS)   Empire of Geese.mp3
-48:dance of the knights (slowed + boosted).mp3
-49:Bring Me The Horizon - Shadow Moses (Official Video).mp3
-50:Britney Spears - ...Baby One More Time (Official Video).mp3
-51:Britney Spears - Gimme More (Official HD Video).mp3
-52:Britney Spears - I Wanna Go (Official Video).mp3
-53:Britney Spears - Toxic (Official HD Video).mp3
-54:Britney Spears - Womanizer (Director's Cut) (Official HD Video).mp3
-55:Bruno Mars - Locked Out Of Heaven (Official Music Video).mp3
-56:Do What You Want - Gone - C Plus.m4a
-57:Calvin Harris - Summer (Official Video).mp3
-58:Camila Cabello - Havana (Audio) ft. Young Thug.mp3
-59:Carly Rae Jepsen - Call Me Maybe.mp3
-60:cartoncheto-fnf-vs-rewrite-trinity-but-only-lord-x-part.m4a
-61:Charlie Puth - We Don't Talk Anymore (feat. Selena Gomez) [Official Video].mp3
-62:chekochi_pure_pure_hatsune_miku_rabbit_hole_extended_version_hat.m4a
-63:Once in a Lifetime - Крис де Бург.m4a
-64:CHRYSTAL - The Days (Notion Remix).mp3
-65:Clean Bandit - Symphony (feat. Zara Larsson) [Official Video].mp3
-66:Coldplay - A Sky Full Of Stars (Official Video).mp3
-67:Coldplay - Hymn For The Weekend (Official Video).mp3
-68:anxiety!.mp3
-69:coreyladdo-sfm-g-man-once-in-a-lifetime.m4a
-70:Parasite Eve - Out of Phase.mp3
-71:csvzx-illusionary-daytime-x-trackmaker-slowed-douyin.m4a
-72:ctw_trinity_encore_instrumental_fnf_vs_sonic_exe_vs_rewrite_roun.m4a
-73:ctw_trinity_encore_vocals_fnf_vs_sonic_exe_vs_rewrite_round_2_os.m4a
-74:AFTERLIFE.mp3
-75:Can't Feel Myself (Edit).mp3
-76:Умри, если меня не любишь (Шаг за 20).mp3
-77:Illusionary_Daytime_x_Trackmaker_Trending_Version_Dark_Winne.m4a
-78:David Guetta - Hey Mama (Official Video) ft Nicki Minaj, Bebe Rexha & Afrojack.mp3
-79:David Guetta - Titanium ft. Sia (Official Video).mp3
-80:I m bulletproof nothing to lose.. Fire away, fire away.. You.mp3
-81:Titanium (Original Mix) (2011)   David Guetta feat. Sia.mp3
-82:ラビットホール - Rabbit Hole   DECO 27.m4a
-83:devalon-black-souls-2-soundtrack-the-crawling-girls.m4a
-84:DJ Snake - Let Me Love You ft. Justin Bieber.mp3
-85:God's Plan.mp3
-86:Dua Lipa - Break My Heart (Official Video).mp3
-87:Dua Lipa - Don't Start Now (Official Music Video).mp3
-88:Dua Lipa - Levitating Featuring DaBaby (Official Music Video).mp3
-89:Dua Lipa - New Rules (Official Music Video).mp3
-90:Ed Sheeran - Shape of You (Official Music Video).mp3
-91:Stereo Love (Remastered Version).mp3
-92:Jfarrari - The Unknowing (Lyric Video).mp3
-93:[Metric] - Lost Kitten HD.mp3
-94:Evanescence - Bring Me To Life (Official HD Music Video) ft. Paul McCoy.mp3
-95:) (feat. Jason Charles Miller) - FamilyJules.m4a
-96:) - FamilyJules.m4a
-97:Fifth Harmony - Worth It (Official Video) ft. Kid Ink.mp3
-98:Foo Fighters - Everlong (Official HD Video).mp3
-99:Gym Class Heroes： Stereo Hearts ft. Adam Levine [OFFICIAL VIDEO].mp3
-100:twenty one pilots： Heathens (from Suicide Squad： The Album) [OFFICIAL VIDEO].mp3
-101:GaMetal - Brainiac Maniac Plants vs. Zombies.mp3
-102:It_Has_To_Be_This_Way_From_%22Metal_Gear_Rising_Revengeance%22.m4a
-103:It_s_Pizza_Time!_Pizza_Tower_feat_Jonny_Atma_GaMetal.m4a
-104:Portal 2 - Want You Gone - End Credits Theme - Geek Music.m4a
-105:I m Sorry (Extended Mix) - Gifty, Egoism,   Platinum Monkey.m4a
-106:LOTL.mp3
-107:Gotye - Somebody That I Used To Know (feat. Kimbra) [Official Music Video].mp3
-108:I m My Own Master Now (Platinum Mix) - Graeme Cornies.m4a
-109:Miyagi & Эндшпиль feat. Рем Дигга - I Got Love (Official Video).mp3
-110:happy_bush_gaming_sir_shootsalot_clone_melody_slowed_reverbed.m4a
-111:The Dark Side of the Rising.mp3
-112:Imagine Dragons - Believer (Official Music Video).mp3
-113:The Mind Electric - Intelevande.m4a
-114:Mind_Electric_Miracle_Musical_DEMO_Slowed_+_Reverb_YRw9AbpQ_Rc.m4a
-115:Baby Hotline.mp3
-116:Two Time.mp3
-117:Shovel_Knight_OST_Fighting_with_all_of_Our_Might_Guest_Director.m4a
-118:jamie_christopherson_i_m_my_own_master_now_platinum_mix_metal_ge.mp3
-119:JENNIE - like JENNIE (Official Video).mp3
-120:Jennifer Lopez, Pitbull - On The Floor.mp3
-121:Jessie J - Bang Bang ft. Ariana Grande, Nicki Minaj.mp3
-122:Drink A Yak.mp3
-123:matchmakers.mp3
-124:no signal.mp3
-125:Justin Bieber - Beauty And A Beat (Official Music Video) ft. Nicki Minaj.mp3
-126:Justin Bieber - Sorry (PURPOSE ： The Movement).mp3
-127:Justin Timberlake - SexyBack (Official Video) ft. Timbaland.mp3
-128:Katy Perry - California Gurls (Official Music Video) ft. Snoop Dogg.mp3
-129:Katy Perry - Dark Horse ft. Juicy J.mp3
-130:Katy Perry - E.T. ft. Kanye West (Official Music Video).mp3
-131:Katy Perry - Firework (Official Music Video).mp3
-132:Katy Perry - Hot N Cold (Official Music Video).mp3
-133:Katy Perry - I Kissed A Girl (Official Music Video).mp3
-134:Katy Perry - Last Friday Night (T.G.I.F.) (Official Music Video).mp3
-135:Katy Perry - Roar.mp3
-136:Ke$ha - TiK ToK (Official HD Video).mp3
-137:tunnelberg-kittensneeze-the-musical-ghost-a-little-bit-bad.m4a
-138:black eyed peas & shakira - girl like me ⧸⧸ slowed + reverb.mp3
-139:If I m Haunting You (Tribute to Beyoncé) - Krazed Platinum.m4a
-140:ksho-let-there-be-chaos.m4a
-141:Kylie Minogue - Can't Get You Out Of My Head (Official Video).mp3
-142:Lady Gaga - Abracadabra (Official Music Video).mp3
-143:Lady Gaga - Alejandro (Official Music Video).mp3
-144:Lady Gaga - Applause.mp3
-145:Lady Gaga - Bad Romance (Official Music Video).mp3
-146:Lady Gaga - Bloody Mary (Official Audio).mp3
-147:Lady Gaga - Born This Way (Official Music Video).mp3
-148:Lady Gaga - Judas (Official Music Video).mp3
-149:Lady Gaga - Just Dance (Official Music Video) ft. Colby O'Donis.mp3
-150:Lady Gaga - LoveGame (Official Music Video).mp3
-151:Lady Gaga - Paparazzi (Official Music Video).mp3
-152:Lady Gaga - Perfect Illusion (Official Music Video).mp3
-153:Lady Gaga - Poker Face (Official Music Video).mp3
-154:Lady Gaga - Telephone ft. Beyoncé (Official Music Video) ft. Beyoncé.mp3
-155:Lady Gaga - The Dead Dance (Official Music Video).mp3
-156:Lady Gaga - The Edge Of Glory.mp3
-157:Lady Gaga - Yoü And I.mp3
-158:Lady Gaga, Bruno Mars - Die With A Smile (Official Music Video).mp3
-159:lagger_s_channel_rus_sub_the_mind_electric_animation_animatic_fl.m4a
-160:Lana Del Rey - Summertime Sadness (Official Music Video).mp3
-161:Fahkeet   Light Club.m4a
-162:coke nails.mp3
-163:Watch This (ARIZONATEARS Pluggnb Remix).mp3
-164:af1.mp3
-165:In The End [Official HD Music Video] - Linkin Park.mp3
-166:LMFAO - Party Rock Anthem ft. Lauren Bennett, GoonRock.mp3
-167:1987 Pt. 2.mp3
-168:Madonna - Hung Up (Official Video) [HD].mp3
-169:Hit_Single_Real_Cover_ft_@stashclub3768_@faeteava_@spacenautics.m4a
-170:Major Lazer & DJ Snake - Lean On (feat. MØ) [Official 4K Music Video].mp3
-171:Maroon 5 - Animals (Lyric Video).mp3
-172:Maroon 5 - One More Night (Official Music Video).mp3
-173:Marshmello ft_ Bastille - Happier (Animation Mus aDocsOG_B_Y.m4a
-174:青い、濃い、橙色の日.mp3
-175:SC theme   Mathieu de Valve.mp3
-176:HALF LIFE   MECHATOK   TOXE.mp3
-177:Young Black & Rich (Rock Remix).mp3
-178:melody_makers_ming_elyanna_massari_indilla_calling_you_real_love.m4a
-179:Too Many Nights.mp3
-180:Doomsday.mp3
-181:HARDY BOYS - (mikeeysmind x Opium Jai) (Re-upload).mp3
-182:Dream Sweet in Sea Major - Miracle Musical  2NKdB.mp3
-183:Miracle_Musical_-_The_mind_electric_77085501.mp3
-184:miracle-musical-the-mind-electric.mp3
-185:mr_t_don_t_join_team_red_beloved_bird_clone_melody_full_aurora_h.m4a
-186:mr-t-don-t-join-team-red-redcoats-melody-clone-melody.m4a
-187:By The Sword (Extended Remix Cut) By Iamjakehill.mp3
-188:Once In A Lifetime (Extended Mix) - Nianaro.m4a
-189:nobiean-primos-a-little-bit-bad-european-spanish.m4a
-190:Travis Scott - 90210 sped up (Tiktok Version).mp3
-191:Arctic Monkeys - Do I Wanna Know？ (Official Video).mp3
-192:OneRepublic - Counting Stars.mp3
-193:OGS Best Music Mix _2 _ Chill_ Trap_ Future Ba - FcZcLQmJxS4.m4a
-194:Parade (From %22Paprika%22) - PianoDeuss.m4a
-195:Pitbull - Give Me Everything ft. Ne-Yo, Afrojack, Nayer.mp3
-196:Pitbull, Ke$ha - Timber (featuring Ke$ha - Official Video).mp3
-197:Spy Car   Platinum Monkey.mp3
-198:Rag'n'Bone Man - Human (Official Video).mp3
-199:Shaboozey - A Bar Song (YUSSI Remix) (Free Download).mp3
-200:House of the Addict.mp3
-201:Breakin' Dishes.mp3
-202:Rihanna - Diamonds.mp3
-203:Rihanna - Don't Stop The Music.mp3
-204:Rihanna - Only Girl (In The World).mp3
-205:Rihanna - S&M.mp3
-206:Rihanna - Umbrella (Orange Version) (Official Music Video) ft. JAŸ-Z.mp3
-207:Rihanna - Where Have You Been.mp3
-208:ROSÉ & Bruno Mars - APT. (Official Music Video).mp3
-209:Sabrina Carpenter - Espresso.mp3
-210:Sean Paul - No Lie ft. Dua Lipa.mp3
-211:Selena Gomez & The Scene - Love You Like A Love Song.mp3
-212:Set It Off - I Want You (Gone) [feat_ Matt Apple T2ZfGbicyTc.m4a
-213:Shakira - Can't Remember to Forget You (Official Video) ft. Rihanna.mp3
-214:Shakira - Hips Don't Lie (featuring Wyclef Jean) (Official 4K Video) ft. Wyclef Jean.mp3
-215:Shawn Mendes, Camila Cabello - Señorita.mp3
-216:Mo Bamba.mp3
-217:Sia - Chandelier (Official Video).mp3
-218:Sia - Cheap Thrills (Performance Edit).mp3
-219:Sia - Unstoppable (Official Video - Live from the Nostalgic For The Present Tour).mp3
-220:siren-melody-ed-sheeran-shape-of-you-lyrical-video.m4a
-221:Yugoslavskiy Groove.mp3
-222:Travis Scott - My Eyes - (Second Half Extended).mp3
-223:soundtracks_games_soundtrack_death_stranding_best_songs_new_with.m4a
-224:Swedish House Mafia ft. John Martin - Don't You Worry Child (Official Video).mp3
-225:What You Know.mp3
-226:Once in a Lifetime (Live) - Talking Heads.m4a
-227:32-the-mind-electric-demo-4-hawaii-part-ii-part-ii.mp3
-228:t.A.T.u. - All The Things She Said (Official Music Video).mp3
-229:Taylor Swift - Blank Space.mp3
-230:Taylor Swift - Shake It Off.mp3
-231:Taylor Swift - The Fate of Ophelia (Official Music Video).mp3
-232:Rocket Jump Waltz Extended   Team Fortress 2.mp3
-233:Highest In The Room (Slowed).mp3
-234:The Blaze - TERRITORY (Official Video).mp3
-235:Money.mp3
-236:Algiz - The Flight of Sleipnir.m4a
-237:Free As A Bird [In the Style of The Beatles] {Karaoke Versio.m4a
-238:The Neighbourhood - Sweater Weather (Official Video).mp3
-239:Alone - The Numbers.m4a
-240:The Pussycat Dolls - Buttons (Official Music Video) ft. Snoop Dogg.mp3
-241:The Weeknd & Ariana Grande - Save Your Tears (Remix) (Official Video).mp3
-242:The Weeknd - Blinding Lights (Official Video).mp3
-243:The Weeknd - I Feel It Coming ft. Daft Punk (Official Video).mp3
-244:The Weeknd - Starboy ft. Daft Punk (Official Video) ft. Daft Punk.mp3
-245:Dmitri Shostakovich - Waltz No. 2.mp3
-246:tony_husky_fnf_trinity_encore_cover_espanol_latino_solo_rewrite.m4a
-247:Better Days - Top $ Raz.m4a
-248:90210.mp3
-249:VANO 3000 - Running Away (Extended Version)  with [adult swim] Tiktok Visuals.mp3
-250:NUMBER - TWERKNATION.m4a
-251:Apprehension and Evasion - Valve.m4a
-252:Credits Closing Theme - Valve.m4a
-253:valve-credits-closing-theme.m4a
-254:Valve - Sector Sweep.mp3
-255:Laning 2016 - Valve Studio Orchestra.m4a
-256:Yeat - X With The Boot Up V2 (No EDM).mp3
-257:74b7026d_64bc_4029_bc3b_969de4196462VOID_A_Special_Darksynth_M.mp3
-258:Molly - Votabias.mp3
-259:Lucky twice - Lucky (slowed down).mp3
-260:BB s Theme Instrumental (From Death Stranding) (Instrumental.m4a
-261:Down Under - Agartha Remix.mp3
-262:I Don t Wanna Die (Miss Me) - Zach2trndyy.m4a
-263:ZAYN - Dusk Till Dawn (Official Video) ft. Sia.mp3
-264:Darksynth_Voidstare_Zith_Nightmare_Drive_Original_MixMP3_160K.mp3
-265:bricklord-fnf-trinity-encore-vs-rewrite-round-2.m4a
-266:fnf-trinity-vs-rewrite-v2.m4a
-267:【東方Dubstep】 Everlasting Nap 「ESQUARIA」.mp3
-268:Y-Burning an Orphanage With Technoblade A Playlist.mp3
-269:Path Of Borealis   Half-Life 2.mp3
-270:Revive_My_Soul_Side_A_Bendy_and_the_Dark_Revival_official_song_ft.mp3
-271:YT2mp3_info_The_Only_Thing_They_Fear_is_V_Cyberpunk2077_x_Doom_Eternal.mp3
-272:The World Is Mine   Hatsune Miku.mp3
-273:7puuzysmd6sfcz11fwqp.m4a
-274:BANG_BANG_BANG_Chainsaw_Man_Song_ft_@starxrayne_@JamsDX_.m4a
-275:BENDY_AND_THE_INK_MACHINE_SONG_Build.mp3
-276:Build Our Machine   Bendi and Ink Machine.mp3
-277:Build Our Machine [Remix]    Sayonara Maxwell.mp3
-278:Death-Stranding-Low-Roar-and-Ambience-4K.m4a
-279:DESOLATE_HALLWAY_BENDY_AND_THE_DARK_REVIVAL_SONG_ADVOCATEMUSIC_FT.mp3
-280:dop'e – highrider dub].mp3
-281:EZ4ENCE (BASSBOOSTED)   THE VERKKARS.mp3
-282:Fire In The Hole   Entropy Zero.mp3
-283:Free Bird (Live at the Lakewood, Atlanta, Ga 1994)   Lynyrd.mp3
-284:Harder Better Faster Stronger   Draft Punk (DJ Hostel Remix).mp3
-285:Hazardous Environment Cover   Half Life Theme.mp3
-286:Heaven Says.   chart.mp3
-287:Heirol_ATC_Around_the_world_Miku_and_Luka_cover_HQ_versio.mp3
-288:illusionary_daytime_x_trackmaker_douyin_tiktok_version_+_looped.m4a
-289:Im So Hot   Platinum.mp3
-290:Judas.mp3
-291:Labyrinth,_Mind_Electric,_Mind_Electric_Demo_4_by_Miracle_Musi.mp3
-292:Last Legs   Valve.mp3
-293:Little Dark Age - MGMT.mp3
-294:Lynyrd Skynyrd-Free Bird.mp3
-295:miracle musical - Labyrinth speed up.mp3
-296:miss wanna die (slowedanti-nightcoredaycore).mp3
-297:Mitral Valve Prolapse  – Dissonanse.mp3
-298:Nova prospect   Half-Life 2.mp3
-299:Official_Soundtrack_Death_Stranding_BB_s_Theme_Ludvig_For.mp3
-300:Once in a lifetime   Mecanica Popular.mp3
-301:Once In a Lifetime   Nikita Yamov.mp3
-302:Phoibe the Orphan   The Flight feat. Mike Georgiades.mp3
-303:Roller Mobster   Carpenter Brut.mp3
-304:Technoblade theme 4   Technoblade.mp3
-305:TF2 Kazotsky Kick Mashup.mp3
-306:The Mind Eletric (demo 4) - miracle musical Sped Up.mp3
-307:The Verkkars - EZ4ENCE (kannatuslaulu).mp3
-308:The_Amazing_Digital_Circus_Song____The_Show_That_Never_Ends__feat.mp3
-309:Unravel (Tokyo Ghoul cover)   Ryo Trackmaker.mp3
-310:Хозяин леса   Кароль и Шут.mp3
-311:東方自作アレンジ_Blackout_原曲_ハルトマンの妖怪少女_Hartmann_s_Youkai_Girl.mp3
+0:【東方Dubstep】 Everlasting Nap 「ESQUARIA」.mp3
+1:Path Of Borealis   Half-Life 2.mp3
+2:YT2mp3_info_The_Only_Thing_They_Fear_is_V_Cyberpunk2077_x_Doom_Eternal.mp3
+3:5k4m5orfn96b1x99wqd3.m4a
+4:7puuzysmd6sfcz11fwqp.m4a
+5:BANG_BANG_BANG_Chainsaw_Man_Song_ft_@starxrayne_@JamsDX_.m4a
+6:BENDY_AND_THE_INK_MACHINE_SONG_Build.mp3
+7:Build Our Machine   Bendi and Ink Machine.mp3
+8:Build Our Machine [Remix]    Sayonara Maxwell.mp3
+9:Death-Stranding-Low-Roar-and-Ambience-4K.m4a
+10:DECO27 - Rabbit Hole feat. Hatsune Miku.mp3
+11:DESOLATE_HALLWAY_BENDY_AND_THE_DARK_REVIVAL_SONG_ADVOCATEMUSIC_FT.mp3
+12:dop'e – highrider dub].mp3
+13:EZ4ENCE (BASSBOOSTED)   THE VERKKARS.mp3
+14:Fire In The Hole   Entropy Zero.mp3
+15:FNF Vs Rewrite - Trinity but only Rewrite part.mp3
+16:Free Bird (Live at the Lakewood, Atlanta, Ga 1994)   Lynyrd.mp3
+17:Half-Life 2 Ep1 – Episode 1.mp3
+18:Harder Better Faster Stronger   Draft Punk (DJ Hostel Remix).mp3
+19:Hazardous Environment Cover   Half Life Theme.mp3
+20:Heaven Says.   chart.mp3
+21:Heirol_ATC_Around_the_world_Miku_and_Luka_cover_HQ_versio.mp3
+22:illusionary_daytime_x_trackmaker_douyin_tiktok_version_+_looped.m4a
+23:Im So Hot   Platinum.mp3
+24:Judas.mp3
+25:Labyrinth,_Mind_Electric,_Mind_Electric_Demo_4_by_Miracle_Musi.mp3
+26:Last Legs   Valve.mp3
+27:laydownrot - Hunter eyes (slowed).mp3
+28:Little Dark Age - MGMT.mp3
+29:Lynyrd Skynyrd-Free Bird.mp3
+30:Minecraft Video  Technoblade  - Minecraft Parody Song of Memorie.mp3
+31:miracle musical - Labyrinth speed up.mp3
+32:miss wanna die (slowedanti-nightcoredaycore).mp3
+33:Nova prospect   Half-Life 2.mp3
+34:Official_Soundtrack_Death_Stranding_BB_s_Theme_Ludvig_For.mp3
+35:Once in a lifetime   Mecanica Popular.mp3
+36:Once In a Lifetime   Nikita Yamov.mp3
+37:Phoibe the Orphan   The Flight feat. Mike Georgiades.mp3
+38:Roller Mobster   Carpenter Brut.mp3
+39:Tame Impala - New Person, Same Old Mistakes (Audio) (1).mp3
+40:Technoblade theme 4   Technoblade.mp3
+41:TF2 Kazotsky Kick Mashup.mp3
+42:The Mind Eletric (demo 4) - miracle musical Sped Up.mp3
+43:The Verkkars - EZ4ENCE (kannatuslaulu).mp3
+44:The_Amazing_Digital_Circus_Song____The_Show_That_Never_Ends__feat.mp3
+45:Unravel (Tokyo Ghoul cover)   Ryo Trackmaker.mp3
+46:Хозяин леса   Кароль и Шут.mp3
+47:東方自作アレンジ_Blackout_原曲_ハルトマンの妖怪少女_Hartmann_s_Youkai_Girl.mp3
+48:【東方Dubstep】 Everlasting Nap 「ESQUARIA」.mp3
+49:Path Of Borealis   Half-Life 2.mp3
+50:YT2mp3_info_The_Only_Thing_They_Fear_is_V_Cyberpunk2077_x_Doom_Eternal.mp3
+51:5k4m5orfn96b1x99wqd3.m4a
+52:7puuzysmd6sfcz11fwqp.m4a
+53:BANG_BANG_BANG_Chainsaw_Man_Song_ft_@starxrayne_@JamsDX_.m4a
+54:BENDY_AND_THE_INK_MACHINE_SONG_Build.mp3
+55:Build Our Machine   Bendi and Ink Machine.mp3
+56:Build Our Machine [Remix]    Sayonara Maxwell.mp3
+57:Death-Stranding-Low-Roar-and-Ambience-4K.m4a
+58:DECO27 - Rabbit Hole feat. Hatsune Miku.mp3
+59:DESOLATE_HALLWAY_BENDY_AND_THE_DARK_REVIVAL_SONG_ADVOCATEMUSIC_FT.mp3
+60:dop'e – highrider dub].mp3
+61:EZ4ENCE (BASSBOOSTED)   THE VERKKARS.mp3
+62:Fire In The Hole   Entropy Zero.mp3
+63:FNF Vs Rewrite - Trinity but only Rewrite part.mp3
+64:Free Bird (Live at the Lakewood, Atlanta, Ga 1994)   Lynyrd.mp3
+65:Half-Life 2 Ep1 – Episode 1.mp3
+66:Harder Better Faster Stronger   Draft Punk (DJ Hostel Remix).mp3
+67:Hazardous Environment Cover   Half Life Theme.mp3
+68:Heaven Says.   chart.mp3
+69:Heirol_ATC_Around_the_world_Miku_and_Luka_cover_HQ_versio.mp3
+70:illusionary_daytime_x_trackmaker_douyin_tiktok_version_+_looped.m4a
+71:Im So Hot   Platinum.mp3
+72:Judas.mp3
+73:Labyrinth,_Mind_Electric,_Mind_Electric_Demo_4_by_Miracle_Musi.mp3
+74:Last Legs   Valve.mp3
+75:laydownrot - Hunter eyes (slowed).mp3
+76:Little Dark Age - MGMT.mp3
+77:Lynyrd Skynyrd-Free Bird.mp3
+78:Minecraft Video  Technoblade  - Minecraft Parody Song of Memorie.mp3
+79:miracle musical - Labyrinth speed up.mp3
+80:miss wanna die (slowedanti-nightcoredaycore).mp3
+81:Nova prospect   Half-Life 2.mp3
+82:Official_Soundtrack_Death_Stranding_BB_s_Theme_Ludvig_For.mp3
+83:Once in a lifetime   Mecanica Popular.mp3
+84:Once In a Lifetime   Nikita Yamov.mp3
+85:Phoibe the Orphan   The Flight feat. Mike Georgiades.mp3
+86:Roller Mobster   Carpenter Brut.mp3
+87:Tame Impala - New Person, Same Old Mistakes (Audio) (1).mp3
+88:Technoblade theme 4   Technoblade.mp3
+89:TF2 Kazotsky Kick Mashup.mp3
+90:The Mind Eletric (demo 4) - miracle musical Sped Up.mp3
+91:The Verkkars - EZ4ENCE (kannatuslaulu).mp3
+92:The_Amazing_Digital_Circus_Song____The_Show_That_Never_Ends__feat.mp3
+93:Unravel (Tokyo Ghoul cover)   Ryo Trackmaker.mp3
+94:Хозяин леса   Кароль и Шут.mp3
+95:東方自作アレンジ_Blackout_原曲_ハルトマンの妖怪少女_Hartmann_s_Youkai_Girl.mp3
 playlist_end

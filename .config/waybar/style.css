@@ -1,104 +1,162 @@
-@import "colors.css";
+/* ===== COLORS ===== */
+@define-color bg #222222;
+@define-color bg-alt #383838;
 
+@define-color fg #ebdbb2;
+@define-color fg-soft #fff4d2;
+
+@define-color border #484848;
+@define-color gray #555555;
+
+@define-color black #000000;
+
+@define-color blue #83a598;
+@define-color blue-dark #458588;
+
+@define-color pink #d3869b;
+@define-color pink-dark #b26286;
+
+@define-color green #8ec07c;
+@define-color green-dark #689d68;
+
+@define-color red #ea6962;
+@define-color red-dark #cc241d;
+@define-color red-critical #b22222;
+
+@define-color orange #e78a4e;
+
+
+/* ===== GLOBAL ===== */
 * {
-    font-family: "JetBrainsMono Nerd Font Propo";
-    font-size: 13px;
-    min-height: 0;
+  padding: 0;
+  min-height: 0;
+  margin: 0;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 window#waybar {
-    background: alpha(@background, 0.7);
-    color: @foreground;
-    border-bottom: 1px solid alpha(@primary, 0.15);
+  background: @bg;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 13pt;
+  font-weight: 900;
+  color: @fg;
 }
 
-tooltip {
-    background: alpha(@surface_dim, 0.95);
-    border: 1px solid @border;
-    border-radius: 12px;
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 3pt;
+  background: @bg;
 }
 
-tooltip label {
-    color: @on_background;
+/* ===== COMMON MODULE STYLE ===== */
+#window,
+#disk,
+#cpu,
+#custom-cpu_temp,
+#custom-cpu_temp.critical,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#network,
+#clock,
+#custom-timer {
+  color: @fg-soft;
+  background-color: @bg-alt;
+  padding: 0 6pt;
+  margin: 0 1pt;
 }
 
+/* ===== ROFI ===== */
+#custom-rofi {
+  color: @black;
+  background: @blue;
+  padding: 0pt 6pt;
+}
+
+/* ===== WORKSPACES ===== */
 #workspaces button {
-    color: @outline;
-    padding: 0 6px;
-    border-radius: 9px;
-    transition: all 0.3s ease;
+  color: @fg-soft;
+  background-color: @bg-alt;
+  min-width: 20pt;
+  margin-right: 3pt;
+  padding: 0pt 5pt;
 }
 
-#workspaces button.active {
-    color: @primary;
-    padding: 0 10px;
+#workspaces button:last-child {
+  margin-right: 0;
 }
 
 #workspaces button:hover {
-    color: @on_secondary_fixed_variant;
+  color: @bg;
+  background: @pink;
 }
 
-#window {
-    padding: 0 10px;
+#workspaces button.visible,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover {
+  color: @black;
+  background: @green;
 }
 
-#clock {
-    color: @primary;
-    padding: 0 10px;
+#workspaces button.urgent {
+  color: @bg;
+  background: @red;
 }
 
-#battery {
-    padding: 0 8px;
+/* ===== NORMALIZE FONT ===== */
+#custom-rofi,
+#window,
+#disk,
+#cpu,
+#custom-cpu_temp,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#battery,
+#network,
+#clock,
+#custom-timer {
+  font-size: 13pt;
+  font-family: JetBrainsMono Nerd Font Mono;
 }
 
-#battery.critical:not(.charging) {
-    color: @error;
-}
-
-#battery.warning:not(.charging) {
-    color: @yellow;
-}
-
-#network {
-    padding: 0 8px;
-}
-
-#network.disconnected {
-    color: @error;
-}
-
-#pulseaudio {
-    padding: 0 8px;
+/* ===== SPECIAL STATES ===== */
+#custom-cpu_temp.unknown {
+  color: @gray;
 }
 
 #pulseaudio.muted {
-    color: @error;
+  color: @red;
 }
 
-#cpu {
-    padding: 0 8px;
+#battery.critical {
+  color: @red-critical;
 }
 
-#memory {
-    padding: 0 8px;
+#battery.warning {
+  color: @orange;
 }
 
-#backlight {
-    padding: 0 8px;
-}
-
+/* ===== TRAY ===== */
 #tray {
-    padding: 0 4px;
+  color: @fg-soft;
+  background-color: @bg-alt;
+  padding: 0 6pt;
 }
 
-#custom-mic {
-    padding: 0 8px;
-}
-
-#custom-nightlight {
-    padding: 0 8px;
-}
-
-#custom-mic.muted {
-    color: @error;
+/* ===== MODE ===== */
+#mode,
+#submap {
+  color: @black;
+  background: @blue;
+  padding: 0pt 6pt;
 }

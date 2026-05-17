@@ -1,14 +1,14 @@
 spawn-at-startup "errands"
 spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
-spawn-at-startup "swaync"
-spawn-at-startup "sh" "-c" "killall swaybg mpvpaper mpv 2>/dev/null; ~/.local/bin/mpvpaper -f -o \"no-audio loop\" LVDS-1 ~/Pictures/Wallpapers/28a1e36191eb43fae5347624b17edf10.gif"
+spawn-at-startup "mako"
+spawn-at-startup "sh" "-c" "killall swaybg mpvpaper mpv 2>/dev/null; ~/.local/bin/mpvpaper -f -o \"no-audio loop\" LVDS-1 ~/Pictures/Wallpapers/white_girl.jpg"
 config-notification {
     disable-failed
 }
 
 cursor {
-    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-theme "Adwaita"
     xcursor-size 24
 }
 
@@ -49,7 +49,7 @@ input {
 }
 
 layout {
-    gaps 4
+    gaps 8
     background-color "#131313"
     center-focused-column "never"
     preset-column-widths {
@@ -60,13 +60,16 @@ layout {
     default-column-width { proportion 0.5; }
     
     border {
-        width 0
+        width 2
+        active-color   "#83a598"
+        inactive-color "#484848"
+        urgent-color   "#ea6962"
     }
     
     focus-ring {
-        width 0
-        active-color   "#ffb4a9"
-        inactive-color "#3a2a29"
+        width 2
+        active-color   "#83a598"
+        inactive-color "#484848"
     }
     
     shadow {
@@ -86,6 +89,20 @@ layout {
 //    opacity 1.0
 //}
 
+recent-windows {
+    binds {
+        Mod+Tab { next-window scope="output"; }
+        Mod+Shift+Tab { previous-window scope="output"; }
+        Alt+grave { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+    highlight {
+        corner-radius 12
+        active-color "#808080"
+        urgent-color "#505050"
+    }
+}
+
 overview {
     workspace-shadow {
         softness 40
@@ -101,7 +118,9 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_QPA_PLATFORMTHEME "gtk3"
     QT_QPA_PLATFORMTHEME_QT6 "gtk3"
-    TERMINAL "kitty" 
+    TERMINAL "kitty"
+    XCURSOR_THEME "Adwaita"
+    XCURSOR_SIZE "24"
 }
 
 hotkey-overlay {
@@ -111,41 +130,9 @@ hotkey-overlay {
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-animations {
-    workspace-switch {
-        spring damping-ratio=0.85 stiffness=600 epsilon=0.0001
-    }
-    window-open {
-        duration-ms 300
-        curve "ease-out-quad"
-    }
-    window-close {
-        duration-ms 250
-        curve "ease-out-cubic"
-    }
-    horizontal-view-movement {
-        spring damping-ratio=0.82 stiffness=380 epsilon=0.0001
-    }
-    window-movement {
-        spring damping-ratio=0.72 stiffness=300 epsilon=0.0001
-    }
-    window-resize {
-        spring damping-ratio=0.80 stiffness=380 epsilon=0.0001
-    }
-    config-notification-open-close {
-        spring damping-ratio=0.60 stiffness=800 epsilon=0.001
-    }
-    screenshot-ui-open {
-        duration-ms 200
-        curve "ease-out-quad"
-    }
-    overview-open-close {
-        spring damping-ratio=0.80 stiffness=350 epsilon=0.0001
-    }
-}
-
 window-rule {
     clip-to-geometry true
+    geometry-corner-radius 8
 }
 
 debug {
@@ -250,8 +237,9 @@ binds {
     //Mod+Z { spawn "errands"; }
     Mod+Shift+N { spawn "sh" "-c" "~/.config/Scripts/nightlight.sh toggle"; }
     Mod+Shift+W { spawn "sh" "-c" "~/.config/Scripts/wprand s"; }
+    Mod+W { spawn "sh" "-c" "~/.config/Scripts/toggle-waybar.sh"; }
 
-    Mod+Tab repeat=false { toggle-overview; }
+    Alt+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
