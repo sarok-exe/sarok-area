@@ -74,3 +74,6 @@ for line in sys.stdin.read().split('\n'):
         print(f'   {h}h {m}m used today')
 "
 }
+
+# zoxide: smart directory jumper (z)
+eval "$(zoxide init bash)"
